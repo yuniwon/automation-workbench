@@ -79,3 +79,34 @@ in:anywhere newer_than:7d ("엑셀/CSV 자동화" OR "맞춤 제작 문의" OR "
 1. 사용자가 GeekNews 또는 OKKY에 로그인한다.
 2. 게시 전 원고는 `docs/marketing/posts/`에서 복사한다.
 3. 게시 버튼 클릭 전 최종 문구와 링크를 확인한다.
+
+## 2026-05-14 Gmail Scan After Privacy Update
+
+검색 범위:
+
+```text
+to:dnjsdndus@gmail.com newer_than:7d -from:dnjsdndus@gmail.com ("엑셀/CSV 자동화" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "무료 엑셀" OR "CSV/XLSX" OR "반복 작업" OR "샘플 파일")
+```
+
+추가 검색:
+
+```text
+to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/CSV 자동화 맞춤 제작 문의"
+```
+
+결과:
+
+- 후보 0건
+- 실제 문의 0건
+
+판단:
+
+- 문의 수신 루프는 여전히 빈 상태다.
+- 외부 게시 전에는 자연 유입이 거의 없다고 보는 것이 맞다.
+- 개인정보 안내와 브라우저 내 처리 문구는 전환 신뢰 보강 작업이며, 유입 자체를 대체하지 못한다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY 로그인 세션에서 게시를 실행한다.
+2. 게시 URL을 Exposure 형식으로 기록한다.
+3. 게시 후 24시간 뒤 같은 검색어로 Gmail을 다시 확인한다.
