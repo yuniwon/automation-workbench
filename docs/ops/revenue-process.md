@@ -11,6 +11,7 @@
 - 무료 도구 2: 엑셀/CSV 파일 비교 도구
 - 소개글: `docs/marketing/free-excel-csv-cleanup-tool-post.md`
 - 무료 노출 계획: `docs/marketing/free-distribution-plan.md`
+- 수동 게시 체크리스트: `docs/marketing/manual-posting-checklist.md`
 - Gmail 처리 기준: `docs/ops/gmail-intake-playbook.md`
 - Gmail 검색 로그: `docs/ops/lead-log.md`
 - Gmail 반복 점검 절차: `docs/ops/gmail-monitor-runbook.md`
