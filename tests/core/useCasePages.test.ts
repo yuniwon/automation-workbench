@@ -19,6 +19,21 @@ const pages = [
     title: "주문·정산 파일 자동화",
     source: "seo-order-settlement-automation",
   },
+  {
+    path: "public/use-cases/excel-blank-cell-checker.html",
+    title: "엑셀 빈 값 검사",
+    source: "seo-excel-blank-cell-checker",
+  },
+  {
+    path: "public/use-cases/excel-number-format-cleanup.html",
+    title: "엑셀 숫자 형식 정리",
+    source: "seo-excel-number-format-cleanup",
+  },
+  {
+    path: "public/use-cases/excel-file-compare.html",
+    title: "엑셀 파일 비교",
+    source: "seo-excel-file-compare",
+  },
 ];
 
 function readProjectFile(relativePath: string) {

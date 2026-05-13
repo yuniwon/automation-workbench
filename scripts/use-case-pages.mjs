@@ -7,6 +7,7 @@ const baseUrl = "https://yuniwon.github.io/automation-workbench";
 const appPath = "/automation-workbench/";
 const email = "dnjsdndus@gmail.com";
 const mailSubject = "엑셀/CSV 자동화 맞춤 제작 문의";
+const lastmod = "2026-05-14";
 
 export const useCases = [
   {
@@ -108,6 +109,110 @@ export const useCases = [
       },
     ],
   },
+  {
+    slug: "excel-blank-cell-checker",
+    title: "엑셀 빈 값 검사 무료 도구 | Automation Workbench",
+    description: "엑셀 빈 값 검사를 브라우저에서 무료로 실행하고, 누락 확인과 보완 리포트를 맞춤 자동화로 확장할 수 있습니다.",
+    eyebrow: "무료 엑셀 품질 검사",
+    heading: "엑셀 빈 값 검사를 업로드만으로 확인하세요",
+    lede: [
+      "주문, 재고, 고객 목록에서 빠진 값이 있는지 일일이 눈으로 찾고 있다면",
+      "파일을 업로드해 빈 셀 위치와 정리 필요 지점을 먼저 확인할 수 있습니다.",
+    ],
+    ctaTitle: "빈 값 검사 실행",
+    ctaBody: "샘플 파일로 빈 값 탐지 흐름을 확인한 뒤 실제 CSV/XLSX 파일을 업로드할 수 있습니다.",
+    source: "seo-excel-blank-cell-checker",
+    mailLabel: "누락 검사 자동화 문의",
+    mailTask: "엑셀 빈 값 검사",
+    cards: [
+      {
+        title: "확인할 수 있는 문제",
+        items: ["비어 있는 필수 셀", "헤더 이름 누락", "정리 전후 행 수 변화", "다운로드 전 데이터 품질 이슈"],
+      },
+      {
+        title: "업무 사용처",
+        items: ["고객 연락처 누락 확인", "주문 옵션 누락 확인", "재고 수량 누락 확인", "정산 필수 항목 검수"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "고객 파일에서 반드시 채워야 하는 열을 지정하고, 누락 행만 따로 모아",
+          "확인용 리포트나 보완 요청 파일로 만들 수 있습니다.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "excel-number-format-cleanup",
+    title: "엑셀 숫자 형식 정리 무료 도구 | Automation Workbench",
+    description: "쉼표, 원, 공백이 섞인 엑셀 숫자 형식을 브라우저에서 정리하고 반복 정산 업무 자동화 가능성을 확인할 수 있습니다.",
+    eyebrow: "무료 숫자 형식 정리",
+    heading: "엑셀 숫자 형식이 섞인 파일을 먼저 정리해보세요",
+    lede: [
+      "금액, 수량, 단가 열에 쉼표, 원 표시, 공백이 섞이면 집계와 비교가 자주 깨집니다.",
+      "파일을 업로드해 숫자처럼 보이는 값을 정규화하고 결과 CSV를 내려받을 수 있습니다.",
+    ],
+    ctaTitle: "숫자 정리 실행",
+    ctaBody: "샘플 데이터로 숫자 정규화 결과를 확인한 뒤 실제 CSV/XLSX 파일에 적용할 수 있습니다.",
+    source: "seo-excel-number-format-cleanup",
+    mailLabel: "정산 정리 자동화 문의",
+    mailTask: "엑셀 숫자 형식 정리",
+    cards: [
+      {
+        title: "정리할 수 있는 값",
+        items: ["1,200 같은 쉼표 숫자", "12,000원 같은 금액", "앞뒤 공백이 섞인 수량", "문자열로 들어온 숫자"],
+      },
+      {
+        title: "업무 사용처",
+        items: ["정산 금액 정리", "상품 단가 정리", "수량 집계 전 전처리", "외부 양식 업로드 전 검수"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "고객별 금액 열과 예외 규칙을 레시피로 분리해 매번 같은 기준으로",
+          "정산 파일을 정리하고 요약표까지 만들 수 있습니다.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "excel-file-compare",
+    title: "엑셀 파일 비교 무료 도구 | Automation Workbench",
+    description: "두 엑셀 파일을 키 기준으로 비교해 추가, 삭제, 변경, 동일 행을 확인하고 결과 CSV로 내려받을 수 있습니다.",
+    eyebrow: "무료 엑셀 파일 비교",
+    heading: "두 엑셀 파일의 추가·삭제·변경을 키 기준으로 비교하세요",
+    lede: [
+      "주문번호, 상품코드, 고객 ID처럼 공통 기준 열이 있는 두 파일을 올리면",
+      "어떤 행이 추가, 삭제, 변경, 동일 상태인지 브라우저에서 바로 확인할 수 있습니다.",
+    ],
+    ctaTitle: "엑셀 비교 실행",
+    ctaBody: "샘플 비교 파일로 흐름을 확인하고 실제 CSV/XLSX 파일 두 개를 업로드할 수 있습니다.",
+    source: "seo-excel-file-compare",
+    mailLabel: "엑셀 비교 자동화 문의",
+    mailTask: "엑셀 파일 비교",
+    cards: [
+      {
+        title: "비교 결과",
+        items: ["기준 파일에만 있는 행", "비교 파일에만 있는 행", "같은 키지만 값이 바뀐 행", "두 파일에서 동일한 행"],
+      },
+      {
+        title: "업무 사용처",
+        items: ["전월/당월 파일 비교", "주문 파일과 정산 파일 비교", "재고 변경 내역 확인", "고객 목록 누락 확인"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "비교 기준 열, 무시할 컬럼, 결과 리포트 형식을 고정해 사람이 매번",
+          "필터링하지 않아도 같은 방식으로 차이 목록을 만들 수 있습니다.",
+        ],
+      },
+    ],
+  },
+];
+
+export const publicUrls = [
+  `${baseUrl}/`,
+  ...useCases.map((useCase) => `${baseUrl}/use-cases/${useCase.slug}.html`),
 ];
 
 function inquiryBody(useCase) {
@@ -207,11 +312,35 @@ ${useCase.cards.map(renderCard).join("\n")}
 `;
 }
 
+export function renderSitemap() {
+  const entries = publicUrls
+    .map((url, index) => {
+      const isRoot = index === 0;
+
+      return `  <url>
+    <loc>${url}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${isRoot ? "weekly" : "monthly"}</changefreq>
+    <priority>${isRoot ? "1.0" : "0.8"}</priority>
+  </url>`;
+    })
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries}
+</urlset>
+`;
+}
+
 export async function generateUseCasePages() {
   await Promise.all(
-    useCases.map((useCase) =>
-      writeFile(join(root, "public", "use-cases", `${useCase.slug}.html`), renderUseCasePage(useCase)),
-    ),
+    [
+      ...useCases.map((useCase) =>
+        writeFile(join(root, "public", "use-cases", `${useCase.slug}.html`), renderUseCasePage(useCase)),
+      ),
+      writeFile(join(root, "public", "sitemap.xml"), renderSitemap()),
+    ],
   );
 }
 
