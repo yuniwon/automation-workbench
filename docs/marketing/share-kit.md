@@ -6,6 +6,15 @@
 https://yuniwon.github.io/automation-workbench/
 ```
 
+채널별 추적 링크:
+
+```text
+GeekNews: https://yuniwon.github.io/automation-workbench/?source=geeknews
+OKKY: https://yuniwon.github.io/automation-workbench/?source=okky
+Hacker News: https://yuniwon.github.io/automation-workbench/?source=hacker-news
+Product Hunt: https://yuniwon.github.io/automation-workbench/?source=product-hunt
+```
+
 GitHub:
 
 ```text

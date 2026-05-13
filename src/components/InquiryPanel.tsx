@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { contactConfig, toolUrl } from "../config/contact";
+import { buildContactHref, contactConfig, getSourceFromSearch, toolUrl } from "../config/contact";
 
 export function InquiryPanel() {
   const [copied, setCopied] = useState<"inquiry" | "link" | null>(null);
+  const inboundSource = typeof window === "undefined" ? "" : getSourceFromSearch(window.location.search);
+  const contactHref = buildContactHref(inboundSource);
 
   async function copyText(value: string, type: "inquiry" | "link") {
     if (navigator.clipboard) {
@@ -32,8 +34,8 @@ export function InquiryPanel() {
         <span>사용법 전달</span>
       </div>
       <div className="inquiry-actions">
-        {contactConfig.href && (
-          <a className="primary-link" href={contactConfig.href} target="_blank" rel="noreferrer">
+        {contactHref && (
+          <a className="primary-link" href={contactHref} target="_blank" rel="noreferrer">
             {contactConfig.label}
           </a>
         )}
