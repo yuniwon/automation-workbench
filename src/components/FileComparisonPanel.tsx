@@ -1,4 +1,5 @@
 import { useMemo, useState, type ChangeEvent } from "react";
+import { sampleFiles } from "../config/sampleFiles";
 import { compareTables, comparisonToTable } from "../core/compare/compareTables";
 import { parseCsv } from "../core/input/csvInputAdapter";
 import { tableToCsv } from "../core/output/csvOutputAdapter";
@@ -112,6 +113,14 @@ export function FileComparisonPanel({
           <small>{compareSource.name}</small>
           <input type="file" accept=".csv,.xlsx,text/csv" onChange={(event) => void handleUpload("compare", event)} />
         </label>
+        <div className="sample-links comparison-sample-links" aria-label="Sample comparison CSV downloads">
+          <a className="sample-link" href={sampleFiles.comparisonBase.href} download>
+            {sampleFiles.comparisonBase.label}
+          </a>
+          <a className="sample-link" href={sampleFiles.comparisonTarget.href} download>
+            {sampleFiles.comparisonTarget.label}
+          </a>
+        </div>
 
         <label className="field-label">
           매칭 기준 열

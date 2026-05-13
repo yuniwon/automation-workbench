@@ -1,4 +1,5 @@
 import type { ChangeEvent } from "react";
+import { sampleFiles } from "../config/sampleFiles";
 import type { CleanupOptions } from "../core/recipes/cleanupOptions";
 import type { TableColumn } from "../core/table/types";
 
@@ -38,7 +39,6 @@ export function WorkflowControls({
       return;
     }
 
-    const reader = new FileReader();
     void onFileUpload(file);
   }
 
@@ -62,6 +62,11 @@ export function WorkflowControls({
         <small>헤더가 있는 CSV 또는 XLSX 파일을 불러옵니다.</small>
         <input type="file" accept=".csv,.xlsx,text/csv" onChange={handleFile} />
       </label>
+      <div className="sample-links" aria-label="Sample CSV downloads">
+        <a className="sample-link" href={sampleFiles.cleanup.href} download>
+          {sampleFiles.cleanup.label}
+        </a>
+      </div>
 
       <div className="control-stack">
         {(Object.keys(options) as Array<keyof CleanupOptions>).map((key) => (

@@ -281,7 +281,40 @@ h1 {
 
 .comparison-file-drop {
   margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sample-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.comparison-sample-links {
+  grid-template-columns: 1fr 1fr;
   margin-bottom: 18px;
+}
+
+.sample-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #d0d6e0;
+  font-size: 13px;
+  font-weight: 510;
+  text-decoration: none;
+}
+
+.sample-link:hover {
+  border-color: rgba(113, 112, 255, 0.42);
+  color: #f7f8f8;
+  background: rgba(113, 112, 255, 0.08);
 }
 
 .control-stack {
