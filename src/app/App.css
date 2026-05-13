@@ -282,6 +282,7 @@ select {
 }
 
 .primary-button,
+.primary-link,
 .ghost-button,
 .text-button {
   border-radius: 6px;
@@ -294,6 +295,16 @@ select {
   border: 1px solid #7170ff;
   background: #5e6ad2;
   color: #ffffff;
+}
+
+.primary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #7170ff;
+  background: #5e6ad2;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .ghost-button {
@@ -464,11 +475,27 @@ td {
   letter-spacing: 0;
 }
 
+.panel-kicker {
+  margin: 0 0 8px;
+  color: #7170ff;
+  font-size: 12px;
+  font-weight: 590;
+}
+
 .inquiry-panel p {
   max-width: 760px;
   margin: 10px 0 0;
   color: #a8afb9;
   line-height: 1.7;
+}
+
+.tool-url {
+  display: inline-flex;
+  margin-top: 12px;
+  color: #d0d6e0;
+  font-size: 13px;
+  text-decoration-color: rgba(255, 255, 255, 0.28);
+  text-underline-offset: 4px;
 }
 
 .inquiry-steps {
@@ -479,9 +506,9 @@ td {
 }
 
 .inquiry-actions {
-  display: flex;
+  display: grid;
+  min-width: 210px;
   flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 8px;
 }
 

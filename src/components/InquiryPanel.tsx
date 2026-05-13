@@ -1,25 +1,29 @@
 import { useState } from "react";
-import { contactConfig } from "../config/contact";
+import { contactConfig, toolUrl } from "../config/contact";
 
 export function InquiryPanel() {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<"inquiry" | "link" | null>(null);
 
-  async function copyInquiryText() {
+  async function copyText(value: string, type: "inquiry" | "link") {
     if (navigator.clipboard) {
-      await navigator.clipboard.writeText(contactConfig.inquiryText);
+      await navigator.clipboard.writeText(value);
     }
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    setCopied(type);
+    window.setTimeout(() => setCopied(null), 1800);
   }
 
   return (
     <section className="inquiry-panel">
       <div>
-        <h2>업무 파일에 맞춘 자동화가 필요하신가요?</h2>
+        <p className="panel-kicker">무료 도구 + 맞춤 제작</p>
+        <h2>이 도구를 내 파일 구조에 맞게 바꾸고 싶다면</h2>
         <p>
-          현재 쓰는 엑셀, CSV, 구글시트 구조에 맞춰 반복 정리, 집계, 리포트,
-          알림 발송까지 단계별로 자동화할 수 있습니다.
+          샘플 파일과 반복 규칙을 보내주시면 정리, 집계, 리포트, 알림 발송까지
+          업무 흐름에 맞춰 제작할 수 있습니다.
         </p>
+        <a className="tool-url" href={toolUrl} target="_blank" rel="noreferrer">
+          {toolUrl}
+        </a>
       </div>
       <div className="inquiry-steps">
         <span>파일 구조 확인</span>
@@ -28,14 +32,17 @@ export function InquiryPanel() {
         <span>사용법 전달</span>
       </div>
       <div className="inquiry-actions">
-        <button className="primary-button" type="button" onClick={copyInquiryText}>
-          {copied ? "문의 문구 복사됨" : "문의 문구 복사"}
-        </button>
         {contactConfig.href && (
-          <a className="ghost-link" href={contactConfig.href} target="_blank" rel="noreferrer">
+          <a className="primary-link" href={contactConfig.href} target="_blank" rel="noreferrer">
             {contactConfig.label}
           </a>
         )}
+        <button className="ghost-button" type="button" onClick={() => copyText(contactConfig.inquiryText, "inquiry")}>
+          {copied === "inquiry" ? "문의 문구 복사됨" : "문의 문구 복사"}
+        </button>
+        <button className="ghost-button" type="button" onClick={() => copyText(contactConfig.shareText, "link")}>
+          {copied === "link" ? "도구 링크 복사됨" : "도구 링크 복사"}
+        </button>
       </div>
     </section>
   );

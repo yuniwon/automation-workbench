@@ -126,13 +126,13 @@ export function App() {
     <main className="app-shell">
       <section className="topbar">
         <div>
-          <p className="eyebrow">Automation Workbench</p>
+          <p className="eyebrow">무료 엑셀/CSV 도구</p>
           <h1>
-            엑셀/CSV 자동 정리 <span className="title-keep">작업대</span>
+            엑셀/CSV 자동 정리 <span className="title-keep">도구</span>
           </h1>
           <p className="lede">
-            반복해서 손보던 표 데이터를 검사하고, 정리하고, 바로 납품 가능한 결과물로
-            내보냅니다.
+            주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤
+            바로 CSV로 내려받을 수 있습니다.
           </p>
         </div>
         <div className="status-strip" aria-label="Current data status">

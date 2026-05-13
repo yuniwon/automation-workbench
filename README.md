@@ -1,27 +1,33 @@
 # Automation Workbench
 
-Reusable automation workbench for small business spreadsheet cleanup and future workflow
-automation jobs.
+Free Excel/CSV cleanup tool for small business workflow automation demos.
 
-## MVP
+Live demo: https://yuniwon.github.io/automation-workbench/
 
-The first app is an Excel/CSV cleanup workbench:
+## What It Does
 
-- load built-in sample order data
-- upload CSV or XLSX files
-- scan for duplicate rows, blank cells, header whitespace, number format issues, and
-  mixed date formats
-- run selected cleanup steps
-- group rows by a selected column
-- download cleaned CSV
+- uploads CSV or XLSX files
+- scans duplicate rows, blank cells, header whitespace, number format issues, and mixed date formats
+- runs selected cleanup steps
+- groups rows by a selected column
+- downloads the cleaned result as CSV
+
+## Why This Exists
+
+This project is a free public tool and a lead-generation sample for custom automation work.
+The app lets a visitor try a useful spreadsheet cleanup flow first, then request a version
+adapted to their own files, rules, reports, or Google Sheets workflow.
+
+Customer-specific behavior should become a reusable recipe, adapter, or scanner instead of
+a hardcoded UI branch.
 
 ## Scripts
 
 ```powershell
-npm install
-npm run dev
-npm test
-npm run build
+pnpm install --frozen-lockfile --ignore-scripts
+pnpm dev
+pnpm test
+pnpm build
 ```
 
 ## Structure
@@ -34,5 +40,7 @@ src/core/output     export adapters
 src/components      UI panels
 ```
 
-Customer-specific behavior should become a recipe or adapter, not a hardcoded branch in
-the UI.
+## Deployment
+
+The app is deployed to GitHub Pages through `.github/workflows/deploy-pages.yml`.
+Pushes to `main` run tests, build the Vite app, and publish `dist`.

@@ -1,6 +1,28 @@
+export const toolUrl = "https://yuniwon.github.io/automation-workbench/";
+
+const mailSubject = encodeURIComponent("엑셀/CSV 자동화 맞춤 제작 문의");
+const mailBody = encodeURIComponent(`안녕하세요.
+
+무료 엑셀/CSV 자동 정리 도구를 사용해보고 문의드립니다.
+도구 링크: ${toolUrl}
+
+제가 자동화하고 싶은 업무:
+- 여기에 적어주세요
+
+현재 파일 형식:
+- CSV / XLSX / 구글시트 / 기타:
+
+반복해서 하는 작업:
+- 여기에 적어주세요
+
+샘플 파일 공유 가능 여부:
+- 가능 / 어려움
+`);
+
 export const contactConfig = {
-  href: "mailto:dnjsdndus@gmail.com?subject=%EC%97%85%EB%AC%B4%20%ED%8C%8C%EC%9D%BC%20%EC%9E%90%EB%8F%99%ED%99%94%20%EC%83%81%EB%8B%B4%20%EC%9A%94%EC%B2%AD",
-  label: "이메일로 상담 요청",
+  href: `mailto:dnjsdndus@gmail.com?subject=${mailSubject}&body=${mailBody}`,
+  label: "이메일로 맞춤 제작 문의",
   inquiryText:
-    "안녕하세요. 엑셀/CSV 또는 구글시트 반복 업무 자동화 상담을 받고 싶습니다. 현재 반복 작업과 샘플 파일 기준으로 가능 범위와 견적을 안내해주세요.",
+    "안녕하세요. 무료 엑셀/CSV 자동 정리 도구를 사용해보고 문의드립니다. 현재 쓰는 파일 구조와 반복 작업에 맞춘 자동화 제작 가능 범위와 견적을 안내해주세요.",
+  shareText: `무료 엑셀/CSV 자동 정리 도구: ${toolUrl}`,
 };
