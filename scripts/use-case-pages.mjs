@@ -1,0 +1,220 @@
+import { writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const baseUrl = "https://yuniwon.github.io/automation-workbench";
+const appPath = "/automation-workbench/";
+const email = "dnjsdndus@gmail.com";
+const mailSubject = "엑셀/CSV 자동화 맞춤 제작 문의";
+
+export const useCases = [
+  {
+    slug: "excel-duplicate-cleanup",
+    title: "엑셀 중복 제거 무료 도구 | Automation Workbench",
+    description: "엑셀 중복 제거와 빈 값 검사를 브라우저에서 무료로 실행하고, 반복 정리 업무를 맞춤 자동화로 확장할 수 있습니다.",
+    eyebrow: "무료 엑셀/CSV 정리",
+    heading: "엑셀 중복 제거를 브라우저에서 먼저 확인하세요",
+    lede: [
+      "주문, 재고, 정산 파일에서 같은 행이 반복되거나 숫자 형식이 섞여 있을 때",
+      "파일을 업로드해 중복 행, 빈 값, 헤더 문제를 빠르게 확인할 수 있습니다.",
+    ],
+    ctaTitle: "바로 실행",
+    ctaBody: "샘플 CSV로 먼저 테스트한 뒤, 실제 CSV/XLSX 파일을 업로드해 확인할 수 있습니다.",
+    source: "seo-excel-duplicate-cleanup",
+    mailLabel: "맞춤 제작 문의",
+    mailTask: "엑셀 중복 제거",
+    cards: [
+      {
+        title: "확인할 수 있는 문제",
+        items: ["완전히 같은 중복 행", "빈 값이 있는 셀", "앞뒤 공백이 섞인 텍스트", "쉼표, 원, 공백이 섞인 숫자"],
+      },
+      {
+        title: "정리 결과",
+        items: ["중복 행 제거", "텍스트 공백 정리", "숫자 형식 정규화", "정리된 CSV 다운로드"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "쇼핑몰 주문 파일을 택배 업로드 양식으로 바꾸거나, 매주 반복되는 정산 파일",
+          "정리를 버튼 한 번으로 끝내는 도구로 확장할 수 있습니다.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "csv-xlsx-file-compare",
+    title: "CSV/XLSX 파일 비교 무료 도구 | Automation Workbench",
+    description: "CSV/XLSX 파일 비교로 추가, 삭제, 변경, 동일 행을 키 기준으로 확인하고 결과 CSV를 내려받을 수 있습니다.",
+    eyebrow: "무료 파일 비교",
+    heading: "CSV/XLSX 파일 비교로 누락과 변경을 빠르게 찾으세요",
+    lede: [
+      "주문번호, 상품코드, ID처럼 공통 키가 있는 두 파일을 비교해 A에만 있는 행,",
+      "B에만 있는 행, 변경된 행, 동일한 행을 브라우저에서 확인할 수 있습니다.",
+    ],
+    ctaTitle: "비교 도구 실행",
+    ctaBody: "샘플 파일 A/B를 내려받아 비교 흐름을 확인한 뒤 실제 업무 파일에 적용할 수 있습니다.",
+    source: "seo-csv-xlsx-file-compare",
+    mailLabel: "비교 자동화 문의",
+    mailTask: "CSV/XLSX 파일 비교",
+    cards: [
+      {
+        title: "비교 상태",
+        items: ["A 파일에만 있는 행", "B 파일에만 있는 행", "같은 키지만 값이 바뀐 행", "두 파일에서 동일한 행"],
+      },
+      {
+        title: "업무 사용처",
+        items: ["주문 파일과 정산 파일 비교", "재고 파일 변경 내역 확인", "월별 고객 목록 차이 확인", "누락/추가 리포트 생성"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "고객 파일의 키 선택 규칙, 예외 처리, 결과 컬럼 순서, 리포트 형식을 고정해",
+          "매번 같은 방식으로 비교 결과를 만들 수 있습니다.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "order-settlement-automation",
+    title: "주문·정산 파일 자동화 | Automation Workbench",
+    description: "주문·정산 파일 자동화가 필요한지 무료 CSV/XLSX 정리·비교 도구로 먼저 확인하고 맞춤 제작을 문의할 수 있습니다.",
+    eyebrow: "맞춤 업무 자동화 샘플",
+    heading: "주문·정산 파일 자동화가 필요한지 먼저 검증하세요",
+    lede: [
+      "매주 반복되는 주문 정리, 정산 비교, 누락 확인 업무가 있다면 무료 도구로",
+      "현재 파일의 문제를 먼저 확인하고, 필요한 규칙만 맞춤 제작 범위로 분리할 수 있습니다.",
+    ],
+    ctaTitle: "자동화 가능성 확인",
+    ctaBody: "현재 파일 구조와 반복 작업을 정리해 보내주시면 제작 범위와 견적을 확인할 수 있습니다.",
+    source: "seo-order-settlement-automation",
+    mailLabel: "자동화 제작 문의",
+    mailTask: "주문·정산 파일 자동화",
+    cards: [
+      {
+        title: "반복 업무",
+        items: ["쇼핑몰 주문 파일 정리", "정산 파일 누락 비교", "매장별 매출 요약", "고객사 양식으로 변환"],
+      },
+      {
+        title: "필요한 입력",
+        items: ["현재 파일 형식", "반복해서 하는 작업", "원하는 결과 파일 예시", "수작업 소요시간과 마감일"],
+      },
+      {
+        title: "제작 방향",
+        body: [
+          "공통 정리·비교 기능은 재사용하고, 고객별 열 이름, 예외 규칙, 결과 양식만",
+          "레시피로 분리해 유지보수 가능한 자동화로 만듭니다.",
+        ],
+      },
+    ],
+  },
+];
+
+function inquiryBody(useCase) {
+  return `안녕하세요.
+무료 도구를 보고 문의드립니다.
+유입 경로:
+- ${useCase.source}
+도구 링크:
+- ${baseUrl}/?source=${useCase.source}
+자동화하고 싶은 업무:
+- ${useCase.mailTask}
+현재 파일 형식:
+- CSV / XLSX / 구글시트 / 기타:
+현재 수작업 소요시간:
+- 
+필요한 결과물:
+- 
+샘플 파일 공유 가능 여부:
+- 가능 / 일부 값 가림 가능 / 어려움
+`;
+}
+
+function mailtoHref(useCase) {
+  return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(inquiryBody(useCase))}`;
+}
+
+function renderCard(card) {
+  if (card.items) {
+    const items = card.items.map((item) => `            <li>${item}</li>`).join("\n");
+    return `        <article class="panel card">
+          <h2>${card.title}</h2>
+          <ul>
+${items}
+          </ul>
+        </article>`;
+  }
+
+  return `        <article class="panel card">
+          <h2>${card.title}</h2>
+          <p>
+            ${card.body[0]}
+            ${card.body[1]}
+          </p>
+        </article>`;
+}
+
+export function renderUseCasePage(useCase) {
+  return `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="${useCase.description}"
+    />
+    <link rel="canonical" href="${baseUrl}/use-cases/${useCase.slug}.html" />
+    <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
+    <title>${useCase.title}</title>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav">
+        <a href="${appPath}">Automation Workbench</a>
+        <a href="https://github.com/yuniwon/automation-workbench">GitHub</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">${useCase.eyebrow}</p>
+          <h1>${useCase.heading}</h1>
+          <p class="lede">
+            ${useCase.lede[0]}
+            ${useCase.lede[1]}
+          </p>
+        </div>
+        <aside class="panel cta-panel">
+          <strong>${useCase.ctaTitle}</strong>
+          <p>${useCase.ctaBody}</p>
+          <a class="button" href="${appPath}?source=${useCase.source}">무료 도구 열기</a>
+          <a class="button ghost" href="${mailtoHref(useCase)}">${useCase.mailLabel}</a>
+          <p class="trust">
+            파일은 브라우저 안에서 처리됩니다.
+            <a href="https://github.com/yuniwon/automation-workbench/blob/main/PRIVACY.md">개인정보 안내</a>
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+${useCase.cards.map(renderCard).join("\n")}
+      </section>
+
+      <p class="footer">문의: ${email}</p>
+    </main>
+  </body>
+</html>
+`;
+}
+
+export async function generateUseCasePages() {
+  await Promise.all(
+    useCases.map((useCase) =>
+      writeFile(join(root, "public", "use-cases", `${useCase.slug}.html`), renderUseCasePage(useCase)),
+    ),
+  );
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  await generateUseCasePages();
+}
