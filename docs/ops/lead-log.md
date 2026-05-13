@@ -155,3 +155,34 @@ https://docs.google.com/spreadsheets/d/1E6vhznY3NRIhTnOX9as7Q2XRJoENRJcFIVtkCxdv
 
 - 운영 상태를 문서와 Google Sheets 양쪽에서 추적할 수 있게 됐다.
 - 실제 Gmail 문의는 아직 0건이다.
+
+## 2026-05-14 Gmail Scan After Generated Landing Pages
+
+검색 범위:
+
+```text
+to:dnjsdndus@gmail.com newer_than:7d -from:dnjsdndus@gmail.com ("엑셀/CSV 자동화" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "무료 엑셀" OR "CSV/XLSX" OR "반복 작업" OR "샘플 파일")
+```
+
+추가 검색:
+
+```text
+to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/CSV 자동화 맞춤 제작 문의"
+```
+
+결과:
+
+- 후보 0건
+- 실제 문의 0건
+- Google Sheets 기록: `시트1!A7:L7`
+
+판단:
+
+- 공개 랜딩 페이지의 문의 링크는 정상 동작하지만 아직 실제 유입은 없다.
+- 다음 병목은 외부 무료 채널 게시 또는 검색용 페이지 확장이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY에 수동 게시한다.
+2. 게시 전 계정 제한이 있으면 검색 유입용 페이지를 추가로 만든다.
+3. 게시 또는 색인 후 24시간 뒤 Gmail을 다시 확인한다.
