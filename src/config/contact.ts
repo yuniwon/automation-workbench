@@ -1,4 +1,5 @@
 export const toolUrl = "https://yuniwon.github.io/automation-workbench/";
+export const privacyUrl = "https://github.com/yuniwon/automation-workbench/blob/main/PRIVACY.md";
 
 const mailSubject = "엑셀/CSV 자동화 맞춤 제작 문의";
 

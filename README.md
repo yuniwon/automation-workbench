@@ -11,6 +11,8 @@ Sample files:
 - Cleanup sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 - Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
 
+Privacy notes: [PRIVACY.md](PRIVACY.md)
+
 ## 이런 분에게 맞습니다
 
 - 주문, 정산, 재고 파일을 매번 수작업으로 정리하거나 비교하는 분
@@ -32,6 +34,9 @@ Sample files:
 
 무료 도구를 써본 뒤 현재 쓰는 파일 구조에 맞춘 자동화가 필요하면
 `dnjsdndus@gmail.com`으로 문의할 수 있습니다.
+
+공개 도구는 파일을 브라우저 안에서 처리하도록 설계되어 있습니다. 샘플 파일을
+메일로 보낼 때는 이름, 전화번호, 주소, 계좌번호 같은 민감정보를 먼저 가려주세요.
 
 예를 들면 이런 작업으로 확장할 수 있습니다.
 

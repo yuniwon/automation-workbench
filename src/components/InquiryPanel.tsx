@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { buildContactHref, contactConfig, getSourceFromSearch, toolUrl } from "../config/contact";
+import { buildContactHref, contactConfig, getSourceFromSearch, privacyUrl, toolUrl } from "../config/contact";
 
 export function InquiryPanel() {
   const [copied, setCopied] = useState<"inquiry" | "link" | null>(null);
@@ -26,6 +26,12 @@ export function InquiryPanel() {
         <a className="tool-url" href={toolUrl} target="_blank" rel="noreferrer">
           {toolUrl}
         </a>
+        <p className="privacy-note">
+          파일은 브라우저 안에서 처리됩니다.{" "}
+          <a href={privacyUrl} target="_blank" rel="noreferrer">
+            개인정보 안내
+          </a>
+        </p>
       </div>
       <div className="inquiry-steps">
         <span>파일 구조 확인</span>

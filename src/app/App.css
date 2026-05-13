@@ -592,6 +592,20 @@ td {
   text-underline-offset: 4px;
 }
 
+.inquiry-panel .privacy-note {
+  max-width: 760px;
+  margin-top: 10px;
+  color: #8a8f98;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.privacy-note a {
+  color: #d0d6e0;
+  text-decoration-color: rgba(113, 112, 255, 0.48);
+  text-underline-offset: 4px;
+}
+
 .inquiry-steps {
   display: flex;
   flex-wrap: wrap;
