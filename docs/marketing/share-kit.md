@@ -72,6 +72,8 @@ Repo: https://github.com/yuniwon/automation-workbench
 
 무료 도구: https://yuniwon.github.io/automation-workbench/
 문의: dnjsdndus@gmail.com
+
+문의할 때는 파일 형식, 반복 작업, 현재 수작업 소요시간, 필요한 결과물, 희망 마감일을 함께 적어주시면 빠르게 확인할 수 있습니다.
 ```
 
 ## 게시 제목 후보
