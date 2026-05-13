@@ -13,6 +13,7 @@
 - 무료 노출 계획: `docs/marketing/free-distribution-plan.md`
 - 수동 게시 체크리스트: `docs/marketing/manual-posting-checklist.md`
 - Gmail 처리 기준: `docs/ops/gmail-intake-playbook.md`
+- Gmail 답장 템플릿: `docs/ops/gmail-reply-templates.md`
 - Gmail 검색 로그: `docs/ops/lead-log.md`
 - Gmail 반복 점검 절차: `docs/ops/gmail-monitor-runbook.md`
 - 견적 기준: `docs/ops/pricing-guide.md`

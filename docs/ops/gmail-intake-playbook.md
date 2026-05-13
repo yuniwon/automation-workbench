@@ -37,6 +37,8 @@ LOST             보류 또는 무응답
 
 ## 첫 답장 템플릿
 
+상황별 답장 원문은 `docs/ops/gmail-reply-templates.md`를 사용한다.
+
 제목:
 
 ```text
