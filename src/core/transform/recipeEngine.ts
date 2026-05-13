@@ -2,6 +2,7 @@ import type {
   AutomationRecipe,
   DataIssue,
   DataTable,
+  RecipeMetrics,
   RecipeExecutionResult,
 } from "../table/types";
 import type { StepRegistry } from "./stepRegistry";
@@ -16,7 +17,7 @@ export function createRecipeEngine(stepRegistry: StepRegistry): RecipeEngine {
       let table = input;
       const issues: DataIssue[] = [];
       const diagnostics: string[] = [];
-      const metrics: Record<string, number> = {};
+      const metrics: RecipeMetrics = {};
 
       for (const step of recipe.steps) {
         const handler = stepRegistry[step.type];
@@ -42,12 +43,20 @@ export function createRecipeEngine(stepRegistry: StepRegistry): RecipeEngine {
         issues.push(...result.issues);
         diagnostics.push(...result.diagnostics);
 
-        Object.entries(result.metrics ?? {}).forEach(([key, value]) => {
-          metrics[key] = (metrics[key] ?? 0) + value;
-        });
+        mergeMetrics(metrics, result.metrics);
       }
 
       return { table, issues, diagnostics, metrics };
     },
   };
+}
+
+function mergeMetrics(target: RecipeMetrics, source: RecipeMetrics | undefined) {
+  if (!source) {
+    return;
+  }
+
+  (Object.keys(source) as Array<keyof RecipeMetrics>).forEach((key) => {
+    target[key] = (target[key] ?? 0) + (source[key] ?? 0);
+  });
 }

@@ -9,8 +9,6 @@ export function ResultSummary({ metrics }: ResultSummaryProps) {
     return null;
   }
 
-  const rowDelta = metrics.rowsBefore - metrics.rowsAfter;
-
   return (
     <section className="result-summary" aria-label="Cleanup result summary">
       <div>
@@ -21,7 +19,7 @@ export function ResultSummary({ metrics }: ResultSummaryProps) {
       </div>
       <div>
         <span>중복 제거</span>
-        <strong>{rowDelta}</strong>
+        <strong>{metrics.removedDuplicateRows}</strong>
       </div>
       <div>
         <span>공백 정리</span>

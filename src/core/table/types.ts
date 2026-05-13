@@ -25,11 +25,23 @@ export interface DataIssue {
   columnKey?: string;
 }
 
+export interface TableParseResult {
+  table: DataTable;
+  issues: DataIssue[];
+}
+
+export interface RecipeMetrics {
+  trimmedCells?: number;
+  normalizedHeaders?: number;
+  normalizedNumberCells?: number;
+  removedDuplicateRows?: number;
+}
+
 export interface TransformResult {
   table: DataTable;
   issues: DataIssue[];
   diagnostics: string[];
-  metrics?: Record<string, number>;
+  metrics?: RecipeMetrics;
 }
 
 export interface RecipeStep {
@@ -58,7 +70,7 @@ export interface RecipeExecutionResult {
   table: DataTable;
   issues: DataIssue[];
   diagnostics: string[];
-  metrics: Record<string, number>;
+  metrics: RecipeMetrics;
 }
 
 export interface SummaryGroup {

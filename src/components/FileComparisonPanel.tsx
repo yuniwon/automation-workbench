@@ -1,14 +1,14 @@
 import { useMemo, useState, type ChangeEvent } from "react";
 import { compareTables, comparisonToTable } from "../core/compare/compareTables";
-import type { CsvParseResult } from "../core/input/csvInputAdapter";
 import { parseCsv } from "../core/input/csvInputAdapter";
 import { tableToCsv } from "../core/output/csvOutputAdapter";
 import { sampleOrdersComparisonCsv, sampleOrdersCsv } from "../core/samples/sampleOrders";
-import type { DataTable } from "../core/table/types";
+import type { DataTable, TableParseResult } from "../core/table/types";
 import { DataPreview } from "./DataPreview";
 
 interface FileComparisonPanelProps {
-  parseFile: (file: File) => Promise<CsvParseResult>;
+  parseFile: (file: File) => Promise<TableParseResult>;
+  preferredKeyColumns?: string[];
 }
 
 interface ComparisonSource {
@@ -16,7 +16,12 @@ interface ComparisonSource {
   table: DataTable;
 }
 
-export function FileComparisonPanel({ parseFile }: FileComparisonPanelProps) {
+const defaultPreferredKeyColumns = ["order_id", "id", "sku", "invoice_id", "상품코드", "주문번호", "거래번호"];
+
+export function FileComparisonPanel({
+  parseFile,
+  preferredKeyColumns = defaultPreferredKeyColumns,
+}: FileComparisonPanelProps) {
   const initial = useMemo(loadComparisonSample, []);
   const [baseSource, setBaseSource] = useState<ComparisonSource>(initial.baseSource);
   const [compareSource, setCompareSource] = useState<ComparisonSource>(initial.compareSource);
@@ -51,7 +56,12 @@ export function FileComparisonPanel({ parseFile }: FileComparisonPanelProps) {
 
     const nextBase = side === "base" ? { name: file.name, table: parsed.table } : baseSource;
     const nextCompare = side === "compare" ? { name: file.name, table: parsed.table } : compareSource;
-    const nextKeyColumn = selectDefaultComparisonKey(nextBase.table, nextCompare.table, keyColumn);
+    const nextKeyColumn = selectDefaultComparisonKey(
+      nextBase.table,
+      nextCompare.table,
+      keyColumn,
+      preferredKeyColumns,
+    );
 
     if (side === "base") {
       setBaseSource(nextBase);
@@ -175,9 +185,10 @@ function selectDefaultComparisonKey(
   baseTable: DataTable,
   compareTable: DataTable,
   currentKey = "",
+  preferredKeyColumns = defaultPreferredKeyColumns,
 ): string {
   const sharedColumns = findSharedColumns(baseTable, compareTable);
-  const preferred = ["order_id", "id", "sku", "상품코드", "주문번호"];
+  const preferred = preferredKeyColumns.map((key) => key.toLowerCase());
 
   return (
     sharedColumns.find((column) => column.key === currentKey)?.key ??

@@ -1,11 +1,8 @@
 import { readSheet } from "read-excel-file/browser";
 import { createRowId, createUniqueColumns } from "../table/tableUtils";
-import type { CellValue, DataIssue, DataTable } from "../table/types";
+import type { CellValue, TableParseResult } from "../table/types";
 
-export interface ExcelParseResult {
-  table: DataTable;
-  issues: DataIssue[];
-}
+export type ExcelParseResult = TableParseResult;
 
 type ExcelRawCell = string | number | boolean | Date | null | undefined;
 

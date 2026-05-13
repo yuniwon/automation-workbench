@@ -47,6 +47,23 @@ describe("compareTables", () => {
     });
     expect(result.rows.map((row) => row.status)).toEqual(["duplicate_base", "duplicate_compare"]);
   });
+
+  it("keeps a normal base row visible when the compare table has a duplicate key", () => {
+    const { table: baseTable } = parseCsv("order_id,status\nA001,paid\nA002,paid");
+    const { table: compareTable } = parseCsv("order_id,status\nA001,paid\nA001,pending\nA002,paid");
+
+    const result = compareTables(baseTable, compareTable, "order_id");
+
+    expect(result.summary).toMatchObject({
+      duplicateCompareKeys: 1,
+      unchangedRows: 1,
+    });
+    expect(result.rows.map((row) => [row.key, row.status])).toEqual([
+      ["A001", "duplicate_compare"],
+      ["A002", "unchanged"],
+    ]);
+    expect(result.rows[0].baseRow?.cells.status).toBe("paid");
+  });
 });
 
 describe("comparisonToTable", () => {

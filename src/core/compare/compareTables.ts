@@ -28,11 +28,22 @@ export function compareTables(
   const handledKeys = new Set<string>();
 
   for (const key of baseIndex.orderedKeys) {
-    if (baseIndex.duplicateKeys.includes(key)) {
+    if (baseIndex.duplicateKeySet.has(key)) {
+      handledKeys.add(key);
       rows.push(createComparisonRow("duplicate_base", key, [], baseIndex.rowsByKey.get(key)?.[0]));
       continue;
     }
-    if (compareIndex.duplicateKeys.includes(key)) {
+    if (compareIndex.duplicateKeySet.has(key)) {
+      handledKeys.add(key);
+      rows.push(
+        createComparisonRow(
+          "duplicate_compare",
+          key,
+          [],
+          baseIndex.rowsByKey.get(key)?.[0],
+          compareIndex.rowsByKey.get(key)?.[0],
+        ),
+      );
       continue;
     }
 
@@ -63,11 +74,14 @@ export function compareTables(
   }
 
   for (const key of compareIndex.orderedKeys) {
-    if (compareIndex.duplicateKeys.includes(key)) {
+    if (compareIndex.duplicateKeySet.has(key)) {
+      if (handledKeys.has(key)) {
+        continue;
+      }
       rows.push(createComparisonRow("duplicate_compare", key, [], undefined, compareIndex.rowsByKey.get(key)?.[0]));
       continue;
     }
-    if (baseIndex.duplicateKeys.includes(key) || handledKeys.has(key)) {
+    if (baseIndex.duplicateKeySet.has(key) || handledKeys.has(key)) {
       continue;
     }
 
@@ -128,6 +142,7 @@ function indexRowsByKey(rows: TableRow[], keyColumn: string) {
     rowsByKey,
     orderedKeys,
     duplicateKeys: orderedKeys.filter((key) => (rowsByKey.get(key)?.length ?? 0) > 1),
+    duplicateKeySet: new Set(orderedKeys.filter((key) => (rowsByKey.get(key)?.length ?? 0) > 1)),
   };
 }
 

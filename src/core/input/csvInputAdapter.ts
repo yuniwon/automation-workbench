@@ -1,13 +1,10 @@
 import { createRowId, createUniqueColumns } from "../table/tableUtils";
-import type { CellValue, DataIssue, DataTable } from "../table/types";
+import type { CellValue, TableParseResult } from "../table/types";
 
-export interface CsvParseResult {
-  table: DataTable;
-  issues: DataIssue[];
-}
+export type CsvParseResult = TableParseResult;
 
-export function parseCsv(text: string): CsvParseResult {
-  const issues: DataIssue[] = [];
+export function parseCsv(text: string): TableParseResult {
+  const issues: TableParseResult["issues"] = [];
   const cleanedText = text.replace(/^\uFEFF/, "");
 
   if (cleanedText.trim() === "") {
