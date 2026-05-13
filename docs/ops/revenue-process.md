@@ -15,6 +15,7 @@
 - Gmail 처리 기준: `docs/ops/gmail-intake-playbook.md`
 - Gmail 답장 템플릿: `docs/ops/gmail-reply-templates.md`
 - Gmail 검색 로그: `docs/ops/lead-log.md`
+- Google Sheets 리드 트래커: `docs/ops/lead-tracker.md`
 - Gmail 반복 점검 절차: `docs/ops/gmail-monitor-runbook.md`
 - 견적 기준: `docs/ops/pricing-guide.md`
 - 검색엔진 URL 제출: `docs/ops/indexnow-submissions.md`

@@ -136,3 +136,22 @@ to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/
 1. 외부 커뮤니티 게시를 실행해 초기 트래픽을 만든다.
 2. 24시간 뒤 Gmail 검색을 반복한다.
 3. 유입이 있으면 `source=seo-*` 또는 게시 채널 기준으로 구분한다.
+
+## 2026-05-14 Lead Tracker Created
+
+Google Sheets:
+
+```text
+https://docs.google.com/spreadsheets/d/1E6vhznY3NRIhTnOX9as7Q2XRJoENRJcFIVtkCxdvUbg/edit
+```
+
+초기 기록:
+
+- Gmail scan: 후보 0건, 실제 문의 0건
+- SEO use case page 3개
+- IndexNow 제출: URL 4개, HTTP 202
+
+판단:
+
+- 운영 상태를 문서와 Google Sheets 양쪽에서 추적할 수 있게 됐다.
+- 실제 Gmail 문의는 아직 0건이다.
