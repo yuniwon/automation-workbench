@@ -10,6 +10,7 @@
 - 무료 도구 1: 엑셀/CSV 자동 정리 도구
 - 무료 도구 2: 엑셀/CSV 파일 비교 도구
 - 소개글: `docs/marketing/free-excel-csv-cleanup-tool-post.md`
+- 무료 노출 계획: `docs/marketing/free-distribution-plan.md`
 - Gmail 처리 기준: `docs/ops/gmail-intake-playbook.md`
 - Gmail 검색 로그: `docs/ops/lead-log.md`
 - Gmail 반복 점검 절차: `docs/ops/gmail-monitor-runbook.md`
@@ -41,7 +42,7 @@
 2. 소개글을 외부에 게시할 수 있도록 짧은 버전과 긴 버전으로 나눈다.
 3. Gmail 문의가 오면 `NEW`, `NEEDS_SAMPLE`, `QUALIFIED`, `QUOTED`, `WON`, `LOST` 상태로 관리한다.
 4. 실제 문의 1건이 오면 그 업무를 세 번째 무료 도구 후보 또는 유료 템플릿 후보로 재사용한다.
-5. 문의가 없으면 `gmail-monitor-runbook.md` 기준으로 검색을 반복하고, `share-kit.md`를 사용해 무료 노출을 늘린다.
+5. 문의가 없으면 `gmail-monitor-runbook.md` 기준으로 검색을 반복하고, `free-distribution-plan.md`와 `share-kit.md`를 사용해 무료 노출을 늘린다.
 
 ## 현재 검증 상태
 
