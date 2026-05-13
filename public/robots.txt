@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /automation-workbench/
+
+Sitemap: https://yuniwon.github.io/automation-workbench/sitemap.xml
