@@ -6,6 +6,11 @@
 
 Live demo: https://yuniwon.github.io/automation-workbench/
 
+Sample files:
+
+- Cleanup sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
+- Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
+
 ## 이런 분에게 맞습니다
 
 - 주문, 정산, 재고 파일을 매번 수작업으로 정리하거나 비교하는 분

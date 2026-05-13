@@ -21,6 +21,10 @@ I built a small browser-based tool for cleaning and comparing CSV/XLSX files:
 
 https://yuniwon.github.io/automation-workbench/?source=hacker-news
 
+Sample files:
+https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
+https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
+
 It can:
 - upload CSV/XLSX files
 - scan blank cells, duplicate rows, number-like values, and header issues
@@ -51,4 +55,3 @@ Feedback on edge cases and UX would be useful.
 Gmail 실제 문의:
 다음 액션:
 ```
-

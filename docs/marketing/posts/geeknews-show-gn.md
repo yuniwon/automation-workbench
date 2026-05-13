@@ -34,6 +34,10 @@ Show GN: 브라우저에서 CSV/XLSX 파일을 정리하고 비교하는 무료 
 Demo:
 https://yuniwon.github.io/automation-workbench/?source=geeknews
 
+Sample files:
+https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
+https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
+
 GitHub:
 https://github.com/yuniwon/automation-workbench
 ```
@@ -60,4 +64,3 @@ https://github.com/yuniwon/automation-workbench
 Gmail 실제 문의:
 다음 액션:
 ```
-

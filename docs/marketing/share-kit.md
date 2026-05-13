@@ -15,6 +15,13 @@ Hacker News: https://yuniwon.github.io/automation-workbench/?source=hacker-news
 Product Hunt: https://yuniwon.github.io/automation-workbench/?source=product-hunt
 ```
 
+샘플 파일:
+
+```text
+Cleanup sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
+Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
+```
+
 GitHub:
 
 ```text
@@ -45,6 +52,7 @@ CSV나 XLSX 파일을 올려 중복, 빈 값, 숫자 형식 문제를 정리하�
 업무 파일에 맞춘 자동화 제작 문의도 가능합니다.
 
 도구: https://yuniwon.github.io/automation-workbench/
+샘플: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 문의: dnjsdndus@gmail.com
 ```
 
@@ -65,6 +73,7 @@ React + TypeScript + GitHub Pages로 만든 무료 CSV/XLSX 업무 자동화 샘
 고객 파일별 recipe/adapter/scanner 확장 구조를 목표로 만들고 있습니다.
 
 Demo: https://yuniwon.github.io/automation-workbench/
+Sample CSV: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 Repo: https://github.com/yuniwon/automation-workbench
 ```
 

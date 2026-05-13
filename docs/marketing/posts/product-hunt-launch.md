@@ -52,6 +52,8 @@ The project is open on GitHub and hosted on GitHub Pages.
 ## Assets Ready
 
 - Demo URL: https://yuniwon.github.io/automation-workbench/?source=product-hunt
+- Cleanup sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
+- Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
 - GitHub URL: https://github.com/yuniwon/automation-workbench
 - Social preview image: `public/og-image.png`
 - Release: https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.0
@@ -68,4 +70,3 @@ The project is open on GitHub and hosted on GitHub Pages.
 Gmail 실제 문의:
 다음 액션:
 ```
-
