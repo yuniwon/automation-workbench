@@ -21,12 +21,15 @@ pnpm submit:indexnow
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-duplicate-cleanup.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-blank-cell-checker.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html`
 
 ## 주의
 
 - HTTP 200은 URL 묶음을 받았다는 뜻이지 색인 완료를 뜻하지 않는다.
 - HTTP 202는 키 검증 대기 상태일 수 있다.
-- 새 페이지를 추가하면 `scripts/indexnow-config.mjs`와 `public/sitemap.xml`을 같이 갱신한다.
+- 새 페이지를 추가하면 `scripts/use-case-pages.mjs`를 수정하고 `pnpm generate:use-cases`를 실행한다.
 
 ## 제출 로그
 
@@ -55,3 +58,28 @@ pnpm submit:indexnow
 - URL 4개 제출은 접수됐다.
 - 키 검증 또는 처리 대기 상태일 수 있다.
 - 색인 완료를 의미하지는 않는다.
+
+### 2026-05-14 추가 랜딩 페이지 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 7,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 7개 제출이 성공했다.
+- 새 검색용 페이지 3개가 sitemap과 IndexNow 제출 대상에 포함됐다.

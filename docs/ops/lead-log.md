@@ -186,3 +186,36 @@ to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/
 1. GeekNews 또는 OKKY에 수동 게시한다.
 2. 게시 전 계정 제한이 있으면 검색 유입용 페이지를 추가로 만든다.
 3. 게시 또는 색인 후 24시간 뒤 Gmail을 다시 확인한다.
+
+## 2026-05-14 SEO Exposure Assets Expanded
+
+추가한 공개 페이지:
+
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-blank-cell-checker.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html`
+
+검증:
+
+- GitHub Pages 배포 성공
+- 공개 URL 6개 모두 HTTP 200 확인
+- sitemap에 공개 URL 7개 포함 확인
+- 각 페이지의 `mailto:` CTA에 `source=seo-*`와 문의 본문 포함 확인
+
+검색엔진 제출:
+
+- 방식: IndexNow
+- 제출 URL 수: 7
+- 응답 상태: HTTP 200
+
+판단:
+
+- 로그인 없이 가능한 검색 유입 자산은 3개에서 6개로 늘었다.
+- 실제 Gmail 문의는 아직 0건이다.
+- 단기 유입은 여전히 외부 커뮤니티 게시가 가장 빠르다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY 게시를 실행한다.
+2. 게시가 지연되면 검색용 페이지를 주기적으로 추가하되, 실제 도구 기능과 맞는 주제만 사용한다.
+3. 24시간 뒤 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
