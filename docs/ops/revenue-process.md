@@ -15,6 +15,7 @@
 - Gmail 처리 기준: `docs/ops/gmail-intake-playbook.md`
 - Gmail 검색 로그: `docs/ops/lead-log.md`
 - Gmail 반복 점검 절차: `docs/ops/gmail-monitor-runbook.md`
+- 견적 기준: `docs/ops/pricing-guide.md`
 
 ## 퍼널
 
