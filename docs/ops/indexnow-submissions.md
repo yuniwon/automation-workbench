@@ -27,3 +27,31 @@ pnpm submit:indexnow
 - HTTP 200은 URL 묶음을 받았다는 뜻이지 색인 완료를 뜻하지 않는다.
 - HTTP 202는 키 검증 대기 상태일 수 있다.
 - 새 페이지를 추가하면 `scripts/indexnow-config.mjs`와 `public/sitemap.xml`을 같이 갱신한다.
+
+## 제출 로그
+
+### 2026-05-14
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 202,
+  "submittedUrls": 4,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 4개 제출은 접수됐다.
+- 키 검증 또는 처리 대기 상태일 수 있다.
+- 색인 완료를 의미하지는 않는다.

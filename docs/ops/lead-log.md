@@ -110,3 +110,29 @@ to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/
 1. GeekNews 또는 OKKY 로그인 세션에서 게시를 실행한다.
 2. 게시 URL을 Exposure 형식으로 기록한다.
 3. 게시 후 24시간 뒤 같은 검색어로 Gmail을 다시 확인한다.
+
+## 2026-05-14 SEO Exposure Assets
+
+생성한 공개 페이지:
+
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-duplicate-cleanup.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html`
+
+검색엔진 제출:
+
+- 방식: IndexNow
+- 제출 URL 수: 4
+- 응답 상태: HTTP 202
+
+판단:
+
+- 로그인 없이 가능한 무료 노출 자산은 추가됐다.
+- HTTP 202는 제출 접수 또는 키 검증 대기이며, 색인 완료나 유입 발생을 보장하지 않는다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. 외부 커뮤니티 게시를 실행해 초기 트래픽을 만든다.
+2. 24시간 뒤 Gmail 검색을 반복한다.
+3. 유입이 있으면 `source=seo-*` 또는 게시 채널 기준으로 구분한다.
