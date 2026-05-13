@@ -37,6 +37,16 @@ describe("SEO use case pages", () => {
       expect(html).toContain("dnjsdndus@gmail.com");
       expect(html).toContain("PRIVACY.md");
       expect(html).toContain("브라우저 안에서 처리");
+
+      const mailto = html.match(/href="(mailto:[^"]+)"/)?.[1] ?? "";
+      expect(mailto, `${page.path} mailto`).toContain("body=");
+
+      const params = new URLSearchParams(mailto.split("?")[1] ?? "");
+      const body = params.get("body") ?? "";
+      expect(body).toContain(`유입 경로:\n- ${page.source}`);
+      expect(body).toContain("현재 수작업 소요시간");
+      expect(body).toContain("필요한 결과물");
+      expect(body).toContain("샘플 파일 공유 가능 여부");
     }
   });
 
