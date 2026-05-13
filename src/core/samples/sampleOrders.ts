@@ -5,3 +5,9 @@ export const sampleOrdersCsv = ` order_id, customer_name,phone,product,amount,or
 1002,Lee Min,010-3333-4444,Repair Pack," 9000 ",2026/05/01, pending
 1004,Choi Ara,010-5555-6666,Monthly Report,"12,000",2026.05.03,paid
 1005, Jung Won ,010-7777-8888,Starter Kit,11000,2026-05-04,paid`;
+
+export const sampleOrdersComparisonCsv = `order_id,customer_name,phone,product,amount,order_date,status
+1001,Kim Hana,010-1111-2222,Starter Kit,12000,2026-05-01,paid
+1002,Lee Min,010-3333-4444,Repair Pack,9000,2026/05/01,paid
+1004,Choi Ara,010-5555-6666,Monthly Report,12000,2026.05.03,paid
+1006,Han Sol,010-9999-0000,Starter Kit,13000,2026-05-05,pending`;

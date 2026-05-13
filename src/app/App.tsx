@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { DataPreview } from "../components/DataPreview";
+import { FileComparisonPanel } from "../components/FileComparisonPanel";
 import { InquiryPanel } from "../components/InquiryPanel";
 import { IssuePanel } from "../components/IssuePanel";
 import { ResultSummary } from "../components/ResultSummary";
@@ -19,6 +20,8 @@ import type { AutomationRecipe, DataIssue, DataTable, RunMetrics } from "../core
 import { defaultRecipeEngine } from "../core/transform/stepRegistry";
 import { createGroupedSummary } from "../core/transform/transforms";
 
+type ToolMode = "cleanup" | "compare";
+
 function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
   const parsed = parseCsv(sampleOrdersCsv);
   return {
@@ -29,6 +32,7 @@ function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
 
 export function App() {
   const initial = useMemo(loadInitialTable, []);
+  const [toolMode, setToolMode] = useState<ToolMode>("cleanup");
   const [sourceName, setSourceName] = useState("샘플 주문 데이터");
   const [originalTable, setOriginalTable] = useState(initial.table);
   const [currentTable, setCurrentTable] = useState(initial.table);
@@ -128,57 +132,82 @@ export function App() {
         <div>
           <p className="eyebrow">무료 엑셀/CSV 도구</p>
           <h1>
-            엑셀/CSV 자동 정리 <span className="title-keep">도구</span>
+            {toolMode === "cleanup" ? "엑셀/CSV 자동 정리" : "엑셀/CSV 파일 비교"}{" "}
+            <span className="title-keep">도구</span>
           </h1>
           <p className="lede">
-            주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤
-            바로 CSV로 내려받을 수 있습니다.
+            {toolMode === "cleanup"
+              ? "주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤 바로 CSV로 내려받을 수 있습니다."
+              : "두 파일을 같은 키 기준으로 비교해서 추가, 삭제, 변경된 행을 확인하고 결과 CSV로 내려받을 수 있습니다."}
           </p>
         </div>
         <div className="status-strip" aria-label="Current data status">
-          <span>{sourceName}</span>
-          <strong>{currentTable.rows.length}</strong>
-          <span>rows</span>
+          <span>{toolMode === "cleanup" ? sourceName : "파일 비교 모드"}</span>
+          <strong>{toolMode === "cleanup" ? currentTable.rows.length : 2}</strong>
+          <span>{toolMode === "cleanup" ? "rows" : "files"}</span>
         </div>
       </section>
 
-      <section className="metrics-grid" aria-label="Data quality summary">
-        <div className="metric-panel">
-          <span>Columns</span>
-          <strong>{currentTable.columns.length}</strong>
-        </div>
-        <div className="metric-panel">
-          <span>Info</span>
-          <strong>{issueCounts.info}</strong>
-        </div>
-        <div className="metric-panel">
-          <span>Warnings</span>
-          <strong>{issueCounts.warning}</strong>
-        </div>
-        <div className="metric-panel">
-          <span>Errors</span>
-          <strong>{issueCounts.error}</strong>
-        </div>
+      <section className="tool-switcher" aria-label="Tool mode">
+        <button
+          className={toolMode === "cleanup" ? "active" : ""}
+          type="button"
+          onClick={() => setToolMode("cleanup")}
+        >
+          정리 도구
+        </button>
+        <button
+          className={toolMode === "compare" ? "active" : ""}
+          type="button"
+          onClick={() => setToolMode("compare")}
+        >
+          비교 도구
+        </button>
       </section>
 
-      <ResultSummary metrics={runMetrics} />
+      {toolMode === "cleanup" ? (
+        <>
+          <section className="metrics-grid" aria-label="Data quality summary">
+            <div className="metric-panel">
+              <span>Columns</span>
+              <strong>{currentTable.columns.length}</strong>
+            </div>
+            <div className="metric-panel">
+              <span>Info</span>
+              <strong>{issueCounts.info}</strong>
+            </div>
+            <div className="metric-panel">
+              <span>Warnings</span>
+              <strong>{issueCounts.warning}</strong>
+            </div>
+            <div className="metric-panel">
+              <span>Errors</span>
+              <strong>{issueCounts.error}</strong>
+            </div>
+          </section>
 
-      <section className="workspace-grid">
-        <WorkflowControls
-          columns={currentTable.columns}
-          options={options}
-          groupColumnKey={groupColumnKey}
-          onFileUpload={handleFileUpload}
-          onDownload={downloadCsv}
-          onGroupColumnChange={setGroupColumnKey}
-          onOptionsChange={setOptions}
-          onResetSample={resetToSample}
-          onRunCleanup={runCleanup}
-        />
-        <DataPreview table={currentTable} />
-        <IssuePanel issues={issues} diagnostics={diagnostics} />
-        <SummaryPanel groups={summaryGroups} />
-      </section>
+          <ResultSummary metrics={runMetrics} />
+
+          <section className="workspace-grid">
+            <WorkflowControls
+              columns={currentTable.columns}
+              options={options}
+              groupColumnKey={groupColumnKey}
+              onFileUpload={handleFileUpload}
+              onDownload={downloadCsv}
+              onGroupColumnChange={setGroupColumnKey}
+              onOptionsChange={setOptions}
+              onResetSample={resetToSample}
+              onRunCleanup={runCleanup}
+            />
+            <DataPreview table={currentTable} />
+            <IssuePanel issues={issues} diagnostics={diagnostics} />
+            <SummaryPanel groups={summaryGroups} />
+          </section>
+        </>
+      ) : (
+        <FileComparisonPanel parseFile={parseUploadedFile} />
+      )}
 
       <InquiryPanel />
     </main>
