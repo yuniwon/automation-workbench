@@ -53,3 +53,29 @@ in:anywhere newer_than:7d ("엑셀/CSV 자동화" OR "맞춤 제작 문의" OR "
 1. `docs/marketing/free-distribution-plan.md` 기준으로 GeekNews 또는 OKKY에 게시한다.
 2. 게시 URL을 이 로그의 Exposure 형식으로 기록한다.
 3. 게시 후 24시간 뒤 같은 검색어로 Gmail을 다시 확인한다.
+
+## 2026-05-14 Posting Access Check
+
+확인 범위:
+
+- GeekNews Show GN
+- OKKY 커뮤니티
+
+결과:
+
+- GeekNews: 비로그인 상태에서 `글등록` 접근 시 로그인 페이지로 이동
+- OKKY: 비로그인 상태 확인, 자동 브라우저에서 커뮤니티 작성 화면 렌더링 확인 실패
+- 실제 게시 0건
+- Gmail 실제 문의 0건
+
+판단:
+
+- GeekNews는 사용자 로그인과 글 등록 가능 상태 확인이 필요하다.
+- OKKY는 사용자 브라우저에서 로그인 후 직접 확인하는 편이 안전하다.
+- 현재 수익화 병목은 도구 완성도가 아니라 외부 채널 로그인/게시 승인이다.
+
+다음 액션:
+
+1. 사용자가 GeekNews 또는 OKKY에 로그인한다.
+2. 게시 전 원고는 `docs/marketing/posts/`에서 복사한다.
+3. 게시 버튼 클릭 전 최종 문구와 링크를 확인한다.
