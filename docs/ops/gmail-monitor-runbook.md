@@ -37,7 +37,8 @@ LOST
 
 ## 기록
 
-검색할 때마다 `docs/ops/lead-log.md`에 아래 항목을 남긴다.
+검색할 때마다 `docs/ops/lead-log.md`와 `docs/ops/lead-tracker.md`의 Google Sheets에
+같은 내용을 남긴다.
 
 ```text
 날짜:
@@ -46,6 +47,12 @@ LOST
 실제 문의 수:
 제외한 메일:
 다음 액션:
+```
+
+Google Sheets:
+
+```text
+https://docs.google.com/spreadsheets/d/1E6vhznY3NRIhTnOX9as7Q2XRJoENRJcFIVtkCxdvUbg/edit
 ```
 
 ## 금지
@@ -62,3 +69,7 @@ LOST
 2. 게시 URL과 날짜를 `docs/ops/lead-log.md`에 기록한다.
 3. 다음날 Gmail 검색을 반복한다.
 
+## 자동화 상태
+
+2026-05-14에 Codex heartbeat 생성을 시도했지만 앱 도구에서 실패했다.
+반복 확인이 필요하면 이 runbook 기준으로 수동 또는 별도 자동화를 다시 설정한다.
