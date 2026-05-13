@@ -5,6 +5,8 @@
 
 ## 우선순위
 
+복사용 원고는 `docs/marketing/posts/`에 채널별로 분리해 둔다.
+
 ### 1. GeekNews Show GN
 
 적합도: 높음
@@ -36,6 +38,12 @@ https://yuniwon.github.io/automation-workbench/?source=geeknews
 
 ```text
 Show GN: 브라우저에서 CSV/XLSX 파일을 정리하고 비교하는 무료 도구를 만들었습니다
+```
+
+복사용 원고:
+
+```text
+docs/marketing/posts/geeknews-show-gn.md
 ```
 
 게시 본문:
@@ -102,6 +110,12 @@ https://yuniwon.github.io/automation-workbench/?source=okky
 CSV/XLSX 정리·비교 무료 도구를 만들었는데 피드백 부탁드립니다
 ```
 
+복사용 원고:
+
+```text
+docs/marketing/posts/okky-feedback.md
+```
+
 게시 본문:
 
 ```text
@@ -165,6 +179,12 @@ https://yuniwon.github.io/automation-workbench/?source=hacker-news
 Show HN: I built a browser-based CSV/XLSX cleanup and diff tool
 ```
 
+복사용 원고:
+
+```text
+docs/marketing/posts/hacker-news-show-hn.md
+```
+
 게시 본문 또는 첫 댓글:
 
 ```text
@@ -218,6 +238,12 @@ https://yuniwon.github.io/automation-workbench/?source=product-hunt
 
 ```text
 Automation Workbench
+```
+
+복사용 원고:
+
+```text
+docs/marketing/posts/product-hunt-launch.md
 ```
 
 Tagline:

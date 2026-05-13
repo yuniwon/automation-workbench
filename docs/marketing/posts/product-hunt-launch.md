@@ -1,0 +1,71 @@
+# Product Hunt Launch Draft
+
+게시 위치: Product Hunt
+
+추적 링크:
+
+```text
+https://yuniwon.github.io/automation-workbench/?source=product-hunt
+```
+
+## Product Name
+
+```text
+Automation Workbench
+```
+
+## URL
+
+```text
+https://yuniwon.github.io/automation-workbench/?source=product-hunt
+```
+
+## Tagline
+
+```text
+Clean and compare CSV/XLSX files in your browser
+```
+
+## Description
+
+```text
+Automation Workbench is a free browser-based tool for cleaning and comparing CSV/XLSX files. Upload a spreadsheet, scan common data quality issues, remove duplicates, compare two files by key, and export the result as CSV.
+```
+
+## Maker Comment
+
+```text
+I built Automation Workbench as a free browser-based demo for spreadsheet cleanup and file comparison workflows.
+
+It is meant for people who repeatedly clean order, inventory, settlement, or reporting files and want to see whether their workflow can be automated before commissioning a custom tool.
+
+Current features:
+- CSV/XLSX upload
+- data quality scanning
+- duplicate removal and number normalization
+- two-file comparison by key
+- CSV export
+
+The project is open on GitHub and hosted on GitHub Pages.
+```
+
+## Assets Ready
+
+- Demo URL: https://yuniwon.github.io/automation-workbench/?source=product-hunt
+- GitHub URL: https://github.com/yuniwon/automation-workbench
+- Social preview image: `public/og-image.png`
+- Release: https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.0
+
+## After Posting Log
+
+```text
+## 2026-05-14 Exposure
+
+채널: Product Hunt
+게시 URL:
+게시 제목: Automation Workbench
+핵심 반응:
+Gmail 실제 문의:
+다음 액션:
+```
+
