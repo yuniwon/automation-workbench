@@ -5,10 +5,17 @@
 
 ## 검색 기준
 
-Gmail에서 우선 확인할 검색어:
+Gmail에서 우선 확인할 검색어는 `scripts/gmail-monitor-config.mjs`에서 생성한다.
+로컬에서는 아래 명령으로 최신 7일/30일 검색어와 기록 템플릿을 확인한다.
+
+```powershell
+pnpm monitor:gmail:query
+```
+
+기본 7일 검색어:
 
 ```text
-("엑셀" OR "CSV" OR "XLSX" OR "자동화" OR "정리" OR "비교" OR "automation-workbench")
+to:dnjsdndus@gmail.com newer_than:7d -from:dnjsdndus@gmail.com ("엑셀 자동화 견적" OR "엑셀 자동화 비용" OR "견적 요청 템플릿" OR "service-excel-automation-cost" OR "엑셀 자동화 제작 서비스" OR "엑셀 자동화 외주" OR "service-excel-automation-service" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "엑셀/CSV 자동화" OR "CSV/XLSX" OR "workflow-settlement-reconciliation" OR "workflow-quote-to-invoice" OR "workflow-inventory-sync")
 ```
 
 강한 구매 신호:

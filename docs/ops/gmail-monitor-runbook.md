@@ -10,16 +10,23 @@
 
 ## 검색어
 
-Gmail에서 아래 검색어를 사용한다.
+검색어 원본은 `scripts/gmail-monitor-config.mjs`이다.
+문서와 실제 검색어가 어긋나지 않도록 먼저 아래 명령으로 최신 검색어를 출력한다.
+
+```powershell
+pnpm monitor:gmail:query
+```
+
+Gmail에서 아래 7일 검색어를 우선 사용한다.
 
 ```text
-in:anywhere newer_than:7d (엑셀 OR CSV OR XLSX OR 자동화 OR 정리 OR 비교 OR 견적 OR 제작 OR automation-workbench OR dnjsdndus@gmail.com)
+to:dnjsdndus@gmail.com newer_than:7d -from:dnjsdndus@gmail.com ("엑셀 자동화 견적" OR "엑셀 자동화 비용" OR "견적 요청 템플릿" OR "service-excel-automation-cost" OR "엑셀 자동화 제작 서비스" OR "엑셀 자동화 외주" OR "service-excel-automation-service" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "엑셀/CSV 자동화" OR "CSV/XLSX" OR "workflow-settlement-reconciliation" OR "workflow-quote-to-invoice" OR "workflow-inventory-sync")
 ```
 
 최근 반응이 없을 때는 범위를 30일로 넓힌다.
 
 ```text
-in:anywhere newer_than:30d (엑셀 OR CSV OR XLSX OR 자동화 OR 정리 OR 비교 OR 견적 OR 제작 OR automation-workbench OR dnjsdndus@gmail.com)
+to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com ("엑셀 자동화 견적" OR "엑셀 자동화 비용" OR "견적 요청 템플릿" OR "service-excel-automation-cost" OR "엑셀 자동화 제작 서비스" OR "엑셀 자동화 외주" OR "service-excel-automation-service" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "엑셀/CSV 자동화" OR "CSV/XLSX" OR "workflow-settlement-reconciliation" OR "workflow-quote-to-invoice" OR "workflow-inventory-sync")
 ```
 
 ## 분류
@@ -42,11 +49,12 @@ LOST
 
 ```text
 날짜:
-검색 범위:
-후보 수:
+검색 범위: newer_than:7d
+Gmail 후보 수:
 실제 문의 수:
 제외한 메일:
 다음 액션:
+기록 위치: docs/ops/lead-log.md / docs/ops/lead-tracker.md
 ```
 
 Google Sheets:
