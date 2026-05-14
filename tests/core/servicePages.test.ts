@@ -39,9 +39,28 @@ describe("service landing pages", () => {
     expect(html).toContain("CTA 상세");
   });
 
+  it("publishes an Excel automation service page for search visitors", () => {
+    const pagePath = "public/services/excel-automation-service.html";
+
+    expect(existsSync(join(root, pagePath)), pagePath).toBe(true);
+
+    const html = readProjectFile(pagePath);
+
+    expect(html).toContain("엑셀 자동화 제작 서비스");
+    expect(html).toContain("엑셀 자동화 외주");
+    expect(html).toContain("무료 진단");
+    expect(html).toContain("견적 기준");
+    expect(html).toContain("source=service-excel-automation-service");
+    expect(html).toContain("dnjsdndus@gmail.com");
+    expect(html).toContain('"@type": "Service"');
+    expect(html).toContain('"@type": "OfferCatalog"');
+    expect(html).toContain('data-service-inquiry="true"');
+  });
+
   it("includes service pages in sitemap", () => {
     const sitemap = readProjectFile("public/sitemap.xml");
 
     expect(sitemap).toContain("/automation-workbench/services/excel-automation-inquiry.html");
+    expect(sitemap).toContain("/automation-workbench/services/excel-automation-service.html");
   });
 });

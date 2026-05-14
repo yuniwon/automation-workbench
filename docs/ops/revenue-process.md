@@ -5,6 +5,7 @@
 ## 현재 자산
 
 - 공개 도구: https://yuniwon.github.io/automation-workbench/
+- 엑셀 자동화 제작 서비스: https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html
 - 맞춤 제작 문의 페이지: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
 - 업무별 자동화 예시: https://yuniwon.github.io/automation-workbench/workflows/
 - GitHub repo: https://github.com/yuniwon/automation-workbench
@@ -24,7 +25,7 @@
 - 견적 기준: `docs/ops/pricing-guide.md`
 - 검색엔진 URL 제출: `docs/ops/indexnow-submissions.md`
 - 검색용 랜딩 페이지: `public/use-cases/*.html` (`pnpm generate:use-cases`로 갱신)
-- 제작 문의 랜딩 페이지: `public/services/excel-automation-inquiry.html` (`pnpm generate:use-cases`로 갱신)
+- 제작 문의 랜딩 페이지: `public/services/*.html` (`pnpm generate:use-cases`로 갱신)
 - 업무별 자동화 예시 페이지: `public/workflows/*.html` (`pnpm generate:use-cases`로 갱신)
 - GitHub 방문자용 진입점: `README.md`의 "바로 써보기" 링크 표
 

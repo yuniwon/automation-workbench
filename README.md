@@ -10,6 +10,8 @@ Tool index: https://yuniwon.github.io/automation-workbench/use-cases/
 
 Workflow examples: https://yuniwon.github.io/automation-workbench/workflows/
 
+Excel automation service: https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html
+
 Custom automation inquiry: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
 
 맞춤 자동화 문의: [dnjsdndus@gmail.com](mailto:dnjsdndus@gmail.com?subject=%EC%97%91%EC%85%80%2FCSV%20%EC%9E%90%EB%8F%99%ED%99%94%20%EB%A7%9E%EC%B6%A4%20%EC%A0%9C%EC%9E%91%20%EB%AC%B8%EC%9D%98)
@@ -33,6 +35,7 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 | 엑셀/CSV 파일 병합 | https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html |
 | 견적서/정산서 자동 생성 | https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html |
 | 주문·정산 파일 자동화 검토 | https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html |
+| 엑셀 자동화 제작 서비스 | https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html |
 | 내 파일 맞춤 자동화 제작 범위 확인 | https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html |
 | 업무별 자동화 예시 보기 | https://yuniwon.github.io/automation-workbench/workflows/ |
 
