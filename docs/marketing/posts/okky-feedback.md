@@ -51,6 +51,9 @@ https://github.com/yuniwon/automation-workbench
 도구 모음:
 https://yuniwon.github.io/automation-workbench/use-cases/
 
+맞춤 제작 범위와 문의 전 준비:
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+
 감사합니다.
 ```
 

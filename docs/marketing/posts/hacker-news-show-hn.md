@@ -21,6 +21,9 @@ I built a small browser-based tool for cleaning, comparing, merging, and generat
 
 https://yuniwon.github.io/automation-workbench/?source=hacker-news
 
+Custom automation inquiry page:
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+
 Sample files:
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
