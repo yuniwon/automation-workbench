@@ -1,9 +1,11 @@
 import { useState } from "react";
 import {
   buildContactHref,
+  buildInquiryText,
   contactConfig,
   getSourceFromSearch,
   getToolFromSearch,
+  inquiryChecklist,
   privacyUrl,
   serviceInquiryUrl,
   toolUrl,
@@ -14,6 +16,7 @@ export function InquiryPanel() {
   const inboundSource = typeof window === "undefined" ? "" : getSourceFromSearch(window.location.search);
   const inboundTool = typeof window === "undefined" ? "" : getToolFromSearch(window.location.search);
   const contactHref = buildContactHref(inboundSource, inboundTool);
+  const inquiryText = buildInquiryText(inboundSource, inboundTool);
 
   async function copyText(value: string, type: "inquiry" | "link") {
     if (navigator.clipboard) {
@@ -48,6 +51,14 @@ export function InquiryPanel() {
         <span>자동화 제작</span>
         <span>사용법 전달</span>
       </div>
+      <div className="inquiry-request">
+        <strong>문의서에 포함될 항목</strong>
+        <div>
+          {inquiryChecklist.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+      </div>
       <div className="inquiry-actions">
         <a className="ghost-link" href={serviceInquiryUrl} target="_blank" rel="noreferrer">
           제작 범위 보기
@@ -57,8 +68,8 @@ export function InquiryPanel() {
             {contactConfig.label}
           </a>
         )}
-        <button className="ghost-button" type="button" onClick={() => copyText(contactConfig.inquiryText, "inquiry")}>
-          {copied === "inquiry" ? "문의 문구 복사됨" : "문의 문구 복사"}
+        <button className="ghost-button" type="button" onClick={() => copyText(inquiryText, "inquiry")}>
+          {copied === "inquiry" ? "문의서 복사됨" : "문의서 복사"}
         </button>
         <button className="ghost-button" type="button" onClick={() => copyText(contactConfig.shareText, "link")}>
           {copied === "link" ? "도구 링크 복사됨" : "도구 링크 복사"}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildContactHref, contactConfig, getSourceFromSearch, toolUrl } from "../../src/config/contact";
+import { buildContactHref, buildInquiryText, contactConfig, getSourceFromSearch, toolUrl } from "../../src/config/contact";
 
 function getDecodedMailBody() {
   const params = new URLSearchParams(contactConfig.href.split("?")[1] ?? "");
@@ -49,6 +49,21 @@ describe("contactConfig", () => {
     expect(body).toContain(
       "https://yuniwon.github.io/automation-workbench/?source=seo-excel-column-mapping-template&tool=map",
     );
+  });
+
+  it("builds a copyable inquiry request with tracked source and required fields", () => {
+    const text = buildInquiryText("geeknews", "map");
+
+    expect(text).toContain("https://yuniwon.github.io/automation-workbench/?source=geeknews&tool=map");
+    expect(text).toContain("유입 경로:");
+    expect(text).toContain("선택 도구:");
+    expect(text).toContain("제가 자동화하고 싶은 업무");
+    expect(text).toContain("현재 파일 형식");
+    expect(text).toContain("반복해서 하는 작업");
+    expect(text).toContain("현재 수작업 소요시간");
+    expect(text).toContain("필요한 결과물");
+    expect(text).toContain("희망 마감일");
+    expect(text).toContain("샘플 파일 공유 가능 여부");
   });
 
   it("extracts source from a URL search string", () => {

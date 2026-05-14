@@ -64,6 +64,19 @@ ${toolLine}
 `;
 }
 
+export const inquiryChecklist = [
+  "자동화하고 싶은 업무",
+  "현재 파일 형식",
+  "반복 작업",
+  "수작업 소요시간",
+  "필요한 결과물",
+  "마감일과 샘플 공유",
+];
+
+export function buildInquiryText(source?: string, tool?: string) {
+  return buildMailBody(source, tool);
+}
+
 export function getSourceFromSearch(search: string) {
   const params = new URLSearchParams(search);
   return cleanSource(params.get("source") ?? params.get("utm_source") ?? "");
@@ -83,7 +96,6 @@ export function buildContactHref(source?: string, tool?: string) {
 export const contactConfig = {
   href: buildContactHref(),
   label: "이메일로 맞춤 제작 문의",
-  inquiryText:
-    "안녕하세요. 무료 엑셀/CSV 정리·비교·병합·정산서 생성·양식 변환 도구를 사용해보고 문의드립니다. 현재 파일 구조, 반복 작업, 수작업 소요시간, 필요한 결과물 기준으로 자동화 제작 가능 범위와 견적을 안내해주세요.",
+  inquiryText: buildInquiryText(),
   shareText: `무료 엑셀/CSV 정리·비교·병합·정산서 생성·양식 변환 도구: ${toolUrl}`,
 };
