@@ -5,6 +5,7 @@
 추적 링크:
 
 ```text
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=product-hunt&intent=share
 https://yuniwon.github.io/automation-workbench/?source=product-hunt
 ```
 
@@ -17,7 +18,7 @@ Automation Workbench
 ## URL
 
 ```text
-https://yuniwon.github.io/automation-workbench/?source=product-hunt
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=product-hunt&intent=share
 ```
 
 ## Tagline
@@ -54,6 +55,7 @@ The project is open on GitHub and hosted on GitHub Pages.
 
 ## Assets Ready
 
+- Share page: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=product-hunt&intent=share
 - Demo URL: https://yuniwon.github.io/automation-workbench/?source=product-hunt
 - Custom automation inquiry: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=product-hunt&intent=scope
 - Workflow examples: https://yuniwon.github.io/automation-workbench/workflows/?source=product-hunt&intent=workflow-index

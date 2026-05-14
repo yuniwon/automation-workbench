@@ -1167,3 +1167,35 @@ Gmail 검색:
 1. 공유용 소개 페이지 링크를 실제 외부 채널에 게시한다.
 2. GeekNews 로그인 가능 시 게시 원고를 실제 게시한다.
 3. Gmail 검색은 `pnpm monitor:gmail:query` 결과 기준으로 반복한다.
+
+## 2026-05-14 Posting Packets Switched To Share Page
+
+작업:
+
+- GeekNews 원고에 채널별 공유용 소개 페이지 링크 추가
+- OKKY 원고에 채널별 공유용 소개 페이지 링크 추가
+- Hacker News 원고에 채널별 공유용 소개 페이지 링크 추가
+- Product Hunt URL을 공유용 소개 페이지로 변경
+- `docs/marketing/share-kit.md`에 채널별 공유용 소개 링크 추가
+- GitHub Release `v0.1.20` 준비
+
+검증:
+
+- TDD RED: `tests/core/marketingPosts.test.ts`에서 채널별 공유 페이지 링크 누락 확인
+- TDD RED: `tests/core/sharePage.test.ts`에서 share-kit 채널별 공유 링크 누락 확인
+- TDD GREEN: `tests/core/marketingPosts.test.ts`: 1 test passed
+- TDD GREEN: `tests/core/sharePage.test.ts`: 2 tests passed
+- `pnpm test`: 27 files, 68 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+
+판단:
+
+- 외부 게시 원고의 첫 진입 링크가 공유용 소개 페이지로 정리됐다.
+- 실제 게시는 아직 수행되지 않았고, 실제 Gmail 문의도 아직 발생하지 않았다.
+
+다음 액션:
+
+1. GeekNews 로그인 가능 시 `docs/marketing/posts/geeknews-show-gn.md`를 실제 게시한다.
+2. 로그인 없는 채널이 확인되면 같은 공유 링크 기준으로 게시한다.
+3. 게시 후 Gmail 검색을 `pnpm monitor:gmail:query` 기준으로 반복한다.

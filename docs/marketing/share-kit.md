@@ -42,6 +42,15 @@ https://yuniwon.github.io/automation-workbench/workflows/
 https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html
 ```
 
+채널별 공유용 소개 링크:
+
+```text
+GeekNews: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=geeknews&intent=share
+OKKY: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=okky&intent=share
+Hacker News: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=hacker-news&intent=share
+Product Hunt: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=product-hunt&intent=share
+```
+
 채널별 추적 링크:
 
 ```text

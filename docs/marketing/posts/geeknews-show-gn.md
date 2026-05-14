@@ -5,6 +5,7 @@
 추적 링크:
 
 ```text
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=geeknews&intent=share
 https://yuniwon.github.io/automation-workbench/?source=geeknews
 ```
 
@@ -33,6 +34,9 @@ Show GN: 브라우저에서 CSV/XLSX 파일을 정리·비교·병합·정산서
 계정이나 이메일 입력 없이 바로 써볼 수 있고, 업로드한 파일은 브라우저 안에서 처리하는 구조를 우선했습니다.
 
 아직 초기 버전이라 실제 업무 파일에서 어떤 케이스가 먼저 막힐지 피드백을 받고 싶습니다.
+
+Share page:
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=geeknews&intent=share
 
 Demo:
 https://yuniwon.github.io/automation-workbench/?source=geeknews

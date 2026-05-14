@@ -32,6 +32,9 @@ describe("marketing posting packets", () => {
     for (const post of posts) {
       const markdown = readProjectFile(post.path);
 
+      expect(markdown).toContain(
+        `https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=${post.source}&intent=share`,
+      );
       expect(markdown).toContain(`https://yuniwon.github.io/automation-workbench/?source=${post.source}`);
       expect(markdown).toContain(
         `https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=${post.source}&intent=scope`,

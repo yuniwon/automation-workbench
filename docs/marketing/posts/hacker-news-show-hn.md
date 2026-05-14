@@ -5,6 +5,7 @@
 추적 링크:
 
 ```text
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=hacker-news&intent=share
 https://yuniwon.github.io/automation-workbench/?source=hacker-news
 ```
 
@@ -18,6 +19,8 @@ Show HN: I built a browser-based CSV/XLSX cleanup, diff, merge, report, and mapp
 
 ```text
 I built a small browser-based tool for cleaning, comparing, merging, mapping columns, and generating simple settlement reports from CSV/XLSX files:
+
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=hacker-news&intent=share
 
 https://yuniwon.github.io/automation-workbench/?source=hacker-news
 

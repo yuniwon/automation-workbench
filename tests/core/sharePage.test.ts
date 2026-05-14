@@ -42,5 +42,11 @@ describe("share landing page", () => {
     expect(sitemap).toContain(shareUrl);
     expect(shareKit).toContain("공유용 소개 페이지");
     expect(shareKit).toContain("https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html");
+    expect(shareKit).toContain(
+      "GeekNews: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=geeknews&intent=share",
+    );
+    expect(shareKit).toContain(
+      "OKKY: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=okky&intent=share",
+    );
   });
 });
