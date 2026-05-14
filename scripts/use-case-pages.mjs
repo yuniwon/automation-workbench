@@ -1,4 +1,4 @@
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -285,10 +285,67 @@ export const useCases = [
   },
 ];
 
+export const servicePages = [
+  {
+    slug: "excel-automation-inquiry",
+    title: "맞춤 엑셀/CSV 자동화 제작 문의 | Automation Workbench",
+    description:
+      "CSV/XLSX 정리, 비교, 병합, 정산서 생성 업무를 실제 파일 구조에 맞춰 제작 문의하기 전에 범위와 준비 자료를 확인할 수 있습니다.",
+    eyebrow: "맞춤 자동화 제작",
+    heading: "내 업무 파일에 맞춘 엑셀/CSV 자동화 제작 범위를 확인하세요",
+    lede: [
+      "무료 도구로 정리, 비교, 병합, 정산서 생성 흐름을 먼저 확인한 뒤",
+      "실제 파일 구조와 반복 규칙에 맞춘 제작 범위와 견적을 문의할 수 있습니다.",
+    ],
+    source: "service-excel-automation-inquiry",
+    ctaTitle: "문의 전 준비",
+    ctaBody: "파일 형식, 반복 작업, 현재 수작업 시간, 원하는 결과물을 적어 보내주시면 범위와 견적을 안내합니다.",
+    cards: [
+      {
+        title: "제작 범위",
+        items: [
+          "단일 파일 정리/변환: 5만 원부터",
+          "두 파일 비교/병합/요약: 15만 원부터",
+          "여러 파일과 예외 규칙이 있는 반복 도구: 30만 원부터",
+          "구글시트, Gmail, Notion 같은 외부 서비스 연동: 별도 산정",
+        ],
+      },
+      {
+        title: "보내주면 좋은 정보",
+        items: [
+          "현재 파일 형식과 입력 파일 개수",
+          "반복해서 하는 작업",
+          "필요한 결과물 예시",
+          "현재 수작업 소요시간",
+          "샘플 파일 공유 가능 여부",
+        ],
+      },
+      {
+        title: "제작 흐름",
+        items: [
+          "샘플 파일 구조 확인",
+          "반복 규칙과 예외 규칙 분리",
+          "작업 범위와 고정 견적 안내",
+          "도구 제작과 검수",
+          "사용법 전달",
+        ],
+      },
+      {
+        title: "먼저 써볼 무료 도구",
+        body: [
+          "정리, 비교, 병합, 정산서 생성 도구를 먼저 실행해보고",
+          "어떤 단계가 실제 업무에 맞춤 제작되어야 하는지 확인할 수 있습니다.",
+        ],
+      },
+    ],
+  },
+];
+
 export const publicUrls = [
   `${baseUrl}/`,
   `${baseUrl}/use-cases/`,
   ...useCases.map((useCase) => `${baseUrl}/use-cases/${useCase.slug}.html`),
+  ...servicePages.map((page) => `${baseUrl}/services/${page.slug}.html`),
 ];
 
 function inquiryBody(useCase) {
@@ -317,6 +374,50 @@ function mailtoHref(useCase) {
 
 function pageUrl(useCase) {
   return `${baseUrl}/use-cases/${useCase.slug}.html`;
+}
+
+function servicePageUrl(page) {
+  return `${baseUrl}/services/${page.slug}.html`;
+}
+
+function serviceInquiryBody(page) {
+  return `안녕하세요.
+맞춤 엑셀/CSV 자동화 제작 문의드립니다.
+유입 경로:
+- ${page.source}
+문의 페이지:
+- ${servicePageUrl(page)}
+도구 링크:
+- ${baseUrl}/?source=${page.source}
+
+현재 파일 형식:
+- CSV / XLSX / 구글시트 / 기타:
+
+입력 파일 개수:
+-
+
+반복해서 하는 작업:
+-
+
+현재 수작업 소요시간:
+-
+
+필요한 결과물:
+-
+
+샘플 파일 공유 가능 여부:
+- 가능 / 일부 값 가림 가능 / 어려움
+
+개인정보나 민감정보 포함 여부:
+- 없음 / 일부 있음 / 있음:
+
+희망 마감일:
+-
+`;
+}
+
+function serviceMailtoHref(page) {
+  return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(serviceInquiryBody(page))}`;
 }
 
 function htmlAttribute(value) {
@@ -375,6 +476,61 @@ function renderIndexJsonLd() {
     .join("\n");
 }
 
+function renderServiceJsonLd(page) {
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: page.title.replace(" | Automation Workbench", ""),
+      serviceType: "Excel and CSV automation",
+      url: servicePageUrl(page),
+      description: page.description,
+      provider: {
+        "@type": "Organization",
+        name: "Automation Workbench",
+        url: baseUrl,
+        email,
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "KR",
+      },
+      offers: {
+        "@type": "OfferCatalog",
+        name: "엑셀/CSV 자동화 제작 패키지",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            name: "Starter",
+            price: "50000",
+            priceCurrency: "KRW",
+            description: "단일 파일 정리/변환",
+          },
+          {
+            "@type": "Offer",
+            name: "Standard",
+            price: "150000",
+            priceCurrency: "KRW",
+            description: "두 파일 비교/병합/요약",
+          },
+          {
+            "@type": "Offer",
+            name: "Advanced",
+            price: "300000",
+            priceCurrency: "KRW",
+            description: "여러 파일과 예외 규칙이 있는 반복 도구",
+          },
+        ],
+      },
+    },
+    null,
+    2,
+  )
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+}
+
 function renderCard(card) {
   if (card.items) {
     const items = card.items.map((item) => `            <li>${item}</li>`).join("\n");
@@ -393,6 +549,72 @@ ${items}
             ${card.body[1]}
           </p>
         </article>`;
+}
+
+export function renderServicePage(page) {
+  const canonicalUrl = servicePageUrl(page);
+  const escapedTitle = htmlAttribute(page.title);
+  const escapedDescription = htmlAttribute(page.description);
+
+  return `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="${escapedDescription}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${escapedTitle}" />
+    <meta property="og:description" content="${escapedDescription}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="${ogImageUrl}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapedTitle}" />
+    <meta name="twitter:description" content="${escapedDescription}" />
+    <meta name="twitter:image" content="${ogImageUrl}" />
+    <script type="application/ld+json">
+${renderServiceJsonLd(page)}
+    </script>
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
+    <title>${page.title}</title>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav">
+        <a href="${appPath}">Automation Workbench</a>
+        <a href="${appPath}use-cases/">무료 도구 모음</a>
+        <a href="https://github.com/yuniwon/automation-workbench">GitHub</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">${page.eyebrow}</p>
+          <h1>${page.heading}</h1>
+          <p class="lede">
+            ${page.lede[0]}
+            ${page.lede[1]}
+          </p>
+        </div>
+        <aside class="panel cta-panel">
+          <strong>${page.ctaTitle}</strong>
+          <p>${page.ctaBody}</p>
+          <a class="button" href="${serviceMailtoHref(page)}">문의 메일 작성</a>
+          <a class="button ghost" href="${appPath}use-cases/?source=${page.source}">무료 도구 먼저 보기</a>
+          <p class="trust">
+            샘플 파일을 보낼 때는 이름, 전화번호, 주소, 계좌번호 같은 민감정보를 먼저 가려주세요.
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+${page.cards.map(renderCard).join("\n")}
+      </section>
+
+      <p class="footer">문의: ${email}</p>
+    </main>
+  </body>
+</html>
+`;
 }
 
 export function renderUseCasePage(useCase) {
@@ -563,10 +785,14 @@ ${entries}
 }
 
 export async function generateUseCasePages() {
+  await mkdir(join(root, "public", "services"), { recursive: true });
   await Promise.all(
     [
       ...useCases.map((useCase) =>
         writeFile(join(root, "public", "use-cases", `${useCase.slug}.html`), renderUseCasePage(useCase)),
+      ),
+      ...servicePages.map((page) =>
+        writeFile(join(root, "public", "services", `${page.slug}.html`), renderServicePage(page)),
       ),
       writeFile(join(root, "public", "use-cases", "index.html"), renderUseCaseIndex()),
       writeFile(join(root, "public", "sitemap.xml"), renderSitemap()),

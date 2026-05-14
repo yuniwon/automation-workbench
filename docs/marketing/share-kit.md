@@ -12,6 +12,12 @@ https://yuniwon.github.io/automation-workbench/
 https://yuniwon.github.io/automation-workbench/use-cases/
 ```
 
+맞춤 제작 문의 페이지:
+
+```text
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+```
+
 채널별 추적 링크:
 
 ```text
@@ -117,6 +123,9 @@ Repo: https://github.com/yuniwon/automation-workbench
 문의: dnjsdndus@gmail.com
 
 문의할 때는 파일 형식, 반복 작업, 현재 수작업 소요시간, 필요한 결과물, 희망 마감일을 함께 적어주시면 빠르게 확인할 수 있습니다.
+
+제작 가능 범위와 준비할 내용:
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
 ```
 
 ## 게시 제목 후보

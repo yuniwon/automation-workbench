@@ -1,0 +1,39 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { describe, expect, it } from "vitest";
+
+const root = process.cwd();
+
+function readProjectFile(relativePath: string) {
+  return readFileSync(join(root, relativePath), "utf8");
+}
+
+describe("service landing pages", () => {
+  it("publishes a custom automation inquiry page with pricing and a qualified inquiry CTA", () => {
+    const pagePath = "public/services/excel-automation-inquiry.html";
+
+    expect(existsSync(join(root, pagePath)), pagePath).toBe(true);
+
+    const html = readProjectFile(pagePath);
+
+    expect(html).toContain("맞춤 엑셀/CSV 자동화 제작 문의");
+    expect(html).toContain("5만 원부터");
+    expect(html).toContain("15만 원부터");
+    expect(html).toContain("30만 원부터");
+    expect(html).toContain("샘플 파일");
+    expect(html).toContain("dnjsdndus@gmail.com");
+    expect(html).toContain("source=service-excel-automation-inquiry");
+    expect(html).toContain("현재 파일 형식");
+    expect(html).toContain("현재 수작업 소요시간");
+    expect(html).toContain("필요한 결과물");
+    expect(html).toContain('property="og:type" content="website"');
+    expect(html).toContain('"@type": "Service"');
+    expect(html).toContain('"@type": "OfferCatalog"');
+  });
+
+  it("includes service pages in sitemap", () => {
+    const sitemap = readProjectFile("public/sitemap.xml");
+
+    expect(sitemap).toContain("/automation-workbench/services/excel-automation-inquiry.html");
+  });
+});

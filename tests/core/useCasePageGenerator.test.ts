@@ -46,4 +46,19 @@ describe("use case page generator", () => {
 
     expect(generator.renderSitemap()).toBe(sitemap);
   });
+
+  it("keeps service pages in sync with generated HTML", async () => {
+    const generator = await import(pathToFileURL(join(root, "scripts/use-case-pages.mjs")).href);
+
+    expect(generator.servicePages.map((page: { slug: string }) => page.slug)).toEqual([
+      "excel-automation-inquiry",
+    ]);
+
+    for (const page of generator.servicePages) {
+      const htmlPath = join(root, "public", "services", `${page.slug}.html`);
+      const checkedInHtml = readFileSync(htmlPath, "utf8");
+
+      expect(generator.renderServicePage(page)).toBe(checkedInHtml);
+    }
+  });
 });
