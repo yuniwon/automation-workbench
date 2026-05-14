@@ -27,6 +27,7 @@ pnpm submit:indexnow
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html`
+- `https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html`
 
 ## 주의
 
@@ -211,3 +212,28 @@ pnpm submit:indexnow
 
 - URL 10개 제출이 성공했다.
 - 문의 메일 본문에 유입 경로와 선택 도구가 포함되는 공개 앱 변경을 검색엔진에 다시 알렸다.
+
+### 2026-05-14 맞춤 제작 문의 페이지 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 11,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 11개 제출이 성공했다.
+- 새 맞춤 엑셀/CSV 자동화 제작 문의 페이지가 sitemap과 IndexNow 제출 대상에 포함됐다.

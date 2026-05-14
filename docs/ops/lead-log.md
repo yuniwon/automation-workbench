@@ -493,3 +493,48 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.7
 1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
 2. 게시 URL을 기록한다.
 3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.
+
+## 2026-05-14 Custom Automation Inquiry Page Released
+
+작업:
+
+- 새 서비스 페이지 추가: 맞춤 엑셀/CSV 자동화 제작 문의
+- 제작 범위를 `5만 원부터`, `15만 원부터`, `30만 원부터` 단계로 안내
+- 문의 메일 본문에 파일 형식, 입력 파일 개수, 반복 작업, 수작업 소요시간, 필요한 결과물 질문 포함
+- README, share-kit, revenue-process 문서에 제작 문의 페이지 링크 추가
+- GitHub Release `v0.1.8` 공개
+- Google Sheets 리드 트래커 `시트1!A31:L34`에 기록 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.8
+```
+
+검증:
+
+- `pnpm test`: 20 files, 46 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 없음
+- 로컬 공개 경로: 서비스 페이지와 sitemap HTTP 200 확인
+- 빌드 산출물: 서비스 페이지, mailto CTA, `OfferCatalog` JSON-LD, sitemap 포함 확인
+- GitHub Pages 배포 성공
+- 공개 서비스 페이지 HTTP 200 확인
+- 공개 서비스 페이지의 가격, mailto CTA, `OfferCatalog` JSON-LD 확인
+- 공개 sitemap에 서비스 페이지 포함 확인
+- IndexNow 제출: URL 11개, HTTP 200
+- GitHub Release `v0.1.8`: latest 확인
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+판단:
+
+- 무료 도구를 써본 사용자가 바로 제작 범위와 준비 정보를 확인할 수 있는 전환 페이지가 생겼다.
+- 문의 메일 템플릿이 견적 산정에 필요한 질문을 포함한다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. 외부 게시 원고에 제작 문의 페이지 링크를 함께 넣는다.
+2. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
+3. 게시 후 24시간 뒤 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
