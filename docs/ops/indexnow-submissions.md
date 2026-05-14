@@ -419,3 +419,28 @@ pnpm submit:indexnow
 
 - URL 18개 제출이 성공했다.
 - 새 양식 변환 페이지 `use-cases/excel-column-mapping-template.html`이 sitemap과 IndexNow 제출 대상에 포함됐다.
+
+### 2026-05-14 메인 페이지 메타데이터 갱신 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 18,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 18개 제출이 성공했다.
+- 메인 페이지의 title, description, OpenGraph, Twitter Card, JSON-LD 갱신을 검색엔진에 다시 알렸다.
