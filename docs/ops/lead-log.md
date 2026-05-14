@@ -1029,3 +1029,60 @@ Gmail 검색:
 1. GeekNews 로그인 후 게시 원고를 실제 게시한다.
 2. 게시가 계속 지연되면 로그인 없이 가능한 채널용 정적 홍보 페이지나 다음 무료 도구를 추가한다.
 3. Gmail 검색은 `pnpm monitor:gmail:query` 결과 기준으로 반복한다.
+
+## 2026-05-14 Inquiry Conversion Panel Improved
+
+작업:
+
+- 하단 문의 패널에 `문의서에 포함될 항목` 체크리스트 추가
+- `문의서 복사` 버튼이 실제 이메일 본문과 같은 구조의 요청서를 복사하도록 변경
+- 복사용 문의서에도 유입 경로와 선택 도구 추적 URL이 포함되도록 `buildInquiryText()` 공개
+- 데스크톱/모바일 문의 패널 레이아웃 정리
+- GitHub Release `v0.1.17` 공개
+- IndexNow 재제출
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.17
+```
+
+검증:
+
+- 디자인 기준: `Linear` reference
+- TDD RED: `buildInquiryText()` 미구현으로 `tests/config/contact.test.ts` 실패 확인
+- TDD RED: 문의 필수 항목 미표시로 `tests/components/InquiryPanel.test.tsx` 실패 확인
+- TDD GREEN: `tests/config/contact.test.ts`: 6 tests passed
+- TDD GREEN: `tests/components/InquiryPanel.test.tsx`: 3 tests passed
+- `pnpm test`: 26 files, 65 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+- Playwright desktop screenshot: `http://127.0.0.1:5173/?tool=map`에서 문의 패널 확인
+- Playwright mobile screenshot: `http://127.0.0.1:5173/?tool=map`에서 문의 패널 확인
+- GitHub Pages 배포 성공: run `25842645295`
+- 공개 앱 번들에서 `문의서에 포함될 항목`, `문의서 복사`, `선택 도구:` 확인
+- 공개 앱 번들 mojibake 없음 확인
+- IndexNow 제출: URL 18개, HTTP 200
+
+Gmail 검색:
+
+- `pnpm monitor:gmail:query` 기준 7일 검색: 후보 0건
+- `pnpm monitor:gmail:query` 기준 30일 검색: 후보 0건
+
+결과:
+
+- Gmail 후보 0건
+- 실제 문의 0건
+- Google Sheets 기록: 사용자 확인 전까지 append하지 않음
+
+판단:
+
+- 이메일 앱을 열지 않고 직접 Gmail에 붙여넣는 사용자의 문의 마찰이 줄었다.
+- 실제 문의는 아직 발생하지 않았으므로 수익화 목표는 미완료다.
+
+다음 액션:
+
+1. 로그인 없이 배포 가능한 외부 공유용 정적 페이지를 추가한다.
+2. GeekNews 로그인 가능 시 게시 원고를 실제 게시한다.
+3. Gmail 검색은 `pnpm monitor:gmail:query` 결과 기준으로 반복한다.
