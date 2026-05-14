@@ -21,6 +21,7 @@ const pricingFactors = [
   "예외 규칙과 검수 리포트 필요 여부",
   "구글시트, Gmail, Notion 같은 외부 서비스 연동 여부",
 ];
+const interFontHref = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;510;590;600;700&display=swap";
 const commonFaqs = [
   {
     question: "샘플 파일 없이 문의할 수 있나요?",
@@ -35,6 +36,12 @@ const commonFaqs = [
     answer: "파일 개수, 단계 수, 예외 규칙, 결과물 형식, 외부 서비스 연동 여부에 따라 달라집니다. 단일 정리는 5만 원부터, 비교나 병합은 15만 원부터 검토합니다.",
   },
 ];
+
+function renderInterFontLinks() {
+  return `    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="${interFontHref}" rel="stylesheet" />`;
+}
 
 export const useCases = [
   {
@@ -1149,6 +1156,7 @@ export function renderServicePage(page) {
 ${renderServiceJsonLd(page)}
     </script>
     <link rel="canonical" href="${canonicalUrl}" />
+${renderInterFontLinks()}
     <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
     <title>${page.title}</title>
   </head>
@@ -1217,6 +1225,7 @@ export function renderWorkflowPage(page) {
 ${renderWorkflowJsonLd(page)}
     </script>
     <link rel="canonical" href="${canonicalUrl}" />
+${renderInterFontLinks()}
     <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
     <title>${page.title}</title>
   </head>
@@ -1289,6 +1298,7 @@ export function renderUseCasePage(useCase) {
 ${renderJsonLd(useCase)}
     </script>
     <link rel="canonical" href="${canonicalUrl}" />
+${renderInterFontLinks()}
     <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
     <title>${useCase.title}</title>
   </head>
@@ -1366,6 +1376,7 @@ export function renderWorkflowIndex() {
 ${renderWorkflowIndexJsonLd()}
     </script>
     <link rel="canonical" href="${canonicalUrl}" />
+${renderInterFontLinks()}
     <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
     <title>${title}</title>
   </head>
@@ -1441,6 +1452,7 @@ export function renderUseCaseIndex() {
 ${renderIndexJsonLd()}
     </script>
     <link rel="canonical" href="${canonicalUrl}" />
+${renderInterFontLinks()}
     <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
     <title>${title}</title>
   </head>
@@ -1513,6 +1525,7 @@ export function renderSharePage() {
 ${renderShareJsonLd()}
     </script>
     <link rel="canonical" href="${canonicalUrl}" />
+${renderInterFontLinks()}
     <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
     <title>${title}</title>
   </head>

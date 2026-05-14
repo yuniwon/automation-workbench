@@ -5,6 +5,8 @@
     Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-feature-settings: "cv01", "ss03";
   text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -76,6 +78,8 @@ h1 {
   font-weight: 510;
   line-height: 1;
   letter-spacing: 0;
+  text-wrap: balance;
+  word-break: keep-all;
 }
 
 .title-keep {

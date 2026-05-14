@@ -41,6 +41,13 @@ machine rules still apply.
 - Before dependency changes, consider package age, maintainers, install scripts, advisory context, and lockfile impact.
 - Use the existing React/Vite structure and keep core logic DOM-free where practical.
 
+## Design Rules
+
+- Read `DESIGN.md` before changing app UI, static landing pages, portfolio screenshots, or visual marketing assets.
+- Treat the Automation Workbench design-system handoff as the primary visual authority for this repo.
+- Keep the product Korean-first, dark, Inter-typed, and practical. Avoid emoji, exclamation marks, decorative logos, and broad "magic" claims.
+- If adding a new public visual surface, verify it against the design kit's `ui_kits/automation-workbench/index.html` or the relevant `preview/*.html` reference.
+
 ## Verification
 
 Run the smallest useful check first, then broaden when needed.

@@ -34,6 +34,24 @@ describe("use case page generator", () => {
     }
   });
 
+  it("loads the shared Inter font on generated public landing pages", async () => {
+    const generator = await import(pathToFileURL(join(root, "scripts/use-case-pages.mjs")).href);
+    const htmlPages = [
+      ...generator.useCases.map((useCase: unknown) => generator.renderUseCasePage(useCase)),
+      ...generator.servicePages.map((page: unknown) => generator.renderServicePage(page)),
+      ...generator.workflowPages.map((page: unknown) => generator.renderWorkflowPage(page)),
+      generator.renderUseCaseIndex(),
+      generator.renderWorkflowIndex(),
+      generator.renderSharePage(),
+    ];
+
+    for (const html of htmlPages) {
+      expect(html).toContain('rel="preconnect" href="https://fonts.googleapis.com"');
+      expect(html).toContain('rel="preconnect" href="https://fonts.gstatic.com" crossorigin');
+      expect(html).toContain("family=Inter:wght@400;500;510;590;600;700");
+    }
+  });
+
   it("keeps the use case index page in sync with generated HTML", async () => {
     const generator = await import(pathToFileURL(join(root, "scripts/use-case-pages.mjs")).href);
     const checkedInHtml = readFileSync(join(root, "public", "use-cases", "index.html"), "utf8");
