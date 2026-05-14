@@ -37,6 +37,7 @@ https://docs.google.com/spreadsheets/d/1E6vhznY3NRIhTnOX9as7Q2XRJoENRJcFIVtkCxdv
 
 - `NO_LEADS`: 검색 결과 실제 문의 없음
 - `PUBLISHED`: 공개 페이지 또는 게시물 노출 완료
+- `RELEASED`: GitHub Release 공개 완료
 - `ACCEPTED_200`: IndexNow 제출 성공
 - `ACCEPTED_202`: IndexNow 제출 접수 또는 키 검증 대기
 - `NEW`: 새 문의

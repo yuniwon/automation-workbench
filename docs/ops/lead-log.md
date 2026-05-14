@@ -219,3 +219,41 @@ to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/
 1. GeekNews 또는 OKKY 게시를 실행한다.
 2. 게시가 지연되면 검색용 페이지를 주기적으로 추가하되, 실제 도구 기능과 맞는 주제만 사용한다.
 3. 24시간 뒤 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
+
+## 2026-05-14 GitHub Exposure Update
+
+작업:
+
+- README에 "바로 써보기" 링크 표 추가
+- README 상단에 맞춤 자동화 문의 mailto 링크 추가
+- GitHub repository topic 5개 추가
+  - `browser-based`
+  - `csv-diff`
+  - `data-quality`
+  - `excel-automation`
+  - `xlsx-cleaner`
+- GitHub Release `v0.1.2` 공개
+
+공개 릴리스:
+
+```text
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.2
+```
+
+검증:
+
+- `pnpm test`: 15 files, 32 tests passed
+- `pnpm build`: 성공
+- GitHub Pages 배포 성공
+- GitHub Release `v0.1.2`: latest 확인
+
+판단:
+
+- GitHub 방문자가 README에서 바로 무료 도구와 문의 링크를 찾을 수 있게 됐다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY 게시를 실행한다.
+2. 게시가 지연되면 추가 무료 도구 후보 중 실제 구현 가능한 기능부터 만든다.
+3. 24시간 뒤 Gmail 검색을 반복한다.
