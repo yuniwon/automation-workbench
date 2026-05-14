@@ -566,17 +566,30 @@ function serviceMailtoHref(page) {
   return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(serviceInquiryBody(page))}`;
 }
 
+function workflowTrackingQuery(page, intent) {
+  const params = new URLSearchParams();
+  params.set("source", page.source);
+  params.set("tool", page.tool);
+  params.set("workflow", page.slug);
+  params.set("intent", intent);
+  return params.toString();
+}
+
 function workflowInquiryBody(page) {
   return `안녕하세요.
 ${page.mailTask} 문의드립니다.
 유입 경로:
 - ${page.source}
+업무 예시 상세:
+- ${page.slug}
+CTA 상세:
+- direct-inquiry
 업무 예시 페이지:
 - ${workflowPageUrl(page)}
 제작 범위 안내:
-- ${baseUrl}/services/excel-automation-inquiry.html
+- ${baseUrl}/services/excel-automation-inquiry.html?${workflowTrackingQuery(page, "scope")}
 도구 링크:
-- ${baseUrl}/?source=${page.source}&tool=${page.tool}
+- ${baseUrl}/?${workflowTrackingQuery(page, "direct-inquiry")}
 
 현재 파일 형식:
 - CSV / XLSX / 구글시트 / 기타:
@@ -856,6 +869,38 @@ function renderConversionCards() {
   ].join("\n");
 }
 
+function renderServiceTrackingScript() {
+  return `    <script>
+      (() => {
+        const link = document.querySelector("[data-service-inquiry]");
+        if (!link || !window.URLSearchParams) {
+          return;
+        }
+
+        const inbound = new URLSearchParams(window.location.search);
+        const details = [
+          ["source", "유입 경로 상세"],
+          ["workflow", "업무 예시 상세"],
+          ["intent", "CTA 상세"],
+          ["tool", "선택 도구 상세"],
+        ].map(([key, label]) => {
+          const value = (inbound.get(key) || "").replace(/[\\r\\n\\t]+/g, " ").trim().slice(0, 80);
+          return value ? \`\${label}:\\n- \${value}\` : "";
+        }).filter(Boolean);
+
+        if (!details.length) {
+          return;
+        }
+
+        const [base, query = ""] = link.href.split("?");
+        const mailParams = new URLSearchParams(query);
+        const currentBody = mailParams.get("body") || "";
+        mailParams.set("body", \`\${currentBody}\\n\\n\${details.join("\\n")}\\n\`);
+        link.href = \`\${base}?\${mailParams.toString()}\`;
+      })();
+    </script>`;
+}
+
 export function renderServicePage(page) {
   const canonicalUrl = servicePageUrl(page);
   const escapedTitle = htmlAttribute(page.title);
@@ -903,7 +948,7 @@ ${renderServiceJsonLd(page)}
         <aside class="panel cta-panel">
           <strong>${page.ctaTitle}</strong>
           <p>${page.ctaBody}</p>
-          <a class="button" href="${serviceMailtoHref(page)}">문의 메일 작성</a>
+          <a class="button" data-service-inquiry="true" href="${serviceMailtoHref(page)}">문의 메일 작성</a>
           <a class="button ghost" href="${appPath}use-cases/?source=${page.source}">무료 도구 먼저 보기</a>
           <p class="trust">
             샘플 파일을 보낼 때는 이름, 전화번호, 주소, 계좌번호 같은 민감정보를 먼저 가려주세요.
@@ -918,6 +963,7 @@ ${renderConversionCards()}
 
       <p class="footer">문의: ${email}</p>
     </main>
+${renderServiceTrackingScript()}
   </body>
 </html>
 `;
@@ -971,9 +1017,9 @@ ${renderWorkflowJsonLd(page)}
         <aside class="panel cta-panel">
           <strong>업무 흐름 확인</strong>
           <p>무료 도구로 먼저 확인하고, 실제 파일 양식에 맞춘 제작 범위는 별도 페이지에서 확인할 수 있습니다.</p>
-          <a class="button" href="${appPath}?source=${page.source}&tool=${page.tool}">무료 도구 열기</a>
-          <a class="button ghost" href="${appPath}services/excel-automation-inquiry.html?source=${page.source}">제작 범위 보기</a>
-          <a class="button ghost" href="${workflowMailtoHref(page)}">맞춤 제작 문의</a>
+          <a class="button" href="${appPath}?${workflowTrackingQuery(page, "try-tool")}">무료 도구 열기</a>
+          <a class="button ghost" href="${appPath}services/excel-automation-inquiry.html?${workflowTrackingQuery(page, "scope")}">제작 범위 보기</a>
+          <a class="button ghost" data-tracking-query="${workflowTrackingQuery(page, "direct-inquiry")}" href="${workflowMailtoHref(page)}">맞춤 제작 문의</a>
           <p class="trust">
             샘플 파일을 보낼 때는 이름, 전화번호, 주소, 계좌번호 같은 민감정보를 먼저 가려주세요.
           </p>

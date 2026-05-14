@@ -33,6 +33,10 @@ describe("service landing pages", () => {
     expect(html).toContain('"@type": "OfferCatalog"');
     expect(html).toContain('"@type": "FAQPage"');
     expect(html).toContain("샘플 파일 없이 문의할 수 있나요?");
+    expect(html).toContain('data-service-inquiry="true"');
+    expect(html).toContain("유입 경로 상세");
+    expect(html).toContain("업무 예시 상세");
+    expect(html).toContain("CTA 상세");
   });
 
   it("includes service pages in sitemap", () => {

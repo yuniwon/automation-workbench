@@ -38,6 +38,10 @@ describe("workflow landing pages", () => {
       expect(html).toContain("무료 도구 열기");
       expect(html).toContain("제작 범위 보기");
       expect(html).toContain("맞춤 제작 문의");
+      expect(html).toContain(`workflow=${page.path.replace("public/workflows/", "").replace(".html", "")}`);
+      expect(html).toContain("intent=try-tool");
+      expect(html).toContain("intent=scope");
+      expect(html).toContain("intent=direct-inquiry");
       expect(html).toContain("문의 전 체크리스트");
       expect(html).toContain("가격이 달라지는 기준");
       expect(html).toContain("/automation-workbench/services/excel-automation-inquiry.html");
