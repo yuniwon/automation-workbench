@@ -297,3 +297,33 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.3
 1. GeekNews 또는 OKKY 게시를 실행한다.
 2. 게시 URL을 Exposure 형식으로 기록한다.
 3. 게시 후 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
+
+## 2026-05-14 Gmail Scan After File Merge Release
+
+검색 범위:
+
+```text
+to:dnjsdndus@gmail.com newer_than:7d -from:dnjsdndus@gmail.com ("엑셀/CSV 자동화" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "무료 엑셀" OR "CSV/XLSX" OR "반복 작업" OR "샘플 파일" OR "병합")
+```
+
+추가 검색:
+
+```text
+to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/CSV 자동화 맞춤 제작 문의"
+```
+
+결과:
+
+- 후보 0건
+- 실제 문의 0건
+
+판단:
+
+- 정리, 비교, 병합 기능과 공개 유입 자산은 준비됐지만 아직 실제 이메일 문의는 없다.
+- 다음 액션은 기능 추가보다 외부 게시 실행이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY 로그인 세션에서 게시한다.
+2. 게시 후 URL을 기록한다.
+3. 24시간 뒤 Gmail 검색을 반복한다.
