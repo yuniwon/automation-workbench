@@ -11,6 +11,7 @@ describe("App", () => {
     expect(html).toContain("경고");
     expect(html).toContain("오류");
     expect(html).toContain("작업 흐름");
+    expect(html).toContain("<strong>6</strong><span>행</span>");
     expect(html).not.toContain(">Columns<");
     expect(html).not.toContain(">Workflow<");
   });

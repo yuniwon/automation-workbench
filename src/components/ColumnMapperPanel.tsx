@@ -136,7 +136,7 @@ export function ColumnMapperPanel({
         </div>
       </section>
 
-      <DataPreview table={result.table} />
+      <DataPreview table={result.table} locale={locale} />
     </section>
   );
 }

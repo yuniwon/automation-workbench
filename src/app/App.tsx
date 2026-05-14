@@ -73,37 +73,37 @@ const appCopy: Record<
       cleanup: {
         title: "엑셀/CSV 자동 정리",
         lede: "주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤 바로 CSV로 내려받을 수 있습니다.",
-        statusLabel: "rows",
+        statusLabel: "행",
         defaultStatusValue: 0,
       },
       compare: {
         title: "엑셀/CSV 파일 비교",
         lede: "두 파일을 같은 키 기준으로 비교해서 추가, 삭제, 변경된 행을 확인하고 결과 CSV로 내려받을 수 있습니다.",
-        statusLabel: "files",
+        statusLabel: "파일",
         defaultStatusValue: 2,
       },
       merge: {
         title: "엑셀/CSV 파일 병합",
         lede: "여러 CSV/XLSX 파일을 같은 열 구조로 맞춰 세로로 합치고 원본 파일명을 포함한 결과 CSV로 내려받을 수 있습니다.",
-        statusLabel: "files",
+        statusLabel: "파일",
         defaultStatusValue: 2,
       },
       report: {
         title: "견적서/정산서 자동 생성",
         lede: "주문 파일에서 고객, 품목, 금액 열을 골라 그룹별 정산서를 만들고 CSV 또는 HTML로 내려받을 수 있습니다.",
-        statusLabel: "report",
+        statusLabel: "리포트",
         defaultStatusValue: 1,
       },
       map: {
         title: "엑셀 열 매핑 양식 변환",
         lede: "제각각인 주문 파일 열을 표준 주문 양식으로 맞추고 결과 CSV를 내려받을 수 있습니다.",
-        statusLabel: "columns",
+        statusLabel: "열",
         defaultStatusValue: defaultOrderMappingTargets.length,
       },
       checkin: {
         title: "QR 벤더 체크인",
         lede: "현장 QR 링크, 모바일 입력 폼, Google Sheets 로그, 이메일 알림까지 이어지는 소규모 업무 자동화 샘플입니다.",
-        statusLabel: "properties",
+        statusLabel: "현장",
         defaultStatusValue: 4,
       },
     },
@@ -371,7 +371,7 @@ export function App() {
               onRunCleanup={runCleanup}
               locale={locale}
             />
-            <DataPreview table={currentTable} />
+            <DataPreview table={currentTable} locale={locale} />
             <IssuePanel issues={issues} diagnostics={diagnostics} locale={locale} />
             <SummaryPanel groups={summaryGroups} locale={locale} />
           </section>

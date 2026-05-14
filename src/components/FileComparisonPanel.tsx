@@ -161,7 +161,7 @@ export function FileComparisonPanel({
         </div>
       </section>
 
-      <DataPreview table={resultTable} />
+      <DataPreview table={resultTable} locale={locale} />
     </section>
   );
 }

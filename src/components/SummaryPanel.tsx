@@ -7,11 +7,14 @@ interface SummaryPanelProps {
 }
 
 export function SummaryPanel({ groups, locale = "ko" }: SummaryPanelProps) {
+  const heading = locale === "en" ? "Grouped Summary" : "집계";
+  const groupUnit = groups.length === 1 ? "group" : "groups";
+
   return (
     <section className="panel summary-panel">
       <div className="panel-heading">
-        <span>Grouped Summary</span>
-        <strong>{groups.length}</strong>
+        <span>{heading}</span>
+        <strong>{groups.length} {groupUnit}</strong>
       </div>
       <div className="summary-list">
         {groups.map((group) => (

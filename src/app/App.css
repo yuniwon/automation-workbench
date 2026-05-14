@@ -29,6 +29,24 @@ button {
   cursor: pointer;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .app-shell {
   width: min(1440px, 100%);
   margin: 0 auto;
@@ -241,6 +259,10 @@ h1 {
   color: #8a8f98;
   font-size: 12px;
   font-weight: 510;
+}
+
+.data-panel-heading {
+  padding: 14px 16px 0;
 }
 
 .panel-heading strong {

@@ -132,7 +132,7 @@ export function ReportGeneratorPanel({ locale = "ko", parseFile }: ReportGenerat
         </div>
       </section>
 
-      <DataPreview table={report.table} />
+      <DataPreview table={report.table} locale={locale} />
     </section>
   );
 }

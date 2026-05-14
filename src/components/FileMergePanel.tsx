@@ -102,7 +102,7 @@ export function FileMergePanel({ locale = "ko", parseFile }: FileMergePanelProps
         </div>
       </section>
 
-      <DataPreview table={mergeResult.table} />
+      <DataPreview table={mergeResult.table} locale={locale} />
     </section>
   );
 }

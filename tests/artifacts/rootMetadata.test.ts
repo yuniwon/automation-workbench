@@ -50,4 +50,12 @@ describe("root page metadata", () => {
     );
     expect(html).not.toMatch(/[ëìíê][\u0080-\u00ff]/);
   });
+
+  it("loads the Inter font used by the UI kit handoff", () => {
+    const html = readRootHtml();
+
+    expect(html).toContain('rel="preconnect" href="https://fonts.googleapis.com"');
+    expect(html).toContain('rel="preconnect" href="https://fonts.gstatic.com" crossorigin');
+    expect(html).toContain("family=Inter:wght@400;500;510;590;600;700");
+  });
 });
