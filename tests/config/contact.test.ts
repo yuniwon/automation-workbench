@@ -29,6 +29,16 @@ describe("contactConfig", () => {
     expect(body).toContain("geeknews");
   });
 
+  it("adds the selected tool to the inquiry email body and tracked URL", () => {
+    const href = buildContactHref("geeknews", "report");
+    const params = new URLSearchParams(href.split("?")[1] ?? "");
+    const body = params.get("body") ?? "";
+
+    expect(body).toContain("선택 도구:");
+    expect(body).toContain("report");
+    expect(body).toContain("https://yuniwon.github.io/automation-workbench/?source=geeknews&tool=report");
+  });
+
   it("extracts source from a URL search string", () => {
     expect(getSourceFromSearch("?source=okky")).toBe("okky");
     expect(getSourceFromSearch("?utm_source=hacker-news")).toBe("hacker-news");

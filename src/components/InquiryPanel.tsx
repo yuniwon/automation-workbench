@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { buildContactHref, contactConfig, getSourceFromSearch, privacyUrl, toolUrl } from "../config/contact";
+import {
+  buildContactHref,
+  contactConfig,
+  getSourceFromSearch,
+  getToolFromSearch,
+  privacyUrl,
+  toolUrl,
+} from "../config/contact";
 
 export function InquiryPanel() {
   const [copied, setCopied] = useState<"inquiry" | "link" | null>(null);
   const inboundSource = typeof window === "undefined" ? "" : getSourceFromSearch(window.location.search);
-  const contactHref = buildContactHref(inboundSource);
+  const inboundTool = typeof window === "undefined" ? "" : getToolFromSearch(window.location.search);
+  const contactHref = buildContactHref(inboundSource, inboundTool);
 
   async function copyText(value: string, type: "inquiry" | "link") {
     if (navigator.clipboard) {

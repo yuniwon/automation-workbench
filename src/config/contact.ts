@@ -7,15 +7,38 @@ function cleanSource(source?: string) {
   return (source ?? "").replace(/[\r\n\t]+/g, " ").trim().slice(0, 80);
 }
 
-function buildMailBody(source?: string) {
+function cleanTool(tool?: string) {
+  const normalized = cleanSource(tool);
+  return ["cleanup", "compare", "merge", "report"].includes(normalized) ? normalized : "";
+}
+
+function buildTrackedToolUrl(source?: string, tool?: string) {
   const sourceLabel = cleanSource(source);
+  const toolLabel = cleanTool(tool);
+  const params = new URLSearchParams();
+  if (sourceLabel) {
+    params.set("source", sourceLabel);
+  }
+  if (toolLabel) {
+    params.set("tool", toolLabel);
+  }
+
+  const query = params.toString();
+  return query ? `${toolUrl}?${query}` : toolUrl;
+}
+
+function buildMailBody(source?: string, tool?: string) {
+  const sourceLabel = cleanSource(source);
+  const toolLabel = cleanTool(tool);
   const sourceLine = sourceLabel ? `\n유입 경로:\n- ${sourceLabel}\n` : "";
+  const toolLine = toolLabel ? `\n선택 도구:\n- ${toolLabel}\n` : "";
 
   return `안녕하세요.
 
-무료 엑셀/CSV 정리·비교 도구를 사용해보고 문의드립니다.
-도구 링크: ${toolUrl}
+무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구를 사용해보고 문의드립니다.
+도구 링크: ${buildTrackedToolUrl(sourceLabel, toolLabel)}
 ${sourceLine}
+${toolLine}
 
 제가 자동화하고 싶은 업무:
 - 여기에 적어주세요
@@ -45,9 +68,14 @@ export function getSourceFromSearch(search: string) {
   return cleanSource(params.get("source") ?? params.get("utm_source") ?? "");
 }
 
-export function buildContactHref(source?: string) {
+export function getToolFromSearch(search: string) {
+  const params = new URLSearchParams(search);
+  return cleanTool(params.get("tool") ?? "");
+}
+
+export function buildContactHref(source?: string, tool?: string) {
   return `mailto:dnjsdndus@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(
-    buildMailBody(source),
+    buildMailBody(source, tool),
   )}`;
 }
 
@@ -55,6 +83,6 @@ export const contactConfig = {
   href: buildContactHref(),
   label: "이메일로 맞춤 제작 문의",
   inquiryText:
-    "안녕하세요. 무료 엑셀/CSV 정리·비교 도구를 사용해보고 문의드립니다. 현재 파일 구조, 반복 작업, 수작업 소요시간, 필요한 결과물 기준으로 자동화 제작 가능 범위와 견적을 안내해주세요.",
-  shareText: `무료 엑셀/CSV 정리·비교 도구: ${toolUrl}`,
+    "안녕하세요. 무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구를 사용해보고 문의드립니다. 현재 파일 구조, 반복 작업, 수작업 소요시간, 필요한 결과물 기준으로 자동화 제작 가능 범위와 견적을 안내해주세요.",
+  shareText: `무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구: ${toolUrl}`,
 };
