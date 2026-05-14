@@ -8,6 +8,7 @@ const appPath = "/automation-workbench/";
 const email = "dnjsdndus@gmail.com";
 const mailSubject = "엑셀/CSV 자동화 맞춤 제작 문의";
 const lastmod = "2026-05-14";
+const ogImageUrl = `${baseUrl}/og-image.png`;
 
 export const useCases = [
   {
@@ -272,6 +273,43 @@ function mailtoHref(useCase) {
   return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(inquiryBody(useCase))}`;
 }
 
+function pageUrl(useCase) {
+  return `${baseUrl}/use-cases/${useCase.slug}.html`;
+}
+
+function htmlAttribute(value) {
+  return String(value).replaceAll("&", "&amp;").replaceAll("\"", "&quot;").replaceAll("<", "&lt;");
+}
+
+function renderJsonLd(useCase) {
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: useCase.title.replace(" | Automation Workbench", ""),
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      url: pageUrl(useCase),
+      description: useCase.description,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      creator: {
+        "@type": "Organization",
+        name: "Automation Workbench",
+        url: baseUrl,
+      },
+    },
+    null,
+    2,
+  )
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+}
+
 function renderCard(card) {
   if (card.items) {
     const items = card.items.map((item) => `            <li>${item}</li>`).join("\n");
@@ -293,6 +331,10 @@ ${items}
 }
 
 export function renderUseCasePage(useCase) {
+  const canonicalUrl = pageUrl(useCase);
+  const escapedTitle = htmlAttribute(useCase.title);
+  const escapedDescription = htmlAttribute(useCase.description);
+
   return `<!doctype html>
 <html lang="ko">
   <head>
@@ -300,9 +342,21 @@ export function renderUseCasePage(useCase) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="${useCase.description}"
+      content="${escapedDescription}"
     />
-    <link rel="canonical" href="${baseUrl}/use-cases/${useCase.slug}.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${escapedTitle}" />
+    <meta property="og:description" content="${escapedDescription}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="${ogImageUrl}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapedTitle}" />
+    <meta name="twitter:description" content="${escapedDescription}" />
+    <meta name="twitter:image" content="${ogImageUrl}" />
+    <script type="application/ld+json">
+${renderJsonLd(useCase)}
+    </script>
+    <link rel="canonical" href="${canonicalUrl}" />
     <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
     <title>${useCase.title}</title>
   </head>

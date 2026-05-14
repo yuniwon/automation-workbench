@@ -57,6 +57,13 @@ describe("SEO use case pages", () => {
       expect(html).toContain("dnjsdndus@gmail.com");
       expect(html).toContain("PRIVACY.md");
       expect(html).toContain("브라우저 안에서 처리");
+      expect(html).toContain('property="og:type" content="website"');
+      expect(html).toContain(`property="og:title" content="${page.title}`);
+      expect(html).toContain('name="twitter:card" content="summary_large_image"');
+      expect(html).toContain('application/ld+json');
+      expect(html).toContain('"@type": "SoftwareApplication"');
+      expect(html).toContain('"applicationCategory": "BusinessApplication"');
+      expect(html).toContain('"operatingSystem": "Web"');
 
       const mailto = html.match(/href="(mailto:[^"]+)"/)?.[1] ?? "";
       expect(mailto, `${page.path} mailto`).toContain("body=");
