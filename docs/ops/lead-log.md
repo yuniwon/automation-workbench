@@ -629,3 +629,50 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.10
 1. workflow 페이지를 외부 게시 원고에 포함한다.
 2. 사용자 로그인 세션에서 GeekNews 또는 OKKY 게시를 실행한다.
 3. 게시 후 24시간 뒤 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
+
+## 2026-05-14 FAQ And Inquiry Checklist Added
+
+작업:
+
+- 제작 문의 페이지에 `문의 전 체크리스트` 카드 추가
+- 제작 문의 페이지에 `가격이 달라지는 기준` 카드 추가
+- workflow 개별 페이지 3개에 같은 체크리스트와 가격 기준 추가
+- 서비스 페이지와 workflow 개별 페이지에 `FAQPage` JSON-LD 추가
+- 샘플 파일, 개인정보, 가격 산정 관련 FAQ를 정적 페이지에 표시
+- GitHub Release `v0.1.11` 공개
+- Google Sheets 리드 트래커 `시트1!A41:L44`에 기록 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+https://yuniwon.github.io/automation-workbench/workflows/shopping-mall-order-cleanup.html
+https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html
+https://yuniwon.github.io/automation-workbench/workflows/monthly-report-file-merge.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.11
+```
+
+검증:
+
+- TDD RED: 체크리스트, 가격 기준, `FAQPage`가 없어서 테스트 실패 확인
+- `pnpm test`: 21 files, 50 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 없음
+- GitHub Pages 배포 성공
+- 공개 서비스 페이지와 workflow 개별 페이지 3개 HTTP 200 확인
+- 공개 페이지에서 `문의 전 체크리스트`, `가격이 달라지는 기준`, `FAQPage`, `샘플 파일 없이 문의할 수 있나요?` 확인
+- GitHub Release `v0.1.11`: latest 확인
+- IndexNow 제출: URL 15개, HTTP 200
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+판단:
+
+- 문의 전에 사용자가 준비할 정보와 가격이 달라지는 이유가 더 명확해졌다.
+- 검색엔진이 FAQ 구조화 데이터를 읽을 수 있는 형태가 됐다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. 외부 게시 실행이 가능하면 GeekNews 또는 OKKY에 게시한다.
+2. 코드 쪽 다음 개선은 `/workflows/` 허브에서 개별 workflow CTA 클릭 추적을 더 세분화하는 것이다.
+3. 게시 또는 색인 후 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
