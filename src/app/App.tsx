@@ -8,6 +8,7 @@ import { IssuePanel } from "../components/IssuePanel";
 import { ReportGeneratorPanel } from "../components/ReportGeneratorPanel";
 import { ResultSummary } from "../components/ResultSummary";
 import { SummaryPanel } from "../components/SummaryPanel";
+import { VendorCheckInPanel } from "../components/VendorCheckInPanel";
 import { WorkflowControls } from "../components/WorkflowControls";
 import { parseCsv } from "../core/input/csvInputAdapter";
 import { parseXlsxFile } from "../core/input/excelInputAdapter";
@@ -25,7 +26,7 @@ import { defaultRecipeEngine } from "../core/transform/stepRegistry";
 import { createGroupedSummary } from "../core/transform/transforms";
 import { downloadBlob } from "../utils/downloadBlob";
 
-export type ToolMode = "cleanup" | "compare" | "merge" | "report" | "map";
+export type ToolMode = "cleanup" | "compare" | "merge" | "report" | "map" | "checkin";
 export type AppLocale = "ko" | "en";
 
 const appCopy: Record<
@@ -50,6 +51,7 @@ const appCopy: Record<
       merge: "병합 도구",
       report: "정산서 도구",
       map: "양식 변환",
+      checkin: "QR 체크인",
     },
     tools: {
       cleanup: {
@@ -82,6 +84,12 @@ const appCopy: Record<
         statusLabel: "columns",
         defaultStatusValue: defaultOrderMappingTargets.length,
       },
+      checkin: {
+        title: "QR 벤더 체크인",
+        lede: "현장 QR 링크, 모바일 입력 폼, Google Sheets 로그, 이메일 알림까지 이어지는 소규모 업무 자동화 샘플입니다.",
+        statusLabel: "properties",
+        defaultStatusValue: 4,
+      },
     },
   },
   en: {
@@ -95,6 +103,7 @@ const appCopy: Record<
       merge: "Merge",
       report: "Reports",
       map: "Column mapping",
+      checkin: "QR check-in",
     },
     tools: {
       cleanup: {
@@ -126,6 +135,12 @@ const appCopy: Record<
         lede: "Map inconsistent order-file columns into a standard order template and download the normalized CSV.",
         statusLabel: "columns",
         defaultStatusValue: defaultOrderMappingTargets.length,
+      },
+      checkin: {
+        title: "QR vendor check-in",
+        lede: "A portfolio-ready workflow with property-specific QR links, a mobile check-in form, Google Sheets logging, and email notifications.",
+        statusLabel: "properties",
+        defaultStatusValue: 4,
       },
     },
   },
@@ -288,6 +303,13 @@ export function App() {
         >
           {copy.nav.map}
         </button>
+        <button
+          className={toolMode === "checkin" ? "active" : ""}
+          type="button"
+          onClick={() => setToolMode("checkin")}
+        >
+          {copy.nav.checkin}
+        </button>
       </section>
 
       {toolMode === "cleanup" ? (
@@ -337,8 +359,10 @@ export function App() {
         <FileMergePanel parseFile={parseUploadedFile} locale={locale} />
       ) : toolMode === "report" ? (
         <ReportGeneratorPanel parseFile={parseUploadedFile} locale={locale} />
-      ) : (
+      ) : toolMode === "map" ? (
         <ColumnMapperPanel parseFile={parseUploadedFile} locale={locale} />
+      ) : (
+        <VendorCheckInPanel locale={locale} />
       )}
 
       <InquiryPanel locale={locale} />
@@ -384,7 +408,8 @@ export function selectInitialToolMode(search: string): ToolMode {
     requested === "compare" ||
     requested === "merge" ||
     requested === "report" ||
-    requested === "map"
+    requested === "map" ||
+    requested === "checkin"
   ) {
     return requested;
   }

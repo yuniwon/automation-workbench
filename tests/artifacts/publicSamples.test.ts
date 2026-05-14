@@ -19,4 +19,13 @@ describe("public sample files", () => {
     expect(csv.trim()).toBe(sampleOrdersComparisonCsv.trim());
     expect(parseCsv(csv).table.rows).toHaveLength(4);
   });
+
+  it("publishes the QR vendor check-in Apps Script sample", () => {
+    const script = readFileSync("public/samples/vendor-checkin-apps-script.js", "utf8");
+
+    expect(script).toContain("function setupWorkbook()");
+    expect(script).toContain("function doGet(event)");
+    expect(script).toContain("function doPost(event)");
+    expect(script).toContain("Vendor check-in");
+  });
 });

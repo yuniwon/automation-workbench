@@ -25,4 +25,8 @@ export const sampleFiles = {
     href: publicPath("samples/sample-orders-compare.csv"),
     label: "병합 샘플 B",
   },
+  vendorCheckInScript: {
+    href: publicPath("samples/vendor-checkin-apps-script.js"),
+    label: "QR 체크인 Apps Script 샘플",
+  },
 };

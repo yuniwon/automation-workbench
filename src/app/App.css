@@ -106,7 +106,7 @@ h1 {
 
 .tool-switcher {
   display: inline-grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 4px;
   max-width: 100%;
   margin-bottom: 12px;
@@ -694,6 +694,216 @@ td {
   text-decoration: none;
 }
 
+.vendor-checkin-grid {
+  display: grid;
+  grid-template-columns: 320px minmax(300px, 0.85fr) minmax(0, 1.35fr);
+  gap: 12px;
+}
+
+.vendor-flow-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.vendor-step-list {
+  display: grid;
+  gap: 8px;
+}
+
+.vendor-step-list article {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.vendor-step-list b {
+  color: #7170ff;
+  font-size: 12px;
+  font-weight: 590;
+}
+
+.vendor-step-list span {
+  color: #d0d6e0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.vendor-script-link {
+  margin-top: 14px;
+}
+
+.vendor-phone-panel,
+.vendor-links-panel,
+.vendor-sheet-panel,
+.vendor-notification-panel {
+  padding: 16px;
+}
+
+.vendor-phone-panel {
+  grid-row: span 2;
+}
+
+.phone-shell {
+  display: grid;
+  gap: 12px;
+  max-width: 360px;
+  min-height: 560px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    #0f1011;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.22);
+}
+
+.phone-topbar {
+  width: 72px;
+  height: 5px;
+  margin: 0 auto 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.phone-property {
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(113, 112, 255, 0.28);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(113, 112, 255, 0.08);
+}
+
+.phone-property span,
+.phone-shell label {
+  color: #8a8f98;
+  font-size: 12px;
+  font-weight: 510;
+}
+
+.phone-property strong {
+  color: #f7f8f8;
+  font-size: 18px;
+  font-weight: 510;
+}
+
+.phone-property small {
+  color: #a8afb9;
+  font-size: 12px;
+}
+
+.phone-shell label {
+  display: grid;
+  gap: 8px;
+}
+
+.phone-shell input,
+.phone-shell textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #f7f8f8;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.phone-shell p {
+  margin: 0;
+  color: #10b981;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.qr-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.qr-card {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #d0d6e0;
+  text-align: left;
+}
+
+.qr-card.active {
+  border-color: rgba(113, 112, 255, 0.6);
+  background: rgba(113, 112, 255, 0.1);
+}
+
+.qr-card strong {
+  color: #f7f8f8;
+  font-size: 14px;
+  font-weight: 510;
+}
+
+.qr-card span:not(.demo-qr) {
+  width: 100%;
+  overflow: hidden;
+  color: #8a8f98;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.demo-qr {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  padding: 7px;
+  background: #f7f8f8;
+}
+
+.demo-qr i {
+  border-radius: 1px;
+  background: transparent;
+}
+
+.demo-qr i.active {
+  background: #08090a;
+}
+
+.vendor-sheet-panel {
+  grid-column: 2 / 4;
+}
+
+.vendor-log-wrap {
+  max-height: 252px;
+}
+
+.vendor-notification-panel pre {
+  overflow: auto;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  color: #d0d6e0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
 @media (max-width: 1120px) {
   .workspace-grid {
     grid-template-columns: 300px minmax(0, 1fr);
@@ -735,16 +945,23 @@ td {
   .result-summary,
   .workspace-grid,
   .panel-grid,
-  .comparison-summary {
+  .comparison-summary,
+  .vendor-checkin-grid {
     grid-template-columns: 1fr;
   }
 
   .controls-panel,
   .issue-panel,
   .summary-panel,
-  .panel-grid .data-panel {
+  .panel-grid .data-panel,
+  .vendor-phone-panel,
+  .vendor-sheet-panel {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .qr-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .inquiry-steps {

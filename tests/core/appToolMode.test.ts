@@ -5,6 +5,7 @@ describe("selectInitialToolMode", () => {
   it("uses a supported tool query parameter", () => {
     expect(selectInitialToolMode("?tool=report")).toBe("report");
     expect(selectInitialToolMode("?tool=map")).toBe("map");
+    expect(selectInitialToolMode("?tool=checkin")).toBe("checkin");
     expect(selectInitialToolMode("?source=seo-excel-csv-file-merge&tool=merge")).toBe("merge");
   });
 
