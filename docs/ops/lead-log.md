@@ -1086,3 +1086,23 @@ Gmail 검색:
 1. 로그인 없이 배포 가능한 외부 공유용 정적 페이지를 추가한다.
 2. GeekNews 로그인 가능 시 게시 원고를 실제 게시한다.
 3. Gmail 검색은 `pnpm monitor:gmail:query` 결과 기준으로 반복한다.
+
+## 2026-05-14 GitHub Repository Metadata Updated
+
+작업:
+
+- GitHub 저장소 설명을 현재 무료 도구 5종 기준으로 갱신
+- GitHub topics 5개 추가: `file-merge`, `data-reconciliation`, `spreadsheet-automation`, `excel-report`, `korean-tools`
+
+검증:
+
+- `gh repo view yuniwon/automation-workbench --json description,homepageUrl,repositoryTopics,isPrivate,url`
+- 저장소 공개 상태 확인: `isPrivate=false`
+- homepage 확인: `https://yuniwon.github.io/automation-workbench/`
+- description 확인: `무료 엑셀/CSV 정리·비교·병합·정산서 생성·양식 변환 도구와 맞춤 업무 자동화 샘플`
+- topics 20개 확인
+
+판단:
+
+- GitHub 검색과 저장소 방문자의 첫인상에서 현재 기능 범위가 더 정확하게 보인다.
+- 비용 없이 가능한 노출 개선이지만, 실제 Gmail 문의는 아직 별도 확인 필요하다.
