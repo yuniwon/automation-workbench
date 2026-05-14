@@ -32,6 +32,13 @@ describe("use case page generator", () => {
     }
   });
 
+  it("keeps the use case index page in sync with generated HTML", async () => {
+    const generator = await import(pathToFileURL(join(root, "scripts/use-case-pages.mjs")).href);
+    const checkedInHtml = readFileSync(join(root, "public", "use-cases", "index.html"), "utf8");
+
+    expect(generator.renderUseCaseIndex()).toBe(checkedInHtml);
+  });
+
   it("keeps sitemap entries in sync with generated use case URLs", async () => {
     const generator = await import(pathToFileURL(join(root, "scripts/use-case-pages.mjs")).href);
     const sitemap = readFileSync(join(root, "public/sitemap.xml"), "utf8");

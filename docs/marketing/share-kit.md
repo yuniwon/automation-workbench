@@ -6,6 +6,12 @@
 https://yuniwon.github.io/automation-workbench/
 ```
 
+도구 모음 링크:
+
+```text
+https://yuniwon.github.io/automation-workbench/use-cases/
+```
+
 채널별 추적 링크:
 
 ```text
@@ -25,6 +31,7 @@ Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample
 검색용 랜딩 페이지:
 
 ```text
+도구 모음: https://yuniwon.github.io/automation-workbench/use-cases/
 엑셀 중복 제거: https://yuniwon.github.io/automation-workbench/use-cases/excel-duplicate-cleanup.html
 엑셀 빈 값 검사: https://yuniwon.github.io/automation-workbench/use-cases/excel-blank-cell-checker.html
 엑셀 숫자 형식 정리: https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html

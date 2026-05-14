@@ -80,8 +80,24 @@ describe("SEO use case pages", () => {
   it("includes every use case page in sitemap", () => {
     const sitemap = readProjectFile("public/sitemap.xml");
 
+    expect(sitemap).toContain("/automation-workbench/use-cases/");
+
     for (const page of pages) {
       expect(sitemap).toContain(`/automation-workbench/use-cases/${page.path.split("/").at(-1)}`);
+    }
+  });
+
+  it("publishes a use case index page that links to every use case", () => {
+    const html = readProjectFile("public/use-cases/index.html");
+
+    expect(html).toContain("무료 엑셀/CSV 도구 모음");
+    expect(html).toContain("dnjsdndus@gmail.com");
+    expect(html).toContain('property="og:type" content="website"');
+    expect(html).toContain('"@type": "CollectionPage"');
+
+    for (const page of pages) {
+      expect(html).toContain(page.title);
+      expect(html).toContain(page.path.split("/").at(-1));
     }
   });
 });

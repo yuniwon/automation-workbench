@@ -246,6 +246,7 @@ export const useCases = [
 
 export const publicUrls = [
   `${baseUrl}/`,
+  `${baseUrl}/use-cases/`,
   ...useCases.map((useCase) => `${baseUrl}/use-cases/${useCase.slug}.html`),
 ];
 
@@ -301,6 +302,29 @@ function renderJsonLd(useCase) {
         name: "Automation Workbench",
         url: baseUrl,
       },
+    },
+    null,
+    2,
+  )
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+}
+
+function renderIndexJsonLd() {
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "무료 엑셀/CSV 도구 모음",
+      url: `${baseUrl}/use-cases/`,
+      description: "CSV/XLSX 파일 정리, 비교, 병합을 브라우저에서 실행할 수 있는 무료 업무 자동화 도구 모음입니다.",
+      hasPart: useCases.map((useCase) => ({
+        "@type": "WebPage",
+        name: useCase.title.replace(" | Automation Workbench", ""),
+        url: pageUrl(useCase),
+        description: useCase.description,
+      })),
     },
     null,
     2,
@@ -399,6 +423,83 @@ ${useCase.cards.map(renderCard).join("\n")}
 `;
 }
 
+export function renderUseCaseIndex() {
+  const title = "무료 엑셀/CSV 도구 모음 | Automation Workbench";
+  const description = "CSV/XLSX 파일 정리, 비교, 병합을 브라우저에서 실행할 수 있는 무료 업무 자동화 도구 모음입니다.";
+  const canonicalUrl = `${baseUrl}/use-cases/`;
+  const escapedTitle = htmlAttribute(title);
+  const escapedDescription = htmlAttribute(description);
+  const cards = useCases
+    .map(
+      (useCase) => `        <article class="panel card">
+          <h2>${useCase.title.replace(" | Automation Workbench", "")}</h2>
+          <p>${useCase.description}</p>
+          <a class="text-link" href="${appPath}use-cases/${useCase.slug}.html">${useCase.mailTask} 열기</a>
+        </article>`,
+    )
+    .join("\n");
+
+  return `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="${escapedDescription}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${escapedTitle}" />
+    <meta property="og:description" content="${escapedDescription}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="${ogImageUrl}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapedTitle}" />
+    <meta name="twitter:description" content="${escapedDescription}" />
+    <meta name="twitter:image" content="${ogImageUrl}" />
+    <script type="application/ld+json">
+${renderIndexJsonLd()}
+    </script>
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
+    <title>${title}</title>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav">
+        <a href="${appPath}">Automation Workbench</a>
+        <a href="https://github.com/yuniwon/automation-workbench">GitHub</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">무료 업무 자동화 도구</p>
+          <h1>무료 엑셀/CSV 도구 모음</h1>
+          <p class="lede">
+            반복해서 정리, 비교, 병합하는 CSV/XLSX 파일을 브라우저에서 먼저 확인하고
+            실제 업무 파일에 맞춘 자동화 제작 범위를 판단할 수 있습니다.
+          </p>
+        </div>
+        <aside class="panel cta-panel">
+          <strong>도구 모음</strong>
+          <p>계정 없이 바로 실행하고, 필요한 경우 현재 파일 구조에 맞춘 자동화 제작을 문의할 수 있습니다.</p>
+          <a class="button" href="${appPath}?source=seo-use-cases-index">무료 도구 열기</a>
+          <a class="button ghost" href="mailto:${email}?subject=${encodeURIComponent(mailSubject)}">맞춤 제작 문의</a>
+          <p class="trust">
+            파일은 브라우저 안에서 처리됩니다.
+            <a href="https://github.com/yuniwon/automation-workbench/blob/main/PRIVACY.md">개인정보 안내</a>
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+${cards}
+      </section>
+
+      <p class="footer">문의: ${email}</p>
+    </main>
+  </body>
+</html>
+`;
+}
+
 export function renderSitemap() {
   const entries = publicUrls
     .map((url, index) => {
@@ -426,6 +527,7 @@ export async function generateUseCasePages() {
       ...useCases.map((useCase) =>
         writeFile(join(root, "public", "use-cases", `${useCase.slug}.html`), renderUseCasePage(useCase)),
       ),
+      writeFile(join(root, "public", "use-cases", "index.html"), renderUseCaseIndex()),
       writeFile(join(root, "public", "sitemap.xml"), renderSitemap()),
     ],
   );

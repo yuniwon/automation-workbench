@@ -18,6 +18,7 @@ pnpm submit:indexnow
 ## 현재 제출 대상
 
 - `https://yuniwon.github.io/automation-workbench/`
+- `https://yuniwon.github.io/automation-workbench/use-cases/`
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-duplicate-cleanup.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html`

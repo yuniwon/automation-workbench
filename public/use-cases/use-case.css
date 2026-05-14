@@ -115,6 +115,17 @@ h1 {
   text-decoration: none;
 }
 
+.text-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 4px;
+  color: #f7f8f8;
+  font-size: 14px;
+  font-weight: 510;
+  text-decoration-color: rgba(113, 112, 255, 0.54);
+  text-underline-offset: 4px;
+}
+
 .ghost {
   border-color: rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.04);
