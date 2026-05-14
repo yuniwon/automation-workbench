@@ -149,6 +149,11 @@ Upwork에서 본 좋은 공고는 실제 지원 여부와 상관없이 남긴다
 - portfolio sample needed
 - proposal draft path or note
 
+실제 검토 사례:
+
+- `docs/ops/upwork/2026-05-15-qr-vendor-checkin-review.md`
+- `docs/ops/upwork/2026-05-15-qr-vendor-checkin-proposal.md`
+
 ## 현재 제약
 
 - Upwork Connects가 없으면 실제 지원은 불가능하다.
