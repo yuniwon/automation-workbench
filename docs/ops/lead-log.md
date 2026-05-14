@@ -854,3 +854,58 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.14
 1. Google Sheets에 `v0.1.13`과 `v0.1.14` 미반영 행을 추가할지 확인한다.
 2. GeekNews 로그인 후 게시 원고를 실제 게시한다.
 3. 게시 후 Gmail 검색을 반복한다.
+
+## 2026-05-14 Gmail Monitor Query Config Added
+
+작업:
+
+- Gmail 리드 검색어 생성 스크립트 추가
+- `pnpm monitor:gmail:query` 명령 추가
+- 7일/30일 Gmail 검색어와 운영 로그 템플릿을 같은 코드에서 출력하도록 정리
+- `gmail-monitor-runbook.md`와 `gmail-intake-playbook.md`의 검색 기준을 새 스크립트 기준으로 갱신
+
+커밋:
+
+```text
+70471b6 Add Gmail monitor query config
+```
+
+검증:
+
+- TDD RED: `scripts/gmail-monitor-config.mjs`가 없어 `gmailMonitorConfig.test.ts` 3개 테스트 실패 확인
+- `pnpm test tests/core/gmailMonitorConfig.test.ts`: 1 file, 3 tests passed
+- `pnpm test`: 23 files, 56 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+- GitHub Pages 배포 성공: run `25841799173`
+- `pnpm monitor:gmail:query`: 7일/30일 표준 검색어와 로그 템플릿 출력 확인
+
+Gmail 검색:
+
+```text
+to:dnjsdndus@gmail.com newer_than:7d -from:dnjsdndus@gmail.com ("엑셀 자동화 견적" OR "엑셀 자동화 비용" OR "견적 요청 템플릿" OR "service-excel-automation-cost" OR "엑셀 자동화 제작 서비스" OR "엑셀 자동화 외주" OR "service-excel-automation-service" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "엑셀/CSV 자동화" OR "CSV/XLSX" OR "workflow-settlement-reconciliation" OR "workflow-quote-to-invoice" OR "workflow-inventory-sync")
+```
+
+추가 검색:
+
+```text
+to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com ("엑셀 자동화 견적" OR "엑셀 자동화 비용" OR "견적 요청 템플릿" OR "service-excel-automation-cost" OR "엑셀 자동화 제작 서비스" OR "엑셀 자동화 외주" OR "service-excel-automation-service" OR "맞춤 제작 문의" OR "Automation Workbench" OR "automation-workbench" OR "엑셀/CSV 자동화" OR "CSV/XLSX" OR "workflow-settlement-reconciliation" OR "workflow-quote-to-invoice" OR "workflow-inventory-sync")
+```
+
+결과:
+
+- Gmail 후보 0건
+- 실제 문의 0건
+- Google Sheets 기록: 사용자 확인 전까지 append하지 않음
+
+판단:
+
+- Gmail 확인 절차는 이제 사람이 매번 검색식을 다시 만들지 않아도 된다.
+- 실제 Gmail 문의는 아직 0건이다.
+- 다음 병목은 외부 게시 실행 또는 검색 유입을 받을 신규 무료 도구/페이지 확장이다.
+
+다음 액션:
+
+1. GeekNews 로그인 후 게시 원고를 실제 게시한다.
+2. 게시가 계속 막히면 로그인 없이 가능한 다음 무료 도구를 추가한다.
+3. Gmail 검색은 `pnpm monitor:gmail:query` 결과 기준으로 반복한다.
