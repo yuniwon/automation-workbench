@@ -3,6 +3,7 @@ export const serviceInquiryUrl = "https://yuniwon.github.io/automation-workbench
 export const privacyUrl = "https://github.com/yuniwon/automation-workbench/blob/main/PRIVACY.md";
 
 const mailSubject = "엑셀/CSV 자동화 맞춤 제작 문의";
+const englishMailSubject = "Custom Excel/CSV automation inquiry";
 
 function cleanSource(source?: string) {
   return (source ?? "").replace(/[\r\n\t]+/g, " ").trim().slice(0, 80);
@@ -28,9 +29,42 @@ function buildTrackedToolUrl(source?: string, tool?: string) {
   return query ? `${toolUrl}?${query}` : toolUrl;
 }
 
-function buildMailBody(source?: string, tool?: string) {
+function buildMailBody(source?: string, tool?: string, locale: "ko" | "en" = "ko") {
   const sourceLabel = cleanSource(source);
   const toolLabel = cleanTool(tool);
+  if (locale === "en") {
+    const sourceLine = sourceLabel ? `\nSource:\n- ${sourceLabel}\n` : "";
+    const toolLine = toolLabel ? `\nSelected tool:\n- ${toolLabel}\n` : "";
+
+    return `Hello.
+
+I tried the free Excel/CSV cleanup, comparison, merge, report, and column-mapping tool and would like to ask about custom automation.
+Tool link: ${buildTrackedToolUrl(sourceLabel, toolLabel)}
+${sourceLine}
+${toolLine}
+
+Workflow I want to automate:
+- Please describe it here
+
+Current file format:
+- CSV / XLSX / Google Sheets / Other:
+
+Repeated manual steps:
+- Please describe them here
+
+Current time spent manually:
+- Example: 2 hours per week / 30 minutes per day / 5 minutes per item
+
+Needed output:
+- Example: CSV download / Excel report / Google Sheets update / email notification
+
+Target deadline:
+- Please write it here
+
+Can I share a sample file?
+- Yes / Yes with sensitive values masked / Not easily
+`;
+  }
   const sourceLine = sourceLabel ? `\n유입 경로:\n- ${sourceLabel}\n` : "";
   const toolLine = toolLabel ? `\n선택 도구:\n- ${toolLabel}\n` : "";
 
@@ -73,8 +107,8 @@ export const inquiryChecklist = [
   "마감일과 샘플 공유",
 ];
 
-export function buildInquiryText(source?: string, tool?: string) {
-  return buildMailBody(source, tool);
+export function buildInquiryText(source?: string, tool?: string, locale: "ko" | "en" = "ko") {
+  return buildMailBody(source, tool, locale);
 }
 
 export function getSourceFromSearch(search: string) {
@@ -87,9 +121,9 @@ export function getToolFromSearch(search: string) {
   return cleanTool(params.get("tool") ?? "");
 }
 
-export function buildContactHref(source?: string, tool?: string) {
-  return `mailto:dnjsdndus@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(
-    buildMailBody(source, tool),
+export function buildContactHref(source?: string, tool?: string, locale: "ko" | "en" = "ko") {
+  return `mailto:dnjsdndus@gmail.com?subject=${encodeURIComponent(locale === "en" ? englishMailSubject : mailSubject)}&body=${encodeURIComponent(
+    buildMailBody(source, tool, locale),
   )}`;
 }
 

@@ -1,12 +1,26 @@
+import type { AppLocale } from "../app/App";
 import type { DataIssue } from "../core/table/types";
 
 interface IssuePanelProps {
   issues: DataIssue[];
   diagnostics: string[];
+  locale?: AppLocale;
 }
 
-export function IssuePanel({ issues, diagnostics }: IssuePanelProps) {
+const copy = {
+  ko: {
+    empty: "감지된 문제가 없습니다.",
+    details: (count: number) => `상세 이슈 ${count}건 보기`,
+  },
+  en: {
+    empty: "No issues detected.",
+    details: (count: number) => `Show ${count} detailed issues`,
+  },
+};
+
+export function IssuePanel({ issues, diagnostics, locale = "ko" }: IssuePanelProps) {
   const issueGroups = countByType(issues);
+  const text = copy[locale];
 
   return (
     <section className="panel issue-panel">
@@ -31,10 +45,10 @@ export function IssuePanel({ issues, diagnostics }: IssuePanelProps) {
         </div>
       )}
       {issues.length === 0 ? (
-        <p className="empty-state">감지된 문제가 없습니다.</p>
+        <p className="empty-state">{text.empty}</p>
       ) : (
         <details className="issue-details" open={issues.length <= 16}>
-          <summary>상세 이슈 {issues.length}건 보기</summary>
+          <summary>{text.details(issues.length)}</summary>
           <div className="issue-list">
             {issues.map((issue) => (
             <article className={`issue-item ${issue.severity}`} key={issue.id}>

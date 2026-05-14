@@ -26,37 +26,108 @@ import { createGroupedSummary } from "../core/transform/transforms";
 import { downloadBlob } from "../utils/downloadBlob";
 
 export type ToolMode = "cleanup" | "compare" | "merge" | "report" | "map";
+export type AppLocale = "ko" | "en";
 
-const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: string; defaultStatusValue: number }> = {
-  cleanup: {
-    title: "엑셀/CSV 자동 정리",
-    lede: "주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤 바로 CSV로 내려받을 수 있습니다.",
-    statusLabel: "rows",
-    defaultStatusValue: 0,
+const appCopy: Record<
+  AppLocale,
+  {
+    eyebrow: string;
+    titleSuffix: string;
+    sampleSourceName: string;
+    modeSuffix: string;
+    nav: Record<ToolMode, string>;
+    tools: Record<ToolMode, { title: string; lede: string; statusLabel: string; defaultStatusValue: number }>;
+  }
+> = {
+  ko: {
+    eyebrow: "무료 엑셀/CSV 도구",
+    titleSuffix: "도구",
+    sampleSourceName: "샘플 주문 데이터",
+    modeSuffix: "모드",
+    nav: {
+      cleanup: "정리 도구",
+      compare: "비교 도구",
+      merge: "병합 도구",
+      report: "정산서 도구",
+      map: "양식 변환",
+    },
+    tools: {
+      cleanup: {
+        title: "엑셀/CSV 자동 정리",
+        lede: "주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤 바로 CSV로 내려받을 수 있습니다.",
+        statusLabel: "rows",
+        defaultStatusValue: 0,
+      },
+      compare: {
+        title: "엑셀/CSV 파일 비교",
+        lede: "두 파일을 같은 키 기준으로 비교해서 추가, 삭제, 변경된 행을 확인하고 결과 CSV로 내려받을 수 있습니다.",
+        statusLabel: "files",
+        defaultStatusValue: 2,
+      },
+      merge: {
+        title: "엑셀/CSV 파일 병합",
+        lede: "여러 CSV/XLSX 파일을 같은 열 구조로 맞춰 세로로 합치고 원본 파일명을 포함한 결과 CSV로 내려받을 수 있습니다.",
+        statusLabel: "files",
+        defaultStatusValue: 2,
+      },
+      report: {
+        title: "견적서/정산서 자동 생성",
+        lede: "주문 파일에서 고객, 품목, 금액 열을 골라 그룹별 정산서를 만들고 CSV 또는 HTML로 내려받을 수 있습니다.",
+        statusLabel: "report",
+        defaultStatusValue: 1,
+      },
+      map: {
+        title: "엑셀 열 매핑 양식 변환",
+        lede: "제각각인 주문 파일 열을 표준 주문 양식으로 맞추고 결과 CSV를 내려받을 수 있습니다.",
+        statusLabel: "columns",
+        defaultStatusValue: defaultOrderMappingTargets.length,
+      },
+    },
   },
-  compare: {
-    title: "엑셀/CSV 파일 비교",
-    lede: "두 파일을 같은 키 기준으로 비교해서 추가, 삭제, 변경된 행을 확인하고 결과 CSV로 내려받을 수 있습니다.",
-    statusLabel: "files",
-    defaultStatusValue: 2,
-  },
-  merge: {
-    title: "엑셀/CSV 파일 병합",
-    lede: "여러 CSV/XLSX 파일을 같은 열 구조로 맞춰 세로로 합치고 원본 파일명을 포함한 결과 CSV로 내려받을 수 있습니다.",
-    statusLabel: "files",
-    defaultStatusValue: 2,
-  },
-  report: {
-    title: "견적서/정산서 자동 생성",
-    lede: "주문 파일에서 고객, 품목, 금액 열을 골라 그룹별 정산서를 만들고 CSV 또는 HTML로 내려받을 수 있습니다.",
-    statusLabel: "report",
-    defaultStatusValue: 1,
-  },
-  map: {
-    title: "엑셀 열 매핑 양식 변환",
-    lede: "제각각인 주문 파일 열을 표준 주문 양식으로 맞추고 결과 CSV를 내려받을 수 있습니다.",
-    statusLabel: "columns",
-    defaultStatusValue: defaultOrderMappingTargets.length,
+  en: {
+    eyebrow: "Free Excel/CSV tool",
+    titleSuffix: "tool",
+    sampleSourceName: "Sample order data",
+    modeSuffix: "mode",
+    nav: {
+      cleanup: "Cleanup",
+      compare: "Compare",
+      merge: "Merge",
+      report: "Reports",
+      map: "Column mapping",
+    },
+    tools: {
+      cleanup: {
+        title: "Excel/CSV auto cleanup",
+        lede: "Check and clean recurring order, settlement, and inventory spreadsheets, then download the result as CSV.",
+        statusLabel: "rows",
+        defaultStatusValue: 0,
+      },
+      compare: {
+        title: "Excel/CSV file comparison",
+        lede: "Compare two files by a matching key, review added, removed, and changed rows, then export the result.",
+        statusLabel: "files",
+        defaultStatusValue: 2,
+      },
+      merge: {
+        title: "Excel/CSV file merge",
+        lede: "Combine multiple CSV/XLSX files into one aligned table with the source filename included in the output.",
+        statusLabel: "files",
+        defaultStatusValue: 2,
+      },
+      report: {
+        title: "Estimate and settlement report generator",
+        lede: "Pick customer, item, and amount columns from an order file to create grouped settlement reports.",
+        statusLabel: "report",
+        defaultStatusValue: 1,
+      },
+      map: {
+        title: "Excel column mapping template",
+        lede: "Map inconsistent order-file columns into a standard order template and download the normalized CSV.",
+        statusLabel: "columns",
+        defaultStatusValue: defaultOrderMappingTargets.length,
+      },
+    },
   },
 };
 
@@ -70,11 +141,13 @@ function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
 
 export function App() {
   const initial = useMemo(loadInitialTable, []);
+  const locale = selectInitialLocale(typeof window === "undefined" ? "" : window.location.search);
+  const copy = appCopy[locale];
   const [toolMode, setToolMode] = useState<ToolMode>(() =>
     selectInitialToolMode(typeof window === "undefined" ? "" : window.location.search),
   );
-  const currentToolCopy = toolCopy[toolMode];
-  const [sourceName, setSourceName] = useState("샘플 주문 데이터");
+  const currentToolCopy = copy.tools[toolMode];
+  const [sourceName, setSourceName] = useState(copy.sampleSourceName);
   const [originalTable, setOriginalTable] = useState(initial.table);
   const [currentTable, setCurrentTable] = useState(initial.table);
   const [issues, setIssues] = useState(initial.issues);
@@ -102,7 +175,7 @@ export function App() {
   function resetToSample() {
     const parsed = parseCsv(sampleOrdersCsv);
     const nextIssues = [...parsed.issues, ...scanDataQuality(parsed.table)];
-    setSourceName("샘플 주문 데이터");
+    setSourceName(copy.sampleSourceName);
     setOriginalTable(parsed.table);
     setCurrentTable(parsed.table);
     setIssues(nextIssues);
@@ -165,15 +238,15 @@ export function App() {
     <main className="app-shell">
       <section className="topbar">
         <div>
-          <p className="eyebrow">무료 엑셀/CSV 도구</p>
+          <p className="eyebrow">{copy.eyebrow}</p>
           <h1>
             {currentToolCopy.title}{" "}
-            <span className="title-keep">도구</span>
+            <span className="title-keep">{copy.titleSuffix}</span>
           </h1>
           <p className="lede">{currentToolCopy.lede}</p>
         </div>
         <div className="status-strip" aria-label="Current data status">
-          <span>{toolMode === "cleanup" ? sourceName : `${currentToolCopy.title} 모드`}</span>
+          <span>{toolMode === "cleanup" ? sourceName : `${currentToolCopy.title} ${copy.modeSuffix}`}</span>
           <strong>{statusValue}</strong>
           <span>{currentToolCopy.statusLabel}</span>
         </div>
@@ -185,35 +258,35 @@ export function App() {
           type="button"
           onClick={() => setToolMode("cleanup")}
         >
-          정리 도구
+          {copy.nav.cleanup}
         </button>
         <button
           className={toolMode === "compare" ? "active" : ""}
           type="button"
           onClick={() => setToolMode("compare")}
         >
-          비교 도구
+          {copy.nav.compare}
         </button>
         <button
           className={toolMode === "merge" ? "active" : ""}
           type="button"
           onClick={() => setToolMode("merge")}
         >
-          병합 도구
+          {copy.nav.merge}
         </button>
         <button
           className={toolMode === "report" ? "active" : ""}
           type="button"
           onClick={() => setToolMode("report")}
         >
-          정산서 도구
+          {copy.nav.report}
         </button>
         <button
           className={toolMode === "map" ? "active" : ""}
           type="button"
           onClick={() => setToolMode("map")}
         >
-          양식 변환
+          {copy.nav.map}
         </button>
       </section>
 
@@ -238,7 +311,7 @@ export function App() {
             </div>
           </section>
 
-          <ResultSummary metrics={runMetrics} />
+          <ResultSummary locale={locale} metrics={runMetrics} />
 
           <section className="workspace-grid">
             <WorkflowControls
@@ -251,23 +324,24 @@ export function App() {
               onOptionsChange={setOptions}
               onResetSample={resetToSample}
               onRunCleanup={runCleanup}
+              locale={locale}
             />
             <DataPreview table={currentTable} />
-            <IssuePanel issues={issues} diagnostics={diagnostics} />
-            <SummaryPanel groups={summaryGroups} />
+            <IssuePanel issues={issues} diagnostics={diagnostics} locale={locale} />
+            <SummaryPanel groups={summaryGroups} locale={locale} />
           </section>
         </>
       ) : toolMode === "compare" ? (
-        <FileComparisonPanel parseFile={parseUploadedFile} />
+        <FileComparisonPanel parseFile={parseUploadedFile} locale={locale} />
       ) : toolMode === "merge" ? (
-        <FileMergePanel parseFile={parseUploadedFile} />
+        <FileMergePanel parseFile={parseUploadedFile} locale={locale} />
       ) : toolMode === "report" ? (
-        <ReportGeneratorPanel parseFile={parseUploadedFile} />
+        <ReportGeneratorPanel parseFile={parseUploadedFile} locale={locale} />
       ) : (
-        <ColumnMapperPanel parseFile={parseUploadedFile} />
+        <ColumnMapperPanel parseFile={parseUploadedFile} locale={locale} />
       )}
 
-      <InquiryPanel />
+      <InquiryPanel locale={locale} />
     </main>
   );
 }
@@ -315,4 +389,9 @@ export function selectInitialToolMode(search: string): ToolMode {
     return requested;
   }
   return "cleanup";
+}
+
+export function selectInitialLocale(search: string): AppLocale {
+  const requested = new URLSearchParams(search).get("lang");
+  return requested === "en" ? "en" : "ko";
 }

@@ -1,4 +1,5 @@
 import { useMemo, useState, type ChangeEvent } from "react";
+import type { AppLocale } from "../app/App";
 import { parseCsv } from "../core/input/csvInputAdapter";
 import { tableToCsv } from "../core/output/csvOutputAdapter";
 import { createSettlementReport, settlementReportToHtml } from "../core/report/settlementReport";
@@ -9,14 +10,16 @@ import { DataPreview } from "./DataPreview";
 
 interface ReportGeneratorPanelProps {
   parseFile: (file: File) => Promise<TableParseResult>;
+  locale?: AppLocale;
 }
 
-export function ReportGeneratorPanel({ parseFile }: ReportGeneratorPanelProps) {
+export function ReportGeneratorPanel({ locale = "ko", parseFile }: ReportGeneratorPanelProps) {
+  const text = locale === "en" ? enCopy : koCopy;
   const initialTable = useMemo(() => parseCsv(sampleOrdersCsv).table, []);
-  const [sourceName, setSourceName] = useState("샘플 주문 데이터");
+  const [sourceName, setSourceName] = useState(text.sampleSource);
   const [table, setTable] = useState(initialTable);
-  const [message, setMessage] = useState("샘플 주문 데이터로 고객별 정산서를 생성합니다.");
-  const [reportTitle, setReportTitle] = useState("고객별 정산서 샘플");
+  const [message, setMessage] = useState(text.initialMessage);
+  const [reportTitle, setReportTitle] = useState(text.reportTitle);
   const [groupColumnKey, setGroupColumnKey] = useState(selectColumn(initialTable, ["customer_name", "customer", "고객명"]));
   const [itemColumnKey, setItemColumnKey] = useState(selectColumn(initialTable, ["product", "item", "상품명"]));
   const [amountColumnKey, setAmountColumnKey] = useState(selectColumn(initialTable, ["amount", "total", "price", "금액"]));
@@ -39,7 +42,7 @@ export function ReportGeneratorPanel({ parseFile }: ReportGeneratorPanelProps) {
 
     const parsed = await parseFile(file);
     if (parsed.issues.some((issue) => issue.severity === "error")) {
-      setMessage(`${file.name} 파일을 읽지 못했습니다.`);
+      setMessage(text.fileReadFailed(file.name));
       return;
     }
 
@@ -48,18 +51,18 @@ export function ReportGeneratorPanel({ parseFile }: ReportGeneratorPanelProps) {
     setGroupColumnKey(selectColumn(parsed.table, ["customer_name", "customer", "고객명", "거래처"]));
     setItemColumnKey(selectColumn(parsed.table, ["product", "item", "상품명", "품목"]));
     setAmountColumnKey(selectColumn(parsed.table, ["amount", "total", "price", "금액", "합계"]));
-    setMessage(`${file.name} 파일로 정산서를 생성합니다.`);
+    setMessage(text.reportMessage(file.name));
   }
 
   function resetSample() {
     const sample = parseCsv(sampleOrdersCsv).table;
-    setSourceName("샘플 주문 데이터");
+    setSourceName(text.sampleSource);
     setTable(sample);
-    setReportTitle("고객별 정산서 샘플");
+    setReportTitle(text.reportTitle);
     setGroupColumnKey(selectColumn(sample, ["customer_name", "customer", "고객명"]));
     setItemColumnKey(selectColumn(sample, ["product", "item", "상품명"]));
     setAmountColumnKey(selectColumn(sample, ["amount", "total", "price", "금액"]));
-    setMessage("샘플 주문 데이터로 고객별 정산서를 생성합니다.");
+    setMessage(text.initialMessage);
   }
 
   function downloadReportCsv() {
@@ -79,33 +82,33 @@ export function ReportGeneratorPanel({ parseFile }: ReportGeneratorPanelProps) {
         </div>
 
         <label className="file-drop">
-          <span>정산서 자동 생성</span>
-          <strong>파일 선택</strong>
+          <span>{text.uploadTitle}</span>
+          <strong>{text.chooseFile}</strong>
           <small>{sourceName}</small>
           <input type="file" accept=".csv,.xlsx,text/csv" onChange={(event) => void handleUpload(event)} />
         </label>
 
         <label className="field-label report-title-field">
-          정산서 제목
+          {text.titleLabel}
           <input value={reportTitle} onChange={(event) => setReportTitle(event.target.value)} />
         </label>
 
         <div className="control-stack">
-          <ColumnSelect label="그룹 기준 열" value={groupColumnKey} table={table} onChange={setGroupColumnKey} />
-          <ColumnSelect label="품목 열" value={itemColumnKey} table={table} onChange={setItemColumnKey} />
-          <ColumnSelect label="금액 열" value={amountColumnKey} table={table} onChange={setAmountColumnKey} />
+          <ColumnSelect label={text.groupColumn} value={groupColumnKey} table={table} onChange={setGroupColumnKey} />
+          <ColumnSelect label={text.itemColumn} value={itemColumnKey} table={table} onChange={setItemColumnKey} />
+          <ColumnSelect label={text.amountColumn} value={amountColumnKey} table={table} onChange={setAmountColumnKey} />
         </div>
 
         <div className="button-row">
           <button className="primary-button" type="button" onClick={downloadReportCsv}>
-            정산 CSV 받기
+            {text.downloadCsv}
           </button>
           <button className="ghost-button" type="button" onClick={downloadReportHtml}>
-            정산 HTML 받기
+            {text.downloadHtml}
           </button>
         </div>
         <button className="text-button" type="button" onClick={resetSample}>
-          샘플 정산서로 되돌리기
+          {text.reset}
         </button>
         <p className="control-note">{message}</p>
       </aside>
@@ -120,11 +123,11 @@ export function ReportGeneratorPanel({ parseFile }: ReportGeneratorPanelProps) {
           <strong>{report.summary.rowCount}</strong>
         </div>
         <div className="metric-panel">
-          <span>총 금액</span>
-          <strong>{formatCurrency(report.summary.totalAmount)}</strong>
+          <span>{text.totalAmount}</span>
+          <strong>{formatCurrency(report.summary.totalAmount, locale)}</strong>
         </div>
         <div className="metric-panel">
-          <span>금액 오류</span>
+          <span>{text.amountErrors}</span>
           <strong>{report.summary.invalidAmountRows}</strong>
         </div>
       </section>
@@ -165,6 +168,44 @@ function selectColumn(table: DataTable, preferredKeys: string[]): string {
   );
 }
 
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("ko-KR", { maximumFractionDigits: 0 }).format(value);
+function formatCurrency(value: number, locale: AppLocale): string {
+  return new Intl.NumberFormat(locale === "en" ? "en-US" : "ko-KR", { maximumFractionDigits: 0 }).format(value);
 }
+
+const koCopy = {
+  sampleSource: "샘플 주문 데이터",
+  initialMessage: "샘플 주문 데이터로 고객별 정산서를 생성합니다.",
+  reportTitle: "고객별 정산서 샘플",
+  uploadTitle: "정산서 자동 생성",
+  chooseFile: "파일 선택",
+  titleLabel: "정산서 제목",
+  groupColumn: "그룹 기준 열",
+  itemColumn: "품목 열",
+  amountColumn: "금액 열",
+  downloadCsv: "정산 CSV 받기",
+  downloadHtml: "정산 HTML 받기",
+  reset: "샘플 정산서로 되돌리기",
+  totalAmount: "총 금액",
+  amountErrors: "금액 오류",
+  fileReadFailed: (name: string) => `${name} 파일을 읽지 못했습니다.`,
+  reportMessage: (name: string) => `${name} 파일로 정산서를 생성합니다.`,
+};
+
+const enCopy = {
+  sampleSource: "Sample order data",
+  initialMessage: "Create a customer settlement report from the sample order data.",
+  reportTitle: "Customer settlement sample",
+  uploadTitle: "Generate settlement report",
+  chooseFile: "Choose file",
+  titleLabel: "Report title",
+  groupColumn: "Group column",
+  itemColumn: "Item column",
+  amountColumn: "Amount column",
+  downloadCsv: "Download report CSV",
+  downloadHtml: "Download report HTML",
+  reset: "Reset sample report",
+  totalAmount: "Total amount",
+  amountErrors: "Amount errors",
+  fileReadFailed: (name: string) => `Could not read ${name}.`,
+  reportMessage: (name: string) => `Creating a settlement report from ${name}.`,
+};

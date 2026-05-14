@@ -1,4 +1,5 @@
 import { useMemo, useState, type ChangeEvent } from "react";
+import type { AppLocale } from "../app/App";
 import { mapTableColumns, suggestColumnMappings, type ColumnMappingTarget } from "../core/map/mapTableColumns";
 import { defaultOrderMappingTargets } from "../core/map/orderMappingTargets";
 import { parseCsv } from "../core/input/csvInputAdapter";
@@ -12,17 +13,20 @@ interface ColumnMapperPanelProps {
   parseFile: (file: File) => Promise<TableParseResult>;
   targetFields?: ColumnMappingTarget[];
   outputFilename?: string;
+  locale?: AppLocale;
 }
 
 export function ColumnMapperPanel({
+  locale = "ko",
   outputFilename = "mapped-order-template.csv",
   parseFile,
   targetFields = defaultOrderMappingTargets,
 }: ColumnMapperPanelProps) {
+  const text = locale === "en" ? enCopy : koCopy;
   const initialTable = useMemo(() => parseCsv(sampleOrdersCsv).table, []);
-  const [sourceName, setSourceName] = useState("샘플 주문 데이터");
+  const [sourceName, setSourceName] = useState(text.sampleSource);
   const [table, setTable] = useState(initialTable);
-  const [message, setMessage] = useState("샘플 주문 데이터를 표준 주문 양식으로 변환합니다.");
+  const [message, setMessage] = useState(text.initialMessage);
   const [mappings, setMappings] = useState<Record<string, string>>(() =>
     suggestColumnMappings(initialTable, targetFields),
   );
@@ -45,22 +49,22 @@ export function ColumnMapperPanel({
 
     const parsed = await parseFile(file);
     if (parsed.issues.some((issue) => issue.severity === "error")) {
-      setMessage(`${file.name} 파일을 읽지 못했습니다.`);
+      setMessage(text.fileReadFailed(file.name));
       return;
     }
 
     setSourceName(file.name);
     setTable(parsed.table);
     setMappings(suggestColumnMappings(parsed.table, targetFields));
-    setMessage(`${file.name} 파일을 표준 주문 양식으로 변환합니다.`);
+    setMessage(text.mapMessage(file.name));
   }
 
   function resetSample() {
     const sample = parseCsv(sampleOrdersCsv).table;
-    setSourceName("샘플 주문 데이터");
+    setSourceName(text.sampleSource);
     setTable(sample);
     setMappings(suggestColumnMappings(sample, targetFields));
-    setMessage("샘플 주문 데이터를 표준 주문 양식으로 변환합니다.");
+    setMessage(text.initialMessage);
   }
 
   function updateMapping(targetKey: string, sourceColumnKey: string) {
@@ -83,8 +87,8 @@ export function ColumnMapperPanel({
         </div>
 
         <label className="file-drop">
-          <span>양식 변환</span>
-          <strong>파일 선택</strong>
+          <span>{text.uploadTitle}</span>
+          <strong>{text.chooseFile}</strong>
           <small>{sourceName}</small>
           <input type="file" accept=".csv,.xlsx,text/csv" onChange={(event) => void handleUpload(event)} />
         </label>
@@ -94,6 +98,7 @@ export function ColumnMapperPanel({
             <MappingSelect
               key={target.key}
               label={target.label}
+              emptyLabel={text.notMapped}
               table={table}
               value={mappings[target.key] ?? ""}
               onChange={(sourceColumnKey) => updateMapping(target.key, sourceColumnKey)}
@@ -103,10 +108,10 @@ export function ColumnMapperPanel({
 
         <div className="button-row">
           <button className="primary-button" type="button" onClick={downloadMappedCsv}>
-            표준 양식 CSV 받기
+            {text.download}
           </button>
           <button className="ghost-button" type="button" onClick={resetSample}>
-            샘플 양식
+            {text.reset}
           </button>
         </div>
         <p className="control-note">{message}</p>
@@ -137,18 +142,19 @@ export function ColumnMapperPanel({
 }
 
 interface MappingSelectProps {
+  emptyLabel: string;
   label: string;
   table: DataTable;
   value: string;
   onChange: (value: string) => void;
 }
 
-function MappingSelect({ label, onChange, table, value }: MappingSelectProps) {
+function MappingSelect({ emptyLabel, label, onChange, table, value }: MappingSelectProps) {
   return (
     <label className="field-label">
       {label}
       <select value={value} onChange={(event) => onChange(event.target.value)}>
-        <option value="">매핑 안 함</option>
+        <option value="">{emptyLabel}</option>
         {table.columns.map((column) => (
           <option key={column.key} value={column.key}>
             {column.label}
@@ -158,3 +164,27 @@ function MappingSelect({ label, onChange, table, value }: MappingSelectProps) {
     </label>
   );
 }
+
+const koCopy = {
+  sampleSource: "샘플 주문 데이터",
+  initialMessage: "샘플 주문 데이터를 표준 주문 양식으로 변환합니다.",
+  uploadTitle: "양식 변환",
+  chooseFile: "파일 선택",
+  notMapped: "매핑 안 함",
+  download: "표준 양식 CSV 받기",
+  reset: "샘플 양식",
+  fileReadFailed: (name: string) => `${name} 파일을 읽지 못했습니다.`,
+  mapMessage: (name: string) => `${name} 파일을 표준 주문 양식으로 변환합니다.`,
+};
+
+const enCopy = {
+  sampleSource: "Sample order data",
+  initialMessage: "Map the sample order data into a standard order template.",
+  uploadTitle: "Column mapping",
+  chooseFile: "Choose file",
+  notMapped: "Not mapped",
+  download: "Download mapped CSV",
+  reset: "Sample template",
+  fileReadFailed: (name: string) => `Could not read ${name}.`,
+  mapMessage: (name: string) => `Mapping ${name} into the standard order template.`,
+};

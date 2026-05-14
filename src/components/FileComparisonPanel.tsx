@@ -1,4 +1,5 @@
 import { useMemo, useState, type ChangeEvent } from "react";
+import type { AppLocale } from "../app/App";
 import { sampleFiles } from "../config/sampleFiles";
 import { compareTables, comparisonToTable } from "../core/compare/compareTables";
 import { parseCsv } from "../core/input/csvInputAdapter";
@@ -11,6 +12,7 @@ import { DataPreview } from "./DataPreview";
 interface FileComparisonPanelProps {
   parseFile: (file: File) => Promise<TableParseResult>;
   preferredKeyColumns?: string[];
+  locale?: AppLocale;
 }
 
 interface ComparisonSource {
@@ -21,14 +23,16 @@ interface ComparisonSource {
 const defaultPreferredKeyColumns = ["order_id", "id", "sku", "invoice_id", "상품코드", "주문번호", "거래번호"];
 
 export function FileComparisonPanel({
+  locale = "ko",
   parseFile,
   preferredKeyColumns = defaultPreferredKeyColumns,
 }: FileComparisonPanelProps) {
-  const initial = useMemo(loadComparisonSample, []);
+  const text = locale === "en" ? enCopy : koCopy;
+  const initial = useMemo(() => loadComparisonSample(locale), [locale]);
   const [baseSource, setBaseSource] = useState<ComparisonSource>(initial.baseSource);
   const [compareSource, setCompareSource] = useState<ComparisonSource>(initial.compareSource);
   const [keyColumn, setKeyColumn] = useState(initial.keyColumn);
-  const [message, setMessage] = useState("샘플 주문 파일 2개를 order_id 기준으로 비교합니다.");
+  const [message, setMessage] = useState(text.initialMessage);
 
   const keyColumns = useMemo(
     () => findSharedColumns(baseSource.table, compareSource.table),
@@ -52,7 +56,7 @@ export function FileComparisonPanel({
 
     const parsed = await parseFile(file);
     if (parsed.issues.some((issue) => issue.severity === "error")) {
-      setMessage(`${file.name} 파일을 읽지 못했습니다.`);
+      setMessage(text.fileReadFailed(file.name));
       return;
     }
 
@@ -71,15 +75,15 @@ export function FileComparisonPanel({
       setCompareSource(nextCompare);
     }
     setKeyColumn(nextKeyColumn);
-    setMessage(`${nextBase.name} 파일과 ${nextCompare.name} 파일을 비교합니다.`);
+    setMessage(text.compareMessage(nextBase.name, nextCompare.name));
   }
 
   function resetSample() {
-    const next = loadComparisonSample();
+    const next = loadComparisonSample(locale);
     setBaseSource(next.baseSource);
     setCompareSource(next.compareSource);
     setKeyColumn(next.keyColumn);
-    setMessage("샘플 주문 파일 2개를 order_id 기준으로 비교합니다.");
+    setMessage(text.initialMessage);
   }
 
   function downloadComparisonCsv() {
@@ -95,29 +99,29 @@ export function FileComparisonPanel({
         </div>
 
         <label className="file-drop">
-          <span>기준 파일 A</span>
-          <strong>파일 선택</strong>
+          <span>{text.baseFile}</span>
+          <strong>{text.chooseFile}</strong>
           <small>{baseSource.name}</small>
           <input type="file" accept=".csv,.xlsx,text/csv" onChange={(event) => void handleUpload("base", event)} />
         </label>
 
         <label className="file-drop comparison-file-drop">
-          <span>비교 파일 B</span>
-          <strong>파일 선택</strong>
+          <span>{text.compareFile}</span>
+          <strong>{text.chooseFile}</strong>
           <small>{compareSource.name}</small>
           <input type="file" accept=".csv,.xlsx,text/csv" onChange={(event) => void handleUpload("compare", event)} />
         </label>
         <div className="sample-links comparison-sample-links" aria-label="Sample comparison CSV downloads">
           <a className="sample-link" href={sampleFiles.comparisonBase.href} download>
-            {sampleFiles.comparisonBase.label}
+            {text.sampleA}
           </a>
           <a className="sample-link" href={sampleFiles.comparisonTarget.href} download>
-            {sampleFiles.comparisonTarget.label}
+            {text.sampleB}
           </a>
         </div>
 
         <label className="field-label">
-          매칭 기준 열
+          {text.keyColumn}
           <select value={effectiveKeyColumn} onChange={(event) => setKeyColumn(event.target.value)}>
             {keyColumns.map((column) => (
               <option key={column.key} value={column.key}>
@@ -129,10 +133,10 @@ export function FileComparisonPanel({
 
         <div className="button-row">
           <button className="primary-button" type="button" onClick={downloadComparisonCsv} disabled={!comparison}>
-            결과 CSV 받기
+            {text.download}
           </button>
           <button className="ghost-button" type="button" onClick={resetSample}>
-            샘플 비교
+            {text.reset}
           </button>
         </div>
         <p className="control-note">{message}</p>
@@ -162,13 +166,14 @@ export function FileComparisonPanel({
   );
 }
 
-function loadComparisonSample() {
+function loadComparisonSample(locale: AppLocale) {
+  const text = locale === "en" ? enCopy : koCopy;
   const baseSource = {
-    name: "샘플 주문 파일 A",
+    name: text.sampleSourceA,
     table: parseCsv(sampleOrdersCsv).table,
   };
   const compareSource = {
-    name: "샘플 주문 파일 B",
+    name: text.sampleSourceB,
     table: parseCsv(sampleOrdersComparisonCsv).table,
   };
 
@@ -178,6 +183,38 @@ function loadComparisonSample() {
     keyColumn: selectDefaultComparisonKey(baseSource.table, compareSource.table),
   };
 }
+
+const koCopy = {
+  initialMessage: "샘플 주문 파일 2개를 order_id 기준으로 비교합니다.",
+  baseFile: "기준 파일 A",
+  compareFile: "비교 파일 B",
+  chooseFile: "파일 선택",
+  sampleA: "파일 A 샘플",
+  sampleB: "파일 B 샘플",
+  sampleSourceA: "샘플 주문 파일 A",
+  sampleSourceB: "샘플 주문 파일 B",
+  keyColumn: "매칭 기준 열",
+  download: "결과 CSV 받기",
+  reset: "샘플 비교",
+  fileReadFailed: (name: string) => `${name} 파일을 읽지 못했습니다.`,
+  compareMessage: (base: string, target: string) => `${base} 파일과 ${target} 파일을 비교합니다.`,
+};
+
+const enCopy = {
+  initialMessage: "Compare two sample order files by order_id.",
+  baseFile: "Base file A",
+  compareFile: "Compare file B",
+  chooseFile: "Choose file",
+  sampleA: "Sample file A",
+  sampleB: "Sample file B",
+  sampleSourceA: "Sample order file A",
+  sampleSourceB: "Sample order file B",
+  keyColumn: "Matching key column",
+  download: "Download result CSV",
+  reset: "Sample comparison",
+  fileReadFailed: (name: string) => `Could not read ${name}.`,
+  compareMessage: (base: string, target: string) => `Comparing ${base} with ${target}.`,
+};
 
 function findSharedColumns(baseTable: DataTable, compareTable: DataTable) {
   const compareKeys = new Set(compareTable.columns.map((column) => column.key));
