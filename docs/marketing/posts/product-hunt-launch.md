@@ -55,6 +55,7 @@ The project is open on GitHub and hosted on GitHub Pages.
 
 - Demo URL: https://yuniwon.github.io/automation-workbench/?source=product-hunt
 - Custom automation inquiry: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+- Workflow examples: https://yuniwon.github.io/automation-workbench/workflows/
 - Cleanup sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 - Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
 - GitHub URL: https://github.com/yuniwon/automation-workbench

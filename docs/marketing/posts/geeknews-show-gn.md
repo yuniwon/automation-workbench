@@ -42,6 +42,9 @@ https://yuniwon.github.io/automation-workbench/use-cases/
 Custom automation inquiry:
 https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
 
+Workflow examples:
+https://yuniwon.github.io/automation-workbench/workflows/
+
 Sample files:
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv

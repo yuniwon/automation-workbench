@@ -579,3 +579,53 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.9
 1. 사용자 로그인 세션이 필요한 GeekNews 또는 OKKY 게시를 실행한다.
 2. 로그인 없이 가능한 개선으로는 검색 유입용 실제 업무 템플릿 페이지를 추가한다.
 3. 다음 Gmail 점검 때 `v0.1.9` 이후 유입 여부를 확인한다.
+
+## 2026-05-14 Workflow Landing Pages Released
+
+작업:
+
+- 업무별 자동화 예시 허브 추가: `/workflows/`
+- 쇼핑몰 주문 엑셀 정리 자동화 페이지 추가
+- 정산 파일 대조 자동화 페이지 추가
+- 월간 매출 파일 병합 리포트 자동화 페이지 추가
+- workflow 페이지를 sitemap과 IndexNow 제출 대상에 포함
+- README, share-kit, revenue-process 문서에 workflow 링크 추가
+- GitHub Release `v0.1.10` 공개
+- Google Sheets 리드 트래커 `시트1!A37:L40`에 기록 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/workflows/
+https://yuniwon.github.io/automation-workbench/workflows/shopping-mall-order-cleanup.html
+https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html
+https://yuniwon.github.io/automation-workbench/workflows/monthly-report-file-merge.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.10
+```
+
+검증:
+
+- TDD RED: workflow 페이지 파일과 `workflowPages` export가 없어서 테스트 실패 확인
+- `pnpm test`: 21 files, 50 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 없음
+- 빌드 산출물에 workflow index/page/sitemap 포함 확인
+- GitHub Pages 배포 성공
+- 공개 workflow 허브와 개별 페이지 3개 HTTP 200 확인
+- 공개 개별 페이지의 서비스 CTA와 `BreadcrumbList` JSON-LD 확인
+- 공개 sitemap에 workflow URL 포함 확인
+- GitHub Release `v0.1.10`: latest 확인
+- IndexNow 제출: URL 15개, HTTP 200
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+판단:
+
+- 로그인 없이 가능한 검색 유입 자산이 root, use-cases, service, workflows 구조로 확장됐다.
+- 무료 도구 기능을 실제 업무 언어로 설명하는 전환 페이지가 생겼다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. workflow 페이지를 외부 게시 원고에 포함한다.
+2. 사용자 로그인 세션에서 GeekNews 또는 OKKY 게시를 실행한다.
+3. 게시 후 24시간 뒤 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.

@@ -28,6 +28,10 @@ pnpm submit:indexnow
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html`
 - `https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html`
+- `https://yuniwon.github.io/automation-workbench/workflows/`
+- `https://yuniwon.github.io/automation-workbench/workflows/shopping-mall-order-cleanup.html`
+- `https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html`
+- `https://yuniwon.github.io/automation-workbench/workflows/monthly-report-file-merge.html`
 
 ## 주의
 
@@ -262,3 +266,28 @@ pnpm submit:indexnow
 
 - URL 11개 제출이 성공했다.
 - 메인 앱 문의 패널에 제작 범위 페이지 링크가 추가된 변경을 검색엔진에 다시 알렸다.
+
+### 2026-05-14 업무별 자동화 예시 페이지 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 15,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 15개 제출이 성공했다.
+- workflow 허브와 업무별 자동화 예시 페이지 3개가 sitemap과 IndexNow 제출 대상에 포함됐다.

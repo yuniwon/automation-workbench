@@ -24,6 +24,9 @@ https://yuniwon.github.io/automation-workbench/?source=hacker-news
 Custom automation inquiry page:
 https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
 
+Workflow examples:
+https://yuniwon.github.io/automation-workbench/workflows/
+
 Sample files:
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
