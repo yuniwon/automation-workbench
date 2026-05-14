@@ -57,10 +57,31 @@ describe("service landing pages", () => {
     expect(html).toContain('data-service-inquiry="true"');
   });
 
+  it("publishes an Excel automation quote page for cost-conscious visitors", () => {
+    const pagePath = "public/services/excel-automation-cost.html";
+
+    expect(existsSync(join(root, pagePath)), pagePath).toBe(true);
+
+    const html = readProjectFile(pagePath);
+
+    expect(html).toContain("엑셀 자동화 견적");
+    expect(html).toContain("엑셀 자동화 비용");
+    expect(html).toContain("견적 요청 템플릿");
+    expect(html).toContain("5만 원부터");
+    expect(html).toContain("15만 원부터");
+    expect(html).toContain("30만 원부터");
+    expect(html).toContain("source=service-excel-automation-cost");
+    expect(html).toContain("dnjsdndus@gmail.com");
+    expect(html).toContain('"@type": "Service"');
+    expect(html).toContain('"@type": "OfferCatalog"');
+    expect(html).toContain('data-service-inquiry="true"');
+  });
+
   it("includes service pages in sitemap", () => {
     const sitemap = readProjectFile("public/sitemap.xml");
 
     expect(sitemap).toContain("/automation-workbench/services/excel-automation-inquiry.html");
     expect(sitemap).toContain("/automation-workbench/services/excel-automation-service.html");
+    expect(sitemap).toContain("/automation-workbench/services/excel-automation-cost.html");
   });
 });

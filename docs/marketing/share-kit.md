@@ -24,6 +24,12 @@ https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry
 https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html
 ```
 
+엑셀 자동화 견적과 비용 기준:
+
+```text
+https://yuniwon.github.io/automation-workbench/services/excel-automation-cost.html
+```
+
 업무별 자동화 예시:
 
 ```text
@@ -69,6 +75,7 @@ Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample
 ```text
 도구 모음: https://yuniwon.github.io/automation-workbench/use-cases/
 엑셀 자동화 제작 서비스: https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html
+엑셀 자동화 견적과 비용 기준: https://yuniwon.github.io/automation-workbench/services/excel-automation-cost.html
 엑셀 중복 제거: https://yuniwon.github.io/automation-workbench/use-cases/excel-duplicate-cleanup.html
 엑셀 빈 값 검사: https://yuniwon.github.io/automation-workbench/use-cases/excel-blank-cell-checker.html
 엑셀 숫자 형식 정리: https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html

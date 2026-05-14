@@ -6,6 +6,7 @@
 
 - 공개 도구: https://yuniwon.github.io/automation-workbench/
 - 엑셀 자동화 제작 서비스: https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html
+- 엑셀 자동화 견적과 비용 기준: https://yuniwon.github.io/automation-workbench/services/excel-automation-cost.html
 - 맞춤 제작 문의 페이지: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
 - 업무별 자동화 예시: https://yuniwon.github.io/automation-workbench/workflows/
 - GitHub repo: https://github.com/yuniwon/automation-workbench

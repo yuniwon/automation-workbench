@@ -53,6 +53,7 @@ describe("use case page generator", () => {
     expect(generator.servicePages.map((page: { slug: string }) => page.slug)).toEqual([
       "excel-automation-inquiry",
       "excel-automation-service",
+      "excel-automation-cost",
     ]);
 
     for (const page of generator.servicePages) {
