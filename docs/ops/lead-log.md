@@ -538,3 +538,44 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.8
 1. 외부 게시 원고에 제작 문의 페이지 링크를 함께 넣는다.
 2. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
 3. 게시 후 24시간 뒤 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
+
+## 2026-05-14 App Inquiry CTA Updated
+
+작업:
+
+- 메인 앱 하단 문의 패널에 `제작 범위 보기` 링크 추가
+- 제작 문의 페이지 URL을 `contact.ts` 설정으로 분리
+- 외부 게시 원고 4종에 제작 문의 페이지 링크 추가
+- GitHub Release `v0.1.9` 공개
+- Google Sheets 리드 트래커 `시트1!A35:L36`에 기록 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.9
+```
+
+검증:
+
+- `pnpm test`: 20 files, 47 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 없음
+- GitHub Pages 배포 성공
+- 공개 앱 번들에 `제작 범위 보기`와 서비스 페이지 URL 포함 확인
+- GitHub Release `v0.1.9`: latest 확인
+- IndexNow 제출: URL 11개, HTTP 200
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+판단:
+
+- 제작 문의 페이지가 실제 앱 사용 흐름에 들어갔다.
+- 게시 원고에서도 무료 도구 링크와 제작 문의 링크를 함께 제공할 수 있다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. 사용자 로그인 세션이 필요한 GeekNews 또는 OKKY 게시를 실행한다.
+2. 로그인 없이 가능한 개선으로는 검색 유입용 실제 업무 템플릿 페이지를 추가한다.
+3. 다음 Gmail 점검 때 `v0.1.9` 이후 유입 여부를 확인한다.

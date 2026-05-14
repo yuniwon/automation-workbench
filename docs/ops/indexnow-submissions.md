@@ -237,3 +237,28 @@ pnpm submit:indexnow
 
 - URL 11개 제출이 성공했다.
 - 새 맞춤 엑셀/CSV 자동화 제작 문의 페이지가 sitemap과 IndexNow 제출 대상에 포함됐다.
+
+### 2026-05-14 앱 문의 패널 CTA 갱신 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 11,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 11개 제출이 성공했다.
+- 메인 앱 문의 패널에 제작 범위 페이지 링크가 추가된 변경을 검색엔진에 다시 알렸다.
