@@ -5,6 +5,7 @@ import {
   getSourceFromSearch,
   getToolFromSearch,
   privacyUrl,
+  serviceInquiryUrl,
   toolUrl,
 } from "../config/contact";
 
@@ -48,6 +49,9 @@ export function InquiryPanel() {
         <span>사용법 전달</span>
       </div>
       <div className="inquiry-actions">
+        <a className="ghost-link" href={serviceInquiryUrl} target="_blank" rel="noreferrer">
+          제작 범위 보기
+        </a>
         {contactHref && (
           <a className="primary-link" href={contactHref} target="_blank" rel="noreferrer">
             {contactConfig.label}
