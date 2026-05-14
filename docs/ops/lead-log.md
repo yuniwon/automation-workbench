@@ -257,3 +257,43 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.2
 1. GeekNews 또는 OKKY 게시를 실행한다.
 2. 게시가 지연되면 추가 무료 도구 후보 중 실제 구현 가능한 기능부터 만든다.
 3. 24시간 뒤 Gmail 검색을 반복한다.
+
+## 2026-05-14 File Merge Tool Released
+
+작업:
+
+- 새 무료 도구 추가: 엑셀/CSV 파일 병합
+- 여러 파일 선택 후 세로 병합
+- 원본 파일명 열 유지
+- 파일마다 다른 열은 전체 열 합집합으로 맞춤
+- 병합 결과 CSV 다운로드
+- 검색용 랜딩 페이지 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.3
+```
+
+검증:
+
+- `pnpm test`: 16 files, 35 tests passed
+- `pnpm build`: 성공
+- 로컬 병합 탭 Playwright 확인
+- GitHub Pages 배포 성공
+- 공개 병합 앱/랜딩 페이지/sitemap 확인
+- IndexNow 제출: URL 8개, HTTP 200
+- GitHub Release `v0.1.3`: latest 확인
+
+판단:
+
+- 무료 도구는 정리, 비교, 병합 3종으로 확장됐다.
+- 실제 Gmail 문의는 아직 0건이다.
+- 다음 병목은 외부 커뮤니티 게시와 24시간 후 문의 확인이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY 게시를 실행한다.
+2. 게시 URL을 Exposure 형식으로 기록한다.
+3. 게시 후 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
