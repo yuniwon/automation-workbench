@@ -327,3 +327,39 @@ to:dnjsdndus@gmail.com newer_than:30d -from:dnjsdndus@gmail.com subject:"엑셀/
 1. GeekNews 또는 OKKY 로그인 세션에서 게시한다.
 2. 게시 후 URL을 기록한다.
 3. 24시간 뒤 Gmail 검색을 반복한다.
+
+## 2026-05-14 Landing Metadata Update
+
+작업:
+
+- use case 페이지 7개에 OpenGraph 메타데이터 추가
+- use case 페이지 7개에 Twitter Card 메타데이터 추가
+- use case 페이지 7개에 `SoftwareApplication` JSON-LD 구조화 데이터 추가
+- 공유 이미지 `og-image.png` 연결
+- GitHub Release `v0.1.4` 공개
+
+공개 릴리스:
+
+```text
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.4
+```
+
+검증:
+
+- `pnpm test`: 16 files, 35 tests passed
+- `pnpm build`: 성공
+- GitHub Pages 배포 성공
+- 공개 use case 페이지 7개에서 OG/Twitter/JSON-LD 확인
+- IndexNow 제출: URL 8개, HTTP 200
+- GitHub Release `v0.1.4`: latest 확인
+
+판단:
+
+- 외부 게시 전 링크 미리보기와 검색엔진 이해도를 보강했다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
+2. 게시 URL을 기록한다.
+3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.
