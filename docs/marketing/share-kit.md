@@ -38,6 +38,7 @@ Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample
 CSV/XLSX 파일 비교: https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html
 엑셀 파일 비교: https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html
 엑셀/CSV 파일 병합: https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html
+견적서/정산서 자동 생성: https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html
 주문·정산 자동화 검토: https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html
 ```
 
@@ -56,22 +57,23 @@ dnjsdndus@gmail.com
 ## 한 줄 소개
 
 ```text
-CSV/XLSX 파일을 브라우저에서 정리하고, 두 파일의 추가·삭제·변경 행 비교와 여러 파일 병합까지 할 수 있는 무료 엑셀 자동화 도구입니다.
+CSV/XLSX 파일을 브라우저에서 정리하고, 파일 비교·병합·정산서 생성까지 할 수 있는 무료 엑셀 자동화 도구입니다.
 ```
 
 ## 짧은 소개글
 
 ```text
-무료 엑셀/CSV 정리·비교 도구를 만들었습니다.
+무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구를 만들었습니다.
 
 CSV나 XLSX 파일을 올려 중복, 빈 값, 숫자 형식 문제를 정리하고,
-두 파일을 같은 키 기준으로 비교하거나 여러 파일을 하나로 병합할 수 있습니다.
+두 파일을 같은 키 기준으로 비교하거나 여러 파일을 하나로 병합하고,
+고객별 정산 요약을 CSV/HTML로 내려받을 수 있습니다.
 
 계정이나 설치 없이 브라우저에서 바로 사용할 수 있습니다.
 업무 파일에 맞춘 자동화 제작 문의도 가능합니다.
 
 도구: https://yuniwon.github.io/automation-workbench/
-사용 사례: https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html
+사용 사례: https://yuniwon.github.io/automation-workbench/use-cases/
 샘플: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 문의: dnjsdndus@gmail.com
 ```
@@ -88,6 +90,7 @@ React + TypeScript + GitHub Pages로 만든 무료 CSV/XLSX 업무 자동화 샘
 - 선택 열 기준 요약
 - 두 파일 키 기준 비교
 - 여러 파일 세로 병합
+- 고객별 정산서 CSV/HTML 생성
 - 결과 CSV 다운로드
 
 브라우저 내 처리 우선 구조라 작은 업무 파일을 빠르게 데모하기 좋고,
@@ -105,7 +108,8 @@ Repo: https://github.com/yuniwon/automation-workbench
 아래 무료 도구로 먼저 흐름을 확인해볼 수 있습니다.
 
 중복 행, 빈 값, 숫자 형식 문제를 정리하고,
-두 파일에서 빠진 행이나 변경된 행을 비교하거나 여러 파일을 하나로 합칠 수 있습니다.
+두 파일에서 빠진 행이나 변경된 행을 비교하거나 여러 파일을 하나로 합치고
+고객별 정산 요약을 만들 수 있습니다.
 
 내 파일 양식에 맞춘 자동화가 필요하면 샘플 파일 기준으로 제작 가능 범위와 견적을 안내드립니다.
 
@@ -121,6 +125,7 @@ Repo: https://github.com/yuniwon/automation-workbench
 무료 엑셀/CSV 정리·비교 도구를 만들었습니다
 CSV/XLSX 파일 중복 정리와 파일 비교를 브라우저에서 처리하는 도구
 주문/정산 파일 비교용 무료 엑셀 자동화 도구
+CSV/XLSX 파일에서 고객별 정산서 HTML을 만드는 무료 도구
 ```
 
 ## 게시 후 확인할 것

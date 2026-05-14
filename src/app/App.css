@@ -106,8 +106,9 @@ h1 {
 
 .tool-switcher {
   display: inline-grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 4px;
+  max-width: 100%;
   margin-bottom: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
@@ -355,6 +356,19 @@ select {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
   background: #191a1b;
+  color: #f7f8f8;
+  padding: 10px 12px;
+}
+
+.report-title-field {
+  margin-top: 14px;
+}
+
+.report-title-field input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
   color: #f7f8f8;
   padding: 10px 12px;
 }
@@ -691,5 +705,15 @@ td {
 @media (max-width: 480px) {
   h1 {
     font-size: 30px;
+  }
+
+  .tool-switcher {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .tool-switcher button {
+    min-width: 0;
   }
 }

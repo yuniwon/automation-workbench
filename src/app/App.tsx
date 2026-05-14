@@ -4,6 +4,7 @@ import { FileComparisonPanel } from "../components/FileComparisonPanel";
 import { FileMergePanel } from "../components/FileMergePanel";
 import { InquiryPanel } from "../components/InquiryPanel";
 import { IssuePanel } from "../components/IssuePanel";
+import { ReportGeneratorPanel } from "../components/ReportGeneratorPanel";
 import { ResultSummary } from "../components/ResultSummary";
 import { SummaryPanel } from "../components/SummaryPanel";
 import { WorkflowControls } from "../components/WorkflowControls";
@@ -21,7 +22,7 @@ import type { AutomationRecipe, DataIssue, DataTable, RunMetrics } from "../core
 import { defaultRecipeEngine } from "../core/transform/stepRegistry";
 import { createGroupedSummary } from "../core/transform/transforms";
 
-type ToolMode = "cleanup" | "compare" | "merge";
+export type ToolMode = "cleanup" | "compare" | "merge" | "report";
 
 const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: string }> = {
   cleanup: {
@@ -39,6 +40,11 @@ const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: str
     lede: "여러 CSV/XLSX 파일을 같은 열 구조로 맞춰 세로로 합치고 원본 파일명을 포함한 결과 CSV로 내려받을 수 있습니다.",
     statusLabel: "files",
   },
+  report: {
+    title: "견적서/정산서 자동 생성",
+    lede: "주문 파일에서 고객, 품목, 금액 열을 골라 그룹별 정산서를 만들고 CSV 또는 HTML로 내려받을 수 있습니다.",
+    statusLabel: "report",
+  },
 };
 
 function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
@@ -51,7 +57,9 @@ function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
 
 export function App() {
   const initial = useMemo(loadInitialTable, []);
-  const [toolMode, setToolMode] = useState<ToolMode>("cleanup");
+  const [toolMode, setToolMode] = useState<ToolMode>(() =>
+    selectInitialToolMode(typeof window === "undefined" ? "" : window.location.search),
+  );
   const currentToolCopy = toolCopy[toolMode];
   const [sourceName, setSourceName] = useState("샘플 주문 데이터");
   const [originalTable, setOriginalTable] = useState(initial.table);
@@ -186,6 +194,13 @@ export function App() {
         >
           병합 도구
         </button>
+        <button
+          className={toolMode === "report" ? "active" : ""}
+          type="button"
+          onClick={() => setToolMode("report")}
+        >
+          정산서 도구
+        </button>
       </section>
 
       {toolMode === "cleanup" ? (
@@ -230,8 +245,10 @@ export function App() {
         </>
       ) : toolMode === "compare" ? (
         <FileComparisonPanel parseFile={parseUploadedFile} />
-      ) : (
+      ) : toolMode === "merge" ? (
         <FileMergePanel parseFile={parseUploadedFile} />
+      ) : (
+        <ReportGeneratorPanel parseFile={parseUploadedFile} />
       )}
 
       <InquiryPanel />
@@ -268,4 +285,12 @@ function selectDefaultGroupColumn(table: DataTable): string {
     table.columns[0]?.key ??
     ""
   );
+}
+
+export function selectInitialToolMode(search: string): ToolMode {
+  const requested = new URLSearchParams(search).get("tool");
+  if (requested === "cleanup" || requested === "compare" || requested === "merge" || requested === "report") {
+    return requested;
+  }
+  return "cleanup";
 }

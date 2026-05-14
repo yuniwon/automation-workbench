@@ -1,8 +1,8 @@
 # Automation Workbench
 
-무료 엑셀/CSV 정리·비교·병합 도구입니다. CSV 또는 XLSX 파일을 브라우저에서 열어
+무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구입니다. CSV 또는 XLSX 파일을 브라우저에서 열어
 중복, 빈 값, 숫자 형식 문제를 정리하거나 두 파일의 추가, 삭제, 변경 행을
-비교하고 여러 파일을 병합한 뒤 결과 CSV로 내려받을 수 있습니다.
+비교하고 여러 파일을 병합한 뒤 고객별 정산 요약까지 내려받을 수 있습니다.
 
 Live demo: https://yuniwon.github.io/automation-workbench/
 
@@ -27,6 +27,7 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 | CSV/XLSX 파일 비교 | https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html |
 | 엑셀 파일 비교 | https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html |
 | 엑셀/CSV 파일 병합 | https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html |
+| 견적서/정산서 자동 생성 | https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html |
 | 주문·정산 파일 자동화 검토 | https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html |
 
 ## 이런 분에게 맞습니다
@@ -35,6 +36,7 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 - 중복 행, 빈 값, 숫자 형식 오류를 빠르게 확인하고 싶은 분
 - 주문 파일과 정산 파일의 누락, 추가, 변경 내역을 확인하고 싶은 분
 - 매장별, 월별, 거래처별 파일을 하나로 합치고 싶은 분
+- 주문 파일에서 고객별 정산서나 견적서 초안을 만들고 싶은 분
 - 내 업무 파일에 맞춘 자동화 제작이 가능한지 먼저 보고 싶은 분
 
 ## 기능
@@ -46,7 +48,8 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 - 두 파일을 같은 키 기준으로 비교
 - A에만 있는 행, B에만 있는 행, 변경된 행, 동일한 행 요약
 - 여러 CSV/XLSX 파일을 원본 파일명과 함께 병합
-- 정리된 결과 CSV 다운로드
+- 고객/품목/금액 열 기준 정산서 요약 생성
+- 정리된 결과 CSV와 정산 HTML 다운로드
 
 ## 맞춤 제작 문의
 
@@ -61,6 +64,7 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 - 쇼핑몰 주문 파일 정리 후 발송/정산용 파일 생성
 - 매장별 매출 파일 병합과 월간 요약표 생성
 - 주문 파일과 정산 파일 비교 후 누락/차액 리포트 생성
+- 고객별 견적서 또는 거래처별 정산서 자동 생성
 - 구글시트에 새 행이 들어오면 자동 검수 후 알림 발송
 - 고객사 양식에 맞춘 엑셀 리포트 자동 생성
 

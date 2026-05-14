@@ -39,6 +39,11 @@ const pages = [
     title: "엑셀/CSV 파일 병합",
     source: "seo-excel-csv-file-merge",
   },
+  {
+    path: "public/use-cases/estimate-settlement-generator.html",
+    title: "견적서/정산서 자동 생성",
+    source: "seo-estimate-settlement-generator",
+  },
 ];
 
 function readProjectFile(relativePath: string) {

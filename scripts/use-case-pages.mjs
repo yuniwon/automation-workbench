@@ -24,6 +24,7 @@ export const useCases = [
     ctaTitle: "바로 실행",
     ctaBody: "샘플 CSV로 먼저 테스트한 뒤, 실제 CSV/XLSX 파일을 업로드해 확인할 수 있습니다.",
     source: "seo-excel-duplicate-cleanup",
+    tool: "cleanup",
     mailLabel: "맞춤 제작 문의",
     mailTask: "엑셀 중복 제거",
     cards: [
@@ -57,6 +58,7 @@ export const useCases = [
     ctaTitle: "비교 도구 실행",
     ctaBody: "샘플 파일 A/B를 내려받아 비교 흐름을 확인한 뒤 실제 업무 파일에 적용할 수 있습니다.",
     source: "seo-csv-xlsx-file-compare",
+    tool: "compare",
     mailLabel: "비교 자동화 문의",
     mailTask: "CSV/XLSX 파일 비교",
     cards: [
@@ -90,6 +92,7 @@ export const useCases = [
     ctaTitle: "자동화 가능성 확인",
     ctaBody: "현재 파일 구조와 반복 작업을 정리해 보내주시면 제작 범위와 견적을 확인할 수 있습니다.",
     source: "seo-order-settlement-automation",
+    tool: "cleanup",
     mailLabel: "자동화 제작 문의",
     mailTask: "주문·정산 파일 자동화",
     cards: [
@@ -123,6 +126,7 @@ export const useCases = [
     ctaTitle: "빈 값 검사 실행",
     ctaBody: "샘플 파일로 빈 값 탐지 흐름을 확인한 뒤 실제 CSV/XLSX 파일을 업로드할 수 있습니다.",
     source: "seo-excel-blank-cell-checker",
+    tool: "cleanup",
     mailLabel: "누락 검사 자동화 문의",
     mailTask: "엑셀 빈 값 검사",
     cards: [
@@ -156,6 +160,7 @@ export const useCases = [
     ctaTitle: "숫자 정리 실행",
     ctaBody: "샘플 데이터로 숫자 정규화 결과를 확인한 뒤 실제 CSV/XLSX 파일에 적용할 수 있습니다.",
     source: "seo-excel-number-format-cleanup",
+    tool: "cleanup",
     mailLabel: "정산 정리 자동화 문의",
     mailTask: "엑셀 숫자 형식 정리",
     cards: [
@@ -189,6 +194,7 @@ export const useCases = [
     ctaTitle: "엑셀 비교 실행",
     ctaBody: "샘플 비교 파일로 흐름을 확인하고 실제 CSV/XLSX 파일 두 개를 업로드할 수 있습니다.",
     source: "seo-excel-file-compare",
+    tool: "compare",
     mailLabel: "엑셀 비교 자동화 문의",
     mailTask: "엑셀 파일 비교",
     cards: [
@@ -222,6 +228,7 @@ export const useCases = [
     ctaTitle: "병합 도구 실행",
     ctaBody: "샘플 파일 두 개로 병합 결과를 확인한 뒤 실제 CSV/XLSX 파일 여러 개를 선택할 수 있습니다.",
     source: "seo-excel-csv-file-merge",
+    tool: "merge",
     mailLabel: "파일 병합 자동화 문의",
     mailTask: "엑셀/CSV 파일 병합",
     cards: [
@@ -238,6 +245,40 @@ export const useCases = [
         body: [
           "파일명에서 날짜나 매장명을 추출하고, 병합 후 정리·비교·요약까지 이어지는",
           "반복 업무용 자동화 도구로 확장할 수 있습니다.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "estimate-settlement-generator",
+    title: "견적서/정산서 자동 생성 무료 도구 | Automation Workbench",
+    description: "주문 CSV/XLSX 파일에서 고객, 품목, 금액 열을 골라 견적서나 정산서 형태의 요약 리포트를 만들 수 있습니다.",
+    eyebrow: "무료 문서 생성 샘플",
+    heading: "견적서/정산서 자동 생성을 샘플 파일로 확인하세요",
+    lede: [
+      "반복해서 주문 파일을 정리한 뒤 고객별 금액 합계나 품목 요약을 문서로 만들고 있다면",
+      "파일을 올려 그룹 기준, 품목, 금액 열을 선택하고 정산 CSV/HTML을 내려받을 수 있습니다.",
+    ],
+    ctaTitle: "정산서 생성 실행",
+    ctaBody: "샘플 주문 데이터로 고객별 정산서를 확인한 뒤 실제 CSV/XLSX 파일에 적용할 수 있습니다.",
+    source: "seo-estimate-settlement-generator",
+    tool: "report",
+    mailLabel: "문서 자동화 문의",
+    mailTask: "견적서/정산서 자동 생성",
+    cards: [
+      {
+        title: "생성할 수 있는 결과",
+        items: ["고객별 금액 합계", "품목별 건수 요약", "금액 오류 행 수", "정산 CSV와 HTML 문서 다운로드"],
+      },
+      {
+        title: "업무 사용처",
+        items: ["견적서 초안 만들기", "거래처별 정산서 만들기", "주문 파일에서 청구 요약 만들기", "보고용 HTML 리포트 생성"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "고객사 양식, 로고, 문구, 세금 계산 규칙, 예외 처리까지 고정해",
+          "반복 문서 생성 업무를 버튼 한 번으로 끝나는 자동화로 확장할 수 있습니다.",
         ],
       },
     ],
@@ -318,7 +359,7 @@ function renderIndexJsonLd() {
       "@type": "CollectionPage",
       name: "무료 엑셀/CSV 도구 모음",
       url: `${baseUrl}/use-cases/`,
-      description: "CSV/XLSX 파일 정리, 비교, 병합을 브라우저에서 실행할 수 있는 무료 업무 자동화 도구 모음입니다.",
+      description: "CSV/XLSX 파일 정리, 비교, 병합, 정산서 생성을 브라우저에서 실행할 수 있는 무료 업무 자동화 도구 모음입니다.",
       hasPart: useCases.map((useCase) => ({
         "@type": "WebPage",
         name: useCase.title.replace(" | Automation Workbench", ""),
@@ -403,7 +444,7 @@ ${renderJsonLd(useCase)}
         <aside class="panel cta-panel">
           <strong>${useCase.ctaTitle}</strong>
           <p>${useCase.ctaBody}</p>
-          <a class="button" href="${appPath}?source=${useCase.source}">무료 도구 열기</a>
+          <a class="button" href="${appPath}?source=${useCase.source}&tool=${useCase.tool}">무료 도구 열기</a>
           <a class="button ghost" href="${mailtoHref(useCase)}">${useCase.mailLabel}</a>
           <p class="trust">
             파일은 브라우저 안에서 처리됩니다.
@@ -425,7 +466,7 @@ ${useCase.cards.map(renderCard).join("\n")}
 
 export function renderUseCaseIndex() {
   const title = "무료 엑셀/CSV 도구 모음 | Automation Workbench";
-  const description = "CSV/XLSX 파일 정리, 비교, 병합을 브라우저에서 실행할 수 있는 무료 업무 자동화 도구 모음입니다.";
+  const description = "CSV/XLSX 파일 정리, 비교, 병합, 정산서 생성을 브라우저에서 실행할 수 있는 무료 업무 자동화 도구 모음입니다.";
   const canonicalUrl = `${baseUrl}/use-cases/`;
   const escapedTitle = htmlAttribute(title);
   const escapedDescription = htmlAttribute(description);
@@ -473,7 +514,7 @@ ${renderIndexJsonLd()}
           <p class="eyebrow">무료 업무 자동화 도구</p>
           <h1>무료 엑셀/CSV 도구 모음</h1>
           <p class="lede">
-            반복해서 정리, 비교, 병합하는 CSV/XLSX 파일을 브라우저에서 먼저 확인하고
+            반복해서 정리, 비교, 병합, 정산서 생성을 하는 CSV/XLSX 파일을 브라우저에서 먼저 확인하고
             실제 업무 파일에 맞춘 자동화 제작 범위를 판단할 수 있습니다.
           </p>
         </div>
