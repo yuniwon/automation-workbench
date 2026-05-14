@@ -22,6 +22,17 @@ Cleanup sample: https://yuniwon.github.io/automation-workbench/samples/sample-or
 Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
 ```
 
+검색용 랜딩 페이지:
+
+```text
+엑셀 중복 제거: https://yuniwon.github.io/automation-workbench/use-cases/excel-duplicate-cleanup.html
+엑셀 빈 값 검사: https://yuniwon.github.io/automation-workbench/use-cases/excel-blank-cell-checker.html
+엑셀 숫자 형식 정리: https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html
+CSV/XLSX 파일 비교: https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html
+엑셀 파일 비교: https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html
+주문·정산 자동화 검토: https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html
+```
+
 GitHub:
 
 ```text
@@ -52,6 +63,7 @@ CSV나 XLSX 파일을 올려 중복, 빈 값, 숫자 형식 문제를 정리하�
 업무 파일에 맞춘 자동화 제작 문의도 가능합니다.
 
 도구: https://yuniwon.github.io/automation-workbench/
+사용 사례: https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html
 샘플: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 문의: dnjsdndus@gmail.com
 ```

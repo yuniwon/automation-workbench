@@ -6,12 +6,25 @@
 
 Live demo: https://yuniwon.github.io/automation-workbench/
 
+맞춤 자동화 문의: [dnjsdndus@gmail.com](mailto:dnjsdndus@gmail.com?subject=%EC%97%91%EC%85%80%2FCSV%20%EC%9E%90%EB%8F%99%ED%99%94%20%EB%A7%9E%EC%B6%A4%20%EC%A0%9C%EC%9E%91%20%EB%AC%B8%EC%9D%98)
+
 Sample files:
 
 - Cleanup sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv
 - Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
 
 Privacy notes: [PRIVACY.md](PRIVACY.md)
+
+## 바로 써보기
+
+| 필요한 작업 | 무료 도구 |
+| --- | --- |
+| 엑셀 중복 제거 | https://yuniwon.github.io/automation-workbench/use-cases/excel-duplicate-cleanup.html |
+| 엑셀 빈 값 검사 | https://yuniwon.github.io/automation-workbench/use-cases/excel-blank-cell-checker.html |
+| 엑셀 숫자 형식 정리 | https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html |
+| CSV/XLSX 파일 비교 | https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html |
+| 엑셀 파일 비교 | https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html |
+| 주문·정산 파일 자동화 검토 | https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html |
 
 ## 이런 분에게 맞습니다
 

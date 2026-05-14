@@ -20,6 +20,7 @@
 - 견적 기준: `docs/ops/pricing-guide.md`
 - 검색엔진 URL 제출: `docs/ops/indexnow-submissions.md`
 - 검색용 랜딩 페이지: `public/use-cases/*.html` (`pnpm generate:use-cases`로 갱신)
+- GitHub 방문자용 진입점: `README.md`의 "바로 써보기" 링크 표
 
 ## 퍼널
 
