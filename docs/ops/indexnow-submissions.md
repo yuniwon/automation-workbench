@@ -469,3 +469,28 @@ pnpm submit:indexnow
 
 - URL 18개 제출이 성공했다.
 - 하단 문의 패널과 문의서 복사 흐름 갱신을 검색엔진에 다시 알렸다.
+
+### 2026-05-14 공유용 소개 페이지 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 19,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 19개 제출이 성공했다.
+- 새 공유용 소개 페이지 `share/free-excel-automation.html`이 sitemap과 IndexNow 제출 대상에 포함됐다.

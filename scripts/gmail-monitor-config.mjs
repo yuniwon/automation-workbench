@@ -24,6 +24,8 @@ export const gmailMonitor = {
     "열 매핑",
     "양식 변환",
     "seo-excel-column-mapping-template",
+    "share-free-excel-automation",
+    "공유용 소개 페이지",
   ],
 };
 

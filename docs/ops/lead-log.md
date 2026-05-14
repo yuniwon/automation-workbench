@@ -1106,3 +1106,64 @@ Gmail 검색:
 
 - GitHub 검색과 저장소 방문자의 첫인상에서 현재 기능 범위가 더 정확하게 보인다.
 - 비용 없이 가능한 노출 개선이지만, 실제 Gmail 문의는 아직 별도 확인 필요하다.
+
+## 2026-05-14 Shareable Automation Intro Page Released
+
+작업:
+
+- 새 정적 페이지 추가: `public/share/free-excel-automation.html`
+- 공유 페이지를 생성 스크립트와 sitemap에 연결
+- 커뮤니티 공유용 요약, 무료 도구 CTA, 제작 범위 CTA, 문의 mailto CTA 추가
+- `docs/marketing/share-kit.md`에 공유용 소개 페이지 링크 추가
+- Gmail monitor 검색어에 공유 페이지 추적어 추가: `share-free-excel-automation`, `공유용 소개 페이지`
+- GitHub Release `v0.1.18`, `v0.1.19` 공개
+- IndexNow 재제출
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.18
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.19
+```
+
+검증:
+
+- 디자인 기준: `Linear` reference
+- TDD RED: 공유 페이지 파일, sitemap 항목, share-kit 링크 누락으로 `tests/core/sharePage.test.ts` 실패 확인
+- TDD RED: 공유 페이지 생성 동기화 누락으로 `tests/core/useCasePageGenerator.test.ts` 실패 확인
+- TDD RED: Gmail monitor 검색식에서 공유 페이지 추적어 누락으로 `tests/core/gmailMonitorConfig.test.ts` 실패 확인
+- `pnpm generate:use-cases`: 성공
+- `pnpm test`: 27 files, 68 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+- Playwright desktop screenshot: `http://127.0.0.1:5173/automation-workbench/share/free-excel-automation.html` 확인
+- Playwright mobile screenshot: `http://127.0.0.1:5173/automation-workbench/share/free-excel-automation.html` 확인
+- GitHub Pages 배포 성공: run `25842936049`
+- 공개 공유 페이지 HTTP 200 확인
+- 공개 공유 페이지에서 title, 커뮤니티 공유용 요약, tracking, JSON-LD, mojibake 없음 확인
+- 공개 sitemap에서 공유 페이지 포함 확인: URL 19개
+- IndexNow 제출: URL 19개, HTTP 200
+- `pnpm monitor:gmail:query`에서 공유 페이지 추적어 포함 확인
+
+Gmail 검색:
+
+- 공유 페이지 추적어 포함 7일 검색: 후보 0건
+- 공유 페이지 추적어 포함 30일 검색: 후보 0건
+
+결과:
+
+- Gmail 후보 0건
+- 실제 문의 0건
+- Google Sheets 기록: 사용자 확인 전까지 append하지 않음
+
+판단:
+
+- 로그인 없이 공유 가능한 단일 소개 링크가 생겼다.
+- 실제 문의는 아직 발생하지 않았으므로 수익화 목표는 미완료다.
+
+다음 액션:
+
+1. 공유용 소개 페이지 링크를 실제 외부 채널에 게시한다.
+2. GeekNews 로그인 가능 시 게시 원고를 실제 게시한다.
+3. Gmail 검색은 `pnpm monitor:gmail:query` 결과 기준으로 반복한다.
