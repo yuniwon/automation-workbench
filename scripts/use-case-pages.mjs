@@ -9,6 +9,32 @@ const email = "dnjsdndus@gmail.com";
 const mailSubject = "엑셀/CSV 자동화 맞춤 제작 문의";
 const lastmod = "2026-05-14";
 const ogImageUrl = `${baseUrl}/og-image.png`;
+const inquiryChecklist = [
+  "현재 쓰는 파일 형식과 입력 파일 개수",
+  "반복해서 하는 작업과 예외 규칙",
+  "원하는 결과 파일 또는 화면 예시",
+  "현재 수작업 소요시간과 희망 마감일",
+];
+const pricingFactors = [
+  "입력 파일 개수와 파일 구조 안정성",
+  "비교, 병합, 집계, 문서 생성 단계 수",
+  "예외 규칙과 검수 리포트 필요 여부",
+  "구글시트, Gmail, Notion 같은 외부 서비스 연동 여부",
+];
+const commonFaqs = [
+  {
+    question: "샘플 파일 없이 문의할 수 있나요?",
+    answer: "가능합니다. 다만 파일 형식, 열 이름, 반복 작업, 필요한 결과물을 글로라도 적어주시면 범위를 더 빨리 좁힐 수 있습니다.",
+  },
+  {
+    question: "개인정보가 있는 파일도 보낼 수 있나요?",
+    answer: "이름, 전화번호, 주소, 계좌번호 같은 민감정보는 먼저 가린 샘플을 권장합니다. 실제 제작에는 구조와 규칙 확인이 더 중요합니다.",
+  },
+  {
+    question: "가격은 어떻게 정해지나요?",
+    answer: "파일 개수, 단계 수, 예외 규칙, 결과물 형식, 외부 서비스 연동 여부에 따라 달라집니다. 단일 정리는 5만 원부터, 비교나 병합은 15만 원부터 검토합니다.",
+  },
+];
 
 export const useCases = [
   {
@@ -639,48 +665,53 @@ function renderServiceJsonLd(page) {
   return JSON.stringify(
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      name: page.title.replace(" | Automation Workbench", ""),
-      serviceType: "Excel and CSV automation",
-      url: servicePageUrl(page),
-      description: page.description,
-      provider: {
-        "@type": "Organization",
-        name: "Automation Workbench",
-        url: baseUrl,
-        email,
-      },
-      areaServed: {
-        "@type": "Country",
-        name: "KR",
-      },
-      offers: {
-        "@type": "OfferCatalog",
-        name: "엑셀/CSV 자동화 제작 패키지",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            name: "Starter",
-            price: "50000",
-            priceCurrency: "KRW",
-            description: "단일 파일 정리/변환",
+      "@graph": [
+        {
+          "@type": "Service",
+          name: page.title.replace(" | Automation Workbench", ""),
+          serviceType: "Excel and CSV automation",
+          url: servicePageUrl(page),
+          description: page.description,
+          provider: {
+            "@type": "Organization",
+            name: "Automation Workbench",
+            url: baseUrl,
+            email,
           },
-          {
-            "@type": "Offer",
-            name: "Standard",
-            price: "150000",
-            priceCurrency: "KRW",
-            description: "두 파일 비교/병합/요약",
+          areaServed: {
+            "@type": "Country",
+            name: "KR",
           },
-          {
-            "@type": "Offer",
-            name: "Advanced",
-            price: "300000",
-            priceCurrency: "KRW",
-            description: "여러 파일과 예외 규칙이 있는 반복 도구",
+          offers: {
+            "@type": "OfferCatalog",
+            name: "엑셀/CSV 자동화 제작 패키지",
+            itemListElement: [
+              {
+                "@type": "Offer",
+                name: "Starter",
+                price: "50000",
+                priceCurrency: "KRW",
+                description: "단일 파일 정리/변환",
+              },
+              {
+                "@type": "Offer",
+                name: "Standard",
+                price: "150000",
+                priceCurrency: "KRW",
+                description: "두 파일 비교/병합/요약",
+              },
+              {
+                "@type": "Offer",
+                name: "Advanced",
+                price: "300000",
+                priceCurrency: "KRW",
+                description: "여러 파일과 예외 규칙이 있는 반복 도구",
+              },
+            ],
           },
-        ],
-      },
+        },
+        renderFaqJsonLdNode(),
+      ],
     },
     null,
     2,
@@ -729,6 +760,7 @@ function renderWorkflowJsonLd(page) {
             },
           ],
         },
+        renderFaqJsonLdNode(),
       ],
     },
     null,
@@ -762,6 +794,20 @@ function renderWorkflowIndexJsonLd() {
     .join("\n");
 }
 
+function renderFaqJsonLdNode() {
+  return {
+    "@type": "FAQPage",
+    mainEntity: commonFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 function renderCard(card) {
   if (card.items) {
     const items = card.items.map((item) => `            <li>${item}</li>`).join("\n");
@@ -780,6 +826,34 @@ ${items}
             ${card.body[1]}
           </p>
         </article>`;
+}
+
+function renderListCard(title, items) {
+  const renderedItems = items.map((item) => `            <li>${item}</li>`).join("\n");
+  return `        <article class="panel card">
+          <h2>${title}</h2>
+          <ul>
+${renderedItems}
+          </ul>
+        </article>`;
+}
+
+function renderFaqCard() {
+  const items = commonFaqs.map((faq) => `            <li><strong>${faq.question}</strong><br />${faq.answer}</li>`).join("\n");
+  return `        <article class="panel card">
+          <h2>자주 묻는 질문</h2>
+          <ul>
+${items}
+          </ul>
+        </article>`;
+}
+
+function renderConversionCards() {
+  return [
+    renderListCard("문의 전 체크리스트", inquiryChecklist),
+    renderListCard("가격이 달라지는 기준", pricingFactors),
+    renderFaqCard(),
+  ].join("\n");
 }
 
 export function renderServicePage(page) {
@@ -839,6 +913,7 @@ ${renderServiceJsonLd(page)}
 
       <section class="grid">
 ${page.cards.map(renderCard).join("\n")}
+${renderConversionCards()}
       </section>
 
       <p class="footer">문의: ${email}</p>
@@ -907,6 +982,7 @@ ${renderWorkflowJsonLd(page)}
 
       <section class="grid">
 ${page.cards.map(renderCard).join("\n")}
+${renderConversionCards()}
       </section>
 
       <p class="footer">문의: ${email}</p>

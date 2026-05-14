@@ -38,10 +38,14 @@ describe("workflow landing pages", () => {
       expect(html).toContain("무료 도구 열기");
       expect(html).toContain("제작 범위 보기");
       expect(html).toContain("맞춤 제작 문의");
+      expect(html).toContain("문의 전 체크리스트");
+      expect(html).toContain("가격이 달라지는 기준");
       expect(html).toContain("/automation-workbench/services/excel-automation-inquiry.html");
       expect(html).toContain("dnjsdndus@gmail.com");
       expect(html).toContain('"@type": "WebPage"');
       expect(html).toContain('"@type": "BreadcrumbList"');
+      expect(html).toContain('"@type": "FAQPage"');
+      expect(html).toContain("샘플 파일 없이 문의할 수 있나요?");
     }
   });
 

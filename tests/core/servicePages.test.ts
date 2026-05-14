@@ -26,9 +26,13 @@ describe("service landing pages", () => {
     expect(html).toContain("현재 파일 형식");
     expect(html).toContain("현재 수작업 소요시간");
     expect(html).toContain("필요한 결과물");
+    expect(html).toContain("문의 전 체크리스트");
+    expect(html).toContain("가격이 달라지는 기준");
     expect(html).toContain('property="og:type" content="website"');
     expect(html).toContain('"@type": "Service"');
     expect(html).toContain('"@type": "OfferCatalog"');
+    expect(html).toContain('"@type": "FAQPage"');
+    expect(html).toContain("샘플 파일 없이 문의할 수 있나요?");
   });
 
   it("includes service pages in sitemap", () => {
