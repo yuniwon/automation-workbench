@@ -17,12 +17,9 @@ describe("posting packet script", () => {
 
     expect(packet).toContain("CHANNEL: GeekNews Show GN");
     expect(packet).toContain("SOURCE FILE: docs/marketing/posts/geeknews-show-gn.md");
-    expect(packet).toContain(
-      "Show GN: 브라우저에서 CSV/XLSX 파일을 정리·비교·병합·정산서 생성·양식 변환하는 무료 도구를 만들었습니다",
-    );
-    expect(packet).toContain(
-      "https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html?source=geeknews&intent=share",
-    );
+    expect(packet).toContain("Show GN: Codex와 함께 만든 브라우저 기반 CSV/XLSX 정리 도구입니다");
+    expect(packet).toContain("https://yuniwon.github.io/automation-workbench/?source=geeknews");
+    expect(packet).toContain("피드백 받고 싶은 부분");
     expect(packet).toContain("FIRST COMMENT:");
     expect(packet).toContain("AFTER POSTING LOG:");
   });
