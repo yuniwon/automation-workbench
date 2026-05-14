@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ColumnMapperPanel } from "../components/ColumnMapperPanel";
 import { DataPreview } from "../components/DataPreview";
 import { FileComparisonPanel } from "../components/FileComparisonPanel";
@@ -38,6 +38,14 @@ const appCopy: Record<
     modeSuffix: string;
     nav: Record<ToolMode, string>;
     tools: Record<ToolMode, { title: string; lede: string; statusLabel: string; defaultStatusValue: number }>;
+    metrics: {
+      columns: string;
+      info: string;
+      warnings: string;
+      errors: string;
+      ariaLabel: string;
+    };
+    unsupportedFileMessage: string;
   }
 > = {
   ko: {
@@ -53,6 +61,14 @@ const appCopy: Record<
       map: "양식 변환",
       checkin: "QR 체크인",
     },
+    metrics: {
+      columns: "열",
+      info: "정보",
+      warnings: "경고",
+      errors: "오류",
+      ariaLabel: "데이터 품질 요약",
+    },
+    unsupportedFileMessage: "CSV 또는 XLSX 파일을 지원합니다.",
     tools: {
       cleanup: {
         title: "엑셀/CSV 자동 정리",
@@ -105,6 +121,14 @@ const appCopy: Record<
       map: "Column mapping",
       checkin: "QR check-in",
     },
+    metrics: {
+      columns: "Columns",
+      info: "Info",
+      warnings: "Warnings",
+      errors: "Errors",
+      ariaLabel: "Data quality summary",
+    },
+    unsupportedFileMessage: "CSV or XLSX files are supported.",
     tools: {
       cleanup: {
         title: "Excel/CSV auto cleanup",
@@ -156,8 +180,9 @@ function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
 
 export function App() {
   const initial = useMemo(loadInitialTable, []);
-  const locale = selectInitialLocale(typeof window === "undefined" ? "" : window.location.search);
+  const [locale] = useState(() => selectInitialLocale(typeof window === "undefined" ? "" : window.location.search));
   const copy = appCopy[locale];
+  const parseFileForLocale = useCallback((file: File) => parseUploadedFile(file, locale), [locale]);
   const [toolMode, setToolMode] = useState<ToolMode>(() =>
     selectInitialToolMode(typeof window === "undefined" ? "" : window.location.search),
   );
@@ -188,19 +213,17 @@ export function App() {
   }, [issues]);
 
   function resetToSample() {
-    const parsed = parseCsv(sampleOrdersCsv);
-    const nextIssues = [...parsed.issues, ...scanDataQuality(parsed.table)];
     setSourceName(copy.sampleSourceName);
-    setOriginalTable(parsed.table);
-    setCurrentTable(parsed.table);
-    setIssues(nextIssues);
+    setOriginalTable(initial.table);
+    setCurrentTable(initial.table);
+    setIssues(initial.issues);
     setDiagnostics([]);
-    setGroupColumnKey(selectDefaultGroupColumn(parsed.table));
+    setGroupColumnKey(selectDefaultGroupColumn(initial.table));
     setRunMetrics(null);
   }
 
   async function handleFileUpload(file: File) {
-    const parsed = await parseUploadedFile(file).catch((error: unknown) => ({
+    const parsed = await parseFileForLocale(file).catch((error: unknown) => ({
       table: { columns: [], rows: [] },
       issues: [
         {
@@ -314,21 +337,21 @@ export function App() {
 
       {toolMode === "cleanup" ? (
         <>
-          <section className="metrics-grid" aria-label="Data quality summary">
+          <section className="metrics-grid" aria-label={copy.metrics.ariaLabel}>
             <div className="metric-panel">
-              <span>Columns</span>
+              <span>{copy.metrics.columns}</span>
               <strong>{currentTable.columns.length}</strong>
             </div>
             <div className="metric-panel">
-              <span>Info</span>
+              <span>{copy.metrics.info}</span>
               <strong>{issueCounts.info}</strong>
             </div>
             <div className="metric-panel">
-              <span>Warnings</span>
+              <span>{copy.metrics.warnings}</span>
               <strong>{issueCounts.warning}</strong>
             </div>
             <div className="metric-panel">
-              <span>Errors</span>
+              <span>{copy.metrics.errors}</span>
               <strong>{issueCounts.error}</strong>
             </div>
           </section>
@@ -354,13 +377,13 @@ export function App() {
           </section>
         </>
       ) : toolMode === "compare" ? (
-        <FileComparisonPanel parseFile={parseUploadedFile} locale={locale} />
+        <FileComparisonPanel parseFile={parseFileForLocale} locale={locale} />
       ) : toolMode === "merge" ? (
-        <FileMergePanel parseFile={parseUploadedFile} locale={locale} />
+        <FileMergePanel parseFile={parseFileForLocale} locale={locale} />
       ) : toolMode === "report" ? (
-        <ReportGeneratorPanel parseFile={parseUploadedFile} locale={locale} />
+        <ReportGeneratorPanel parseFile={parseFileForLocale} locale={locale} />
       ) : toolMode === "map" ? (
-        <ColumnMapperPanel parseFile={parseUploadedFile} locale={locale} />
+        <ColumnMapperPanel parseFile={parseFileForLocale} locale={locale} />
       ) : (
         <VendorCheckInPanel locale={locale} />
       )}
@@ -370,7 +393,8 @@ export function App() {
   );
 }
 
-async function parseUploadedFile(file: File) {
+export async function parseUploadedFile(file: File, locale: AppLocale = "ko") {
+  const copy = appCopy[locale];
   const lowerName = file.name.toLowerCase();
   if (lowerName.endsWith(".xlsx")) {
     return parseXlsxFile(file);
@@ -386,7 +410,7 @@ async function parseUploadedFile(file: File) {
         id: "unsupported-file",
         severity: "error" as const,
         type: "unsupported_file",
-        message: "CSV or XLSX files are supported.",
+        message: copy.unsupportedFileMessage,
       },
     ],
   };

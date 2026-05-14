@@ -11,6 +11,7 @@ describe("VendorCheckInPanel", () => {
     expect(html).toContain("Google Sheet log");
     expect(html).toContain("Download Apps Script sample");
     expect(html).toContain("samples/vendor-checkin-apps-script.js");
+    expect(html).not.toContain("Added a sample check-in");
   });
 
   it("renders the Korean QR check-in workflow by default", () => {

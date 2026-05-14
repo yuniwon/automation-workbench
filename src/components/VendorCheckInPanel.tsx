@@ -121,10 +121,10 @@ export function VendorCheckInPanel({ locale = "ko" }: VendorCheckInPanelProps) {
   const text = copy[locale];
   const [selectedPropertyId, setSelectedPropertyId] = useState(propertySites[0].id);
   const [serviceType, setServiceType] = useState(serviceTypes[0]);
-  const [companyName, setCompanyName] = useState(locale === "en" ? "Bright Crew" : "Bright Crew");
+  const [companyName, setCompanyName] = useState("Bright Crew");
   const [notes, setNotes] = useState("");
   const [rows, setRows] = useState(seededRows);
-  const [message, setMessage] = useState(text.submitted(propertySites[0].name));
+  const [message, setMessage] = useState("");
 
   const selectedProperty = propertySites.find((site) => site.id === selectedPropertyId) ?? propertySites[0];
   const propertyLinks = useMemo(
@@ -155,7 +155,7 @@ export function VendorCheckInPanel({ locale = "ko" }: VendorCheckInPanelProps) {
 
   function resetRows() {
     setRows(seededRows);
-    setMessage(text.submitted(propertySites[0].name));
+    setMessage("");
   }
 
   return (
@@ -211,7 +211,7 @@ export function VendorCheckInPanel({ locale = "ko" }: VendorCheckInPanelProps) {
           <button className="primary-button" type="button" onClick={submitCheckIn}>
             {text.submit}
           </button>
-          <p>{message}</p>
+          {message && <p>{message}</p>}
         </div>
       </section>
 

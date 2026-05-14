@@ -28,19 +28,22 @@ export function scanDuplicateRows(table: DataTable): DataIssue[] {
 export function scanBlankCells(table: DataTable): DataIssue[] {
   const issues: DataIssue[] = [];
 
-  table.rows.forEach((row) => {
-    table.columns.forEach((column) => {
+  table.columns.forEach((column) => {
+    let blankCount = 0;
+    table.rows.forEach((row) => {
       if (isBlank(row.cells[column.key])) {
-        issues.push({
-          id: `blank-${row.id}-${column.key}`,
-          severity: "info",
-          type: "blank_cell",
-          rowId: row.id,
-          columnKey: column.key,
-          message: `${column.label} is blank in ${row.id}.`,
-        });
+        blankCount += 1;
       }
     });
+    if (blankCount > 0) {
+      issues.push({
+        id: `blank-column-${column.key}`,
+        severity: "info",
+        type: "blank_cell",
+        columnKey: column.key,
+        message: `${column.label} has ${blankCount} blank ${blankCount === 1 ? "cell" : "cells"}.`,
+      });
+    }
   });
 
   return issues;

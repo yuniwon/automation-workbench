@@ -19,4 +19,18 @@ describe("ReportGeneratorPanel", () => {
     expect(html).toContain("Kim Hana");
     expect(html).toContain("Starter Kit x1");
   });
+
+  it("renders English report output labels in English mode", () => {
+    const parseFile = async (): Promise<TableParseResult> => ({
+      table: { columns: [], rows: [] },
+      issues: [],
+    });
+
+    const html = renderToStaticMarkup(<ReportGeneratorPanel locale="en" parseFile={parseFile} />);
+
+    expect(html).toContain("Generate settlement report");
+    expect(html).toContain("Total amount");
+    expect(html).toContain(">Group<");
+    expect(html).not.toContain("구분");
+  });
 });

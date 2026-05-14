@@ -30,8 +30,8 @@ export function ReportGeneratorPanel({ locale = "ko", parseFile }: ReportGenerat
         groupColumnKey,
         itemColumnKey,
         amountColumnKey,
-      }),
-    [amountColumnKey, groupColumnKey, itemColumnKey, table],
+      }, locale),
+    [amountColumnKey, groupColumnKey, itemColumnKey, locale, table],
   );
 
   async function handleUpload(event: ChangeEvent<HTMLInputElement>) {
@@ -70,7 +70,7 @@ export function ReportGeneratorPanel({ locale = "ko", parseFile }: ReportGenerat
   }
 
   function downloadReportHtml() {
-    downloadBlob(settlementReportToHtml(report, reportTitle), "settlement-report.html", "text/html;charset=utf-8");
+    downloadBlob(settlementReportToHtml(report, reportTitle, locale), "settlement-report.html", "text/html;charset=utf-8");
   }
 
   return (

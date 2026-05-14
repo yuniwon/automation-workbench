@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { selectInitialLocale, selectInitialToolMode } from "../../src/app/App";
+import { parseUploadedFile, selectInitialLocale, selectInitialToolMode } from "../../src/app/App";
 
 describe("selectInitialToolMode", () => {
   it("uses a supported tool query parameter", () => {
@@ -24,5 +24,17 @@ describe("selectInitialLocale", () => {
   it("falls back to Korean for missing or unsupported locale parameters", () => {
     expect(selectInitialLocale("")).toBe("ko");
     expect(selectInitialLocale("?lang=ja")).toBe("ko");
+  });
+});
+
+describe("parseUploadedFile", () => {
+  it("returns a localized unsupported file message", async () => {
+    const file = new File(["{}"], "data.json", { type: "application/json" });
+
+    const koResult = await parseUploadedFile(file, "ko");
+    const enResult = await parseUploadedFile(file, "en");
+
+    expect(koResult.issues[0].message).toBe("CSV 또는 XLSX 파일을 지원합니다.");
+    expect(enResult.issues[0].message).toBe("CSV or XLSX files are supported.");
   });
 });

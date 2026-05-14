@@ -7,7 +7,7 @@ import {
 } from "./transforms";
 import { createRecipeEngine } from "./recipeEngine";
 
-export type StepHandler = (table: DataTable) => TransformResult;
+export type StepHandler = (table: DataTable, options?: Record<string, unknown>) => TransformResult;
 export type StepRegistry = Record<string, StepHandler>;
 
 export const defaultStepRegistry: StepRegistry = {

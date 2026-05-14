@@ -38,7 +38,7 @@ export function createRecipeEngine(stepRegistry: StepRegistry): RecipeEngine {
           };
         }
 
-        const result = handler(table);
+        const result = handler(table, step.options);
         table = result.table;
         issues.push(...result.issues);
         diagnostics.push(...result.diagnostics);

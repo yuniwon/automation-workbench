@@ -44,4 +44,38 @@ describe("executeRecipe", () => {
       type: "unknown_step",
     });
   });
+
+  it("passes step options to registered handlers", () => {
+    const { table } = parseCsv("name\nKim");
+    const result = createRecipeEngine({
+      addPrefix(currentTable, options) {
+        const prefix = typeof options?.prefix === "string" ? options.prefix : "";
+        return {
+          table: {
+            columns: currentTable.columns,
+            rows: currentTable.rows.map((row) => ({
+              ...row,
+              cells: {
+                ...row.cells,
+                name: `${prefix}${row.cells.name}`,
+              },
+            })),
+          },
+          issues: [],
+          diagnostics: [],
+        };
+      },
+    }).execute(
+      {
+        id: "options",
+        name: "Options",
+        input: { type: "csv" },
+        steps: [{ type: "addPrefix", options: { prefix: "VIP-" } }],
+        output: { type: "csv" },
+      },
+      table,
+    );
+
+    expect(result.table.rows[0].cells.name).toBe("VIP-Kim");
+  });
 });

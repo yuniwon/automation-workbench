@@ -61,4 +61,32 @@ Lee Min,Starter Kit,11000`);
     expect(html).toContain("총 금액");
     expect(html).toContain("12,000");
   });
+
+  it("uses English labels for English settlement report exports", () => {
+    const { table } = parseCsv(`customer,product,amount
+Kim Hana,Starter Kit,12000`);
+    const report = createSettlementReport(
+      table,
+      {
+        groupColumnKey: "customer",
+        itemColumnKey: "product",
+        amountColumnKey: "amount",
+      },
+      "en",
+    );
+
+    expect(report.table.columns.map((column) => column.label)).toEqual([
+      "Group",
+      "Rows",
+      "Total amount",
+      "Item summary",
+    ]);
+
+    const html = settlementReportToHtml(report, "Customer settlement sample", "en");
+
+    expect(html).toContain("<html lang=\"en\">");
+    expect(html).toContain("<span>Groups</span>");
+    expect(html).toContain("<th>Total amount</th>");
+    expect(html).not.toContain("총 금액");
+  });
 });

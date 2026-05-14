@@ -19,6 +19,7 @@ interface WorkflowControlsProps {
 
 const copy = {
   ko: {
+    panelTitle: "작업 흐름",
     uploadTitle: "CSV/XLSX 업로드",
     fileButton: "파일 선택",
     uploadHelp: "헤더가 있는 CSV 또는 XLSX 파일을 불러옵니다.",
@@ -35,6 +36,7 @@ const copy = {
     },
   },
   en: {
+    panelTitle: "Workflow",
     uploadTitle: "Upload CSV/XLSX",
     fileButton: "Choose file",
     uploadHelp: "Load a CSV or XLSX file with headers.",
@@ -84,7 +86,7 @@ export function WorkflowControls({
   return (
     <aside className="panel controls-panel">
       <div className="panel-heading">
-        <span>Workflow</span>
+        <span>{text.panelTitle}</span>
         <strong>01</strong>
       </div>
 

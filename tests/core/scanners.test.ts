@@ -17,6 +17,20 @@ describe("scanDataQuality", () => {
     expect(issueTypes).toContain("mixed_date_format");
   });
 
+  it("summarizes blank cells by column instead of emitting one issue per blank cell", () => {
+    const { table } = parseCsv("name,email\nKim,\nLee,\nPark,park@example.com");
+
+    const blankIssues = scanDataQuality(table).filter((issue) => issue.type === "blank_cell");
+
+    expect(blankIssues).toHaveLength(1);
+    expect(blankIssues[0]).toMatchObject({
+      severity: "info",
+      columnKey: "email",
+      message: "email has 2 blank cells.",
+    });
+    expect(blankIssues[0].rowId).toBeUndefined();
+  });
+
   it("does not treat unit separator text as a row signature collision", () => {
     const { table } = parseCsv("a,b\n\"x\u001fy\",z\nx,\"y\u001fz\"");
 

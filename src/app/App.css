@@ -677,7 +677,6 @@ td {
   grid-row: 1 / span 2;
   display: grid;
   min-width: 210px;
-  flex-wrap: wrap;
   gap: 8px;
 }
 
