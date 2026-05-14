@@ -404,3 +404,51 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.5
 1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
 2. 게시 URL을 기록한다.
 3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.
+
+## 2026-05-14 Settlement Report Tool Released
+
+작업:
+
+- 새 무료 도구 추가: 견적서/정산서 자동 생성
+- 주문 CSV/XLSX에서 그룹 기준 열, 품목 열, 금액 열 선택
+- 고객별/거래처별 행 수, 총 금액, 품목 요약 생성
+- 정산 결과 CSV 다운로드
+- 정산 결과 HTML 다운로드
+- `tool=report` 쿼리 파라미터로 정산서 도구 직접 열기 지원
+- 검색용 랜딩 페이지 추가
+- GitHub Release `v0.1.6` 공개
+- Google Sheets 리드 트래커 `시트1!A22:L26`에 기록 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/?tool=report
+https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.6
+```
+
+검증:
+
+- `pnpm test`: 19 files, 42 tests passed
+- `pnpm build`: 성공
+- 로컬 Playwright: `?tool=report` 정산서 탭 직접 진입 확인
+- 로컬 모바일 Playwright: 390px viewport 가로 overflow 없음
+- GitHub Pages 배포 성공
+- 공개 정산서 앱 직접 링크 Playwright 확인
+- 공개 정산서 랜딩 페이지 HTTP 200 확인
+- 공개 랜딩 페이지의 CTA, OG metadata, JSON-LD, sitemap 포함 확인
+- IndexNow 제출: URL 10개, HTTP 200
+- GitHub Release `v0.1.6`: latest 확인
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+판단:
+
+- 무료 도구는 정리, 비교, 병합, 문서/정산서 생성 4종으로 확장됐다.
+- 유료 전환 문장은 "우리 양식으로 정산서/견적서를 만들어주세요"로 더 명확해졌다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
+2. 게시 URL을 기록한다.
+3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.

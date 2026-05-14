@@ -26,6 +26,7 @@ pnpm submit:indexnow
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html`
 
 ## 주의
 
@@ -160,3 +161,28 @@ pnpm submit:indexnow
 
 - URL 9개 제출이 성공했다.
 - 새 use case 허브 페이지가 sitemap과 IndexNow 제출 대상에 포함됐다.
+
+### 2026-05-14 정산서 생성 페이지 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 10,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 10개 제출이 성공했다.
+- 새 견적서/정산서 자동 생성 랜딩 페이지가 sitemap과 IndexNow 제출 대상에 포함됐다.
