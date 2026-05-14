@@ -14,6 +14,7 @@
 
 - GeekNews 로그인 완료
 - 가입 후 일주일 제한이 지나 글 등록 가능
+- `글등록` 클릭 시 로그인 페이지로 이동하므로 먼저 로그인 필요
 
 열 주소:
 
@@ -33,6 +34,7 @@ docs/marketing/posts/geeknews-show-gn.md
 - 링크가 `?source=geeknews`인지 확인
 - 제작 문의 링크가 `source=geeknews&intent=scope`인지 확인
 - 업무 예시 링크가 `source=geeknews&intent=workflow-index`인지 확인
+- 게시 버튼을 누르기 전에 제목, 링크, 본문, 첫 댓글 내용을 한 번 더 확인
 - 게시 후 URL을 `docs/ops/lead-log.md`에 기록
 
 ## 2순위: OKKY 피드백

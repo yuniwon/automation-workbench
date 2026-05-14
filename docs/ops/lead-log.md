@@ -728,3 +728,33 @@ Google Sheets:
 1. Google Drive/Sheets 커넥터를 쓰기 권한으로 재인증한다.
 2. 리드 트래커에 `v0.1.12` 관련 4행을 추가한다.
 3. 외부 무료 채널 게시 후 Gmail 검색을 반복한다.
+
+## 2026-05-14 External Posting Gate Checked
+
+작업:
+
+- GeekNews `https://news.hada.io/` 접속 확인
+- 헤더의 `글등록` 링크 확인
+- `글등록` 클릭 시 `https://news.hada.io/login?code=101&return=/write`로 이동하는 것 확인
+- 로그인, 계정 생성, 게시, 제출은 수행하지 않음
+- 게시 원고의 제작 문의 링크와 업무 예시 링크에 채널별 추적 파라미터 추가
+
+검증:
+
+- TDD RED: `tests/core/marketingPosts.test.ts`에서 service/workflow 채널 추적 링크 누락으로 실패 확인
+- `pnpm test tests/core/marketingPosts.test.ts`: 1 file, 1 test passed
+- `pnpm test`: 22 files, 51 tests passed
+- `git diff --check`: trailing whitespace 오류 없음
+- GitHub Pages 배포 성공: run `25841214751`
+
+판단:
+
+- GeekNews 게시는 로그인 이후에만 가능하다.
+- 게시 원고는 공개 전 복사 가능한 상태이고, 링크별 유입 추적은 보강됐다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. 사용자가 GeekNews 로그인을 완료하면 `docs/marketing/posts/geeknews-show-gn.md` 원고를 붙여넣는다.
+2. 게시 전 제목, 본문 링크, 첫 댓글을 최종 확인한다.
+3. 게시 URL을 기록하고 Gmail 검색을 반복한다.
