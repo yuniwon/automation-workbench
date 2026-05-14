@@ -366,3 +366,28 @@ pnpm submit:indexnow
 
 - URL 16개 제출이 성공했다.
 - 새 서비스 페이지 `services/excel-automation-service.html`이 sitemap과 IndexNow 제출 대상에 포함됐다.
+
+### 2026-05-14 엑셀 자동화 견적 페이지 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 17,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 17개 제출이 성공했다.
+- 새 견적 페이지 `services/excel-automation-cost.html`이 sitemap과 IndexNow 제출 대상에 포함됐다.

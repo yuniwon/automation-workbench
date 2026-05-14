@@ -809,3 +809,48 @@ Google Sheets:
 1. Google Sheets에 `v0.1.13` 관련 release/indexnow/gmail_scan 행을 추가할지 확인한다.
 2. GeekNews 로그인 후 게시 원고를 실제 게시한다.
 3. 게시 후 Gmail 검색을 반복한다.
+
+## 2026-05-14 Excel Automation Cost Page Added
+
+작업:
+
+- `엑셀 자동화 견적과 비용 기준` 페이지 추가
+- `엑셀 자동화 견적`, `엑셀 자동화 비용`, `견적 요청 템플릿` 문구를 서비스 페이지에 반영
+- 단일 파일, 비교·병합, 반복 도구 제작의 시작 금액 기준 노출
+- 새 페이지를 sitemap과 IndexNow 제출 대상에 포함
+- README, share-kit, revenue-process에 견적 페이지 진입점 추가
+- GitHub Release `v0.1.14` 공개
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/services/excel-automation-cost.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.14
+```
+
+검증:
+
+- 디자인 기준: `Linear` reference
+- TDD RED: `public/services/excel-automation-cost.html`과 sitemap 항목이 없어 테스트 실패 확인
+- `pnpm generate:use-cases`: 성공
+- `pnpm test tests/core/servicePages.test.ts tests/core/useCasePageGenerator.test.ts tests/core/indexNow.test.ts`: 3 files, 11 tests passed
+- `pnpm test`: 22 files, 53 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+- GitHub Pages 배포 성공: run `25841602839`
+- 공개 페이지에서 `엑셀 자동화 견적`, `엑셀 자동화 비용`, `견적 요청 템플릿`, `5만 원부터`, `15만 원부터`, `30만 원부터`, `source=service-excel-automation-cost`, `data-service-inquiry="true"` 확인
+- 공개 sitemap에서 `/automation-workbench/services/excel-automation-cost.html` 확인
+- GitHub Release `v0.1.14`: 생성 완료
+- IndexNow 제출: URL 17개, HTTP 200
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+판단:
+
+- 비용을 먼저 확인하는 검색 유입을 받을 수 있는 페이지가 생겼다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. Google Sheets에 `v0.1.13`과 `v0.1.14` 미반영 행을 추가할지 확인한다.
+2. GeekNews 로그인 후 게시 원고를 실제 게시한다.
+3. 게시 후 Gmail 검색을 반복한다.
