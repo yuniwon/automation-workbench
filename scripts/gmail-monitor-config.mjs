@@ -20,6 +20,10 @@ export const gmailMonitor = {
     "workflow-settlement-reconciliation",
     "workflow-quote-to-invoice",
     "workflow-inventory-sync",
+    "엑셀 열 매핑 양식 변환",
+    "열 매핑",
+    "양식 변환",
+    "seo-excel-column-mapping-template",
   ],
 };
 

@@ -22,6 +22,8 @@ describe("Gmail monitor configuration", () => {
     expect(query).toContain("\"service-excel-automation-service\"");
     expect(query).toContain("\"workflow-settlement-reconciliation\"");
     expect(query).toContain("\"Automation Workbench\"");
+    expect(query).toContain("\"엑셀 열 매핑 양식 변환\"");
+    expect(query).toContain("\"seo-excel-column-mapping-template\"");
   });
 
   it("can widen the query window without changing the lead intent terms", async () => {

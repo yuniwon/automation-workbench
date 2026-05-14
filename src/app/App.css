@@ -106,7 +106,7 @@ h1 {
 
 .tool-switcher {
   display: inline-grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 4px;
   max-width: 100%;
   margin-bottom: 12px;

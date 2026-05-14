@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { ColumnMapperPanel } from "../components/ColumnMapperPanel";
 import { DataPreview } from "../components/DataPreview";
 import { FileComparisonPanel } from "../components/FileComparisonPanel";
 import { FileMergePanel } from "../components/FileMergePanel";
@@ -22,7 +23,7 @@ import type { AutomationRecipe, DataIssue, DataTable, RunMetrics } from "../core
 import { defaultRecipeEngine } from "../core/transform/stepRegistry";
 import { createGroupedSummary } from "../core/transform/transforms";
 
-export type ToolMode = "cleanup" | "compare" | "merge" | "report";
+export type ToolMode = "cleanup" | "compare" | "merge" | "report" | "map";
 
 const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: string }> = {
   cleanup: {
@@ -44,6 +45,11 @@ const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: str
     title: "견적서/정산서 자동 생성",
     lede: "주문 파일에서 고객, 품목, 금액 열을 골라 그룹별 정산서를 만들고 CSV 또는 HTML로 내려받을 수 있습니다.",
     statusLabel: "report",
+  },
+  map: {
+    title: "엑셀 열 매핑 양식 변환",
+    lede: "제각각인 주문 파일 열을 표준 주문 양식으로 맞추고 결과 CSV를 내려받을 수 있습니다.",
+    statusLabel: "columns",
   },
 };
 
@@ -74,6 +80,7 @@ export function App() {
     () => (groupColumnKey ? createGroupedSummary(currentTable, groupColumnKey) : []),
     [currentTable, groupColumnKey],
   );
+  const statusValue = toolMode === "cleanup" ? currentTable.rows.length : toolMode === "map" ? 6 : 2;
 
   const issueCounts = useMemo(() => {
     return issues.reduce(
@@ -167,7 +174,7 @@ export function App() {
         </div>
         <div className="status-strip" aria-label="Current data status">
           <span>{toolMode === "cleanup" ? sourceName : `${currentToolCopy.title} 모드`}</span>
-          <strong>{toolMode === "cleanup" ? currentTable.rows.length : 2}</strong>
+          <strong>{statusValue}</strong>
           <span>{currentToolCopy.statusLabel}</span>
         </div>
       </section>
@@ -200,6 +207,13 @@ export function App() {
           onClick={() => setToolMode("report")}
         >
           정산서 도구
+        </button>
+        <button
+          className={toolMode === "map" ? "active" : ""}
+          type="button"
+          onClick={() => setToolMode("map")}
+        >
+          양식 변환
         </button>
       </section>
 
@@ -247,8 +261,10 @@ export function App() {
         <FileComparisonPanel parseFile={parseUploadedFile} />
       ) : toolMode === "merge" ? (
         <FileMergePanel parseFile={parseUploadedFile} />
-      ) : (
+      ) : toolMode === "report" ? (
         <ReportGeneratorPanel parseFile={parseUploadedFile} />
+      ) : (
+        <ColumnMapperPanel parseFile={parseUploadedFile} />
       )}
 
       <InquiryPanel />
@@ -289,7 +305,13 @@ function selectDefaultGroupColumn(table: DataTable): string {
 
 export function selectInitialToolMode(search: string): ToolMode {
   const requested = new URLSearchParams(search).get("tool");
-  if (requested === "cleanup" || requested === "compare" || requested === "merge" || requested === "report") {
+  if (
+    requested === "cleanup" ||
+    requested === "compare" ||
+    requested === "merge" ||
+    requested === "report" ||
+    requested === "map"
+  ) {
     return requested;
   }
   return "cleanup";

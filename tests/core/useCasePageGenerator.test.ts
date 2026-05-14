@@ -13,6 +13,7 @@ const expectedUseCaseSlugs = [
   "excel-file-compare",
   "excel-csv-file-merge",
   "estimate-settlement-generator",
+  "excel-column-mapping-template",
 ];
 
 describe("use case page generator", () => {

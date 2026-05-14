@@ -309,6 +309,40 @@ export const useCases = [
       },
     ],
   },
+  {
+    slug: "excel-column-mapping-template",
+    title: "엑셀 열 매핑 양식 변환 무료 도구 | Automation Workbench",
+    description: "엑셀 열 매핑으로 제각각인 주문 파일을 표준 양식으로 변환하고 결과 CSV를 내려받을 수 있습니다.",
+    eyebrow: "무료 양식 변환",
+    heading: "엑셀 열 매핑으로 고객사 양식에 맞춰 변환하세요",
+    lede: [
+      "주문번호, 고객명, 상품명, 금액처럼 필요한 열은 같지만 파일마다 열 이름이 다를 때",
+      "원본 열을 표준 양식 열에 연결하고 변환된 CSV를 브라우저에서 바로 내려받을 수 있습니다.",
+    ],
+    ctaTitle: "양식 변환 실행",
+    ctaBody: "샘플 주문 파일로 열 매핑 흐름을 확인한 뒤 실제 CSV/XLSX 파일에 적용할 수 있습니다.",
+    source: "seo-excel-column-mapping-template",
+    tool: "map",
+    mailLabel: "양식 변환 자동화 문의",
+    mailTask: "엑셀 열 매핑 양식 변환",
+    cards: [
+      {
+        title: "변환 방식",
+        items: ["원본 열을 표준 열에 매핑", "없는 열은 빈 값 또는 기본값으로 채움", "정해진 열 순서 유지", "결과 CSV 다운로드"],
+      },
+      {
+        title: "업무 사용처",
+        items: ["쇼핑몰 주문 업로드 양식 변환", "거래처별 파일 양식 통일", "택배사 업로드 파일 만들기", "월별 보고 양식 맞추기"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "고객사별 열 이름, 기본값, 필수 열 검수 규칙을 설정으로 분리해",
+          "파일이 바뀌어도 같은 표준 양식으로 변환되는 도구로 확장할 수 있습니다.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const servicePages = [

@@ -39,6 +39,18 @@ describe("contactConfig", () => {
     expect(body).toContain("https://yuniwon.github.io/automation-workbench/?source=geeknews&tool=report");
   });
 
+  it("keeps the column mapping tool in inquiry tracking", () => {
+    const href = buildContactHref("seo-excel-column-mapping-template", "map");
+    const params = new URLSearchParams(href.split("?")[1] ?? "");
+    const body = params.get("body") ?? "";
+
+    expect(body).toContain("선택 도구:");
+    expect(body).toContain("map");
+    expect(body).toContain(
+      "https://yuniwon.github.io/automation-workbench/?source=seo-excel-column-mapping-template&tool=map",
+    );
+  });
+
   it("extracts source from a URL search string", () => {
     expect(getSourceFromSearch("?source=okky")).toBe("okky");
     expect(getSourceFromSearch("?utm_source=hacker-news")).toBe("hacker-news");

@@ -44,6 +44,11 @@ const pages = [
     title: "견적서/정산서 자동 생성",
     source: "seo-estimate-settlement-generator",
   },
+  {
+    path: "public/use-cases/excel-column-mapping-template.html",
+    title: "엑셀 열 매핑 양식 변환",
+    source: "seo-excel-column-mapping-template",
+  },
 ];
 
 function readProjectFile(relativePath: string) {

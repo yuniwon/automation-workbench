@@ -11,13 +11,13 @@ https://yuniwon.github.io/automation-workbench/?source=hacker-news
 ## Title
 
 ```text
-Show HN: I built a browser-based CSV/XLSX cleanup, diff, merge, and report tool
+Show HN: I built a browser-based CSV/XLSX cleanup, diff, merge, report, and mapping tool
 ```
 
 ## Text Or First Comment
 
 ```text
-I built a small browser-based tool for cleaning, comparing, merging, and generating simple settlement reports from CSV/XLSX files:
+I built a small browser-based tool for cleaning, comparing, merging, mapping columns, and generating simple settlement reports from CSV/XLSX files:
 
 https://yuniwon.github.io/automation-workbench/?source=hacker-news
 
@@ -38,6 +38,7 @@ It can:
 - compare two files by a shared key
 - merge multiple files with a source file column
 - generate grouped settlement summaries from customer/item/amount columns
+- map source columns into a standard order template
 - export results as CSV or a simple HTML report
 
 The motivation is practical: many small business workflows still involve manually cleaning order, inventory, and settlement spreadsheets every week. I wanted a free, no-login demo that shows what can be automated before building custom workflows for a specific file format.
@@ -58,7 +59,7 @@ Feedback on edge cases and UX would be useful.
 
 채널: Hacker News Show HN
 게시 URL:
-게시 제목: Show HN: I built a browser-based CSV/XLSX cleanup, diff, merge, and report tool
+게시 제목: Show HN: I built a browser-based CSV/XLSX cleanup, diff, merge, report, and mapping tool
 핵심 반응:
 Gmail 실제 문의:
 다음 액션:

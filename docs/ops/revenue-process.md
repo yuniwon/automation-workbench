@@ -15,6 +15,7 @@
 - 무료 도구 2: 엑셀/CSV 파일 비교 도구
 - 무료 도구 3: 엑셀/CSV 파일 병합 도구
 - 무료 도구 4: 견적서/정산서 자동 생성 도구
+- 무료 도구 5: 엑셀 열 매핑 양식 변환 도구
 - 소개글: `docs/marketing/free-excel-csv-cleanup-tool-post.md`
 - 무료 노출 계획: `docs/marketing/free-distribution-plan.md`
 - 수동 게시 체크리스트: `docs/marketing/manual-posting-checklist.md`

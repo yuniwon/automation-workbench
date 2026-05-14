@@ -10,7 +10,7 @@ function cleanSource(source?: string) {
 
 function cleanTool(tool?: string) {
   const normalized = cleanSource(tool);
-  return ["cleanup", "compare", "merge", "report"].includes(normalized) ? normalized : "";
+  return ["cleanup", "compare", "merge", "report", "map"].includes(normalized) ? normalized : "";
 }
 
 function buildTrackedToolUrl(source?: string, tool?: string) {
@@ -36,7 +36,7 @@ function buildMailBody(source?: string, tool?: string) {
 
   return `안녕하세요.
 
-무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구를 사용해보고 문의드립니다.
+무료 엑셀/CSV 정리·비교·병합·정산서 생성·양식 변환 도구를 사용해보고 문의드립니다.
 도구 링크: ${buildTrackedToolUrl(sourceLabel, toolLabel)}
 ${sourceLine}
 ${toolLine}
@@ -84,6 +84,6 @@ export const contactConfig = {
   href: buildContactHref(),
   label: "이메일로 맞춤 제작 문의",
   inquiryText:
-    "안녕하세요. 무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구를 사용해보고 문의드립니다. 현재 파일 구조, 반복 작업, 수작업 소요시간, 필요한 결과물 기준으로 자동화 제작 가능 범위와 견적을 안내해주세요.",
-  shareText: `무료 엑셀/CSV 정리·비교·병합·정산서 생성 도구: ${toolUrl}`,
+    "안녕하세요. 무료 엑셀/CSV 정리·비교·병합·정산서 생성·양식 변환 도구를 사용해보고 문의드립니다. 현재 파일 구조, 반복 작업, 수작업 소요시간, 필요한 결과물 기준으로 자동화 제작 가능 범위와 견적을 안내해주세요.",
+  shareText: `무료 엑셀/CSV 정리·비교·병합·정산서 생성·양식 변환 도구: ${toolUrl}`,
 };
