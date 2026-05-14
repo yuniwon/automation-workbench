@@ -452,3 +452,44 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.6
 1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
 2. 게시 URL을 기록한다.
 3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.
+
+## 2026-05-14 Inquiry Tracking Updated
+
+작업:
+
+- 문의 메일 본문에 유입 경로 `source`와 선택 도구 `tool`을 함께 기록
+- 문의 메일 본문에 추적 파라미터가 포함된 도구 링크 추가
+- GeekNews, OKKY, Hacker News, Product Hunt 게시 원고를 정산서 생성 도구 포함 상태로 갱신
+- 게시 후 Gmail 검색식에 `견적서`, `정산서` 키워드 추가
+- GitHub Release `v0.1.7` 공개
+- Google Sheets 리드 트래커 `시트1!A27:L30`에 기록 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/?source=geeknews&tool=report
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.7
+```
+
+검증:
+
+- `pnpm test`: 19 files, 43 tests passed
+- `pnpm build`: 성공
+- 로컬 Playwright: mailto 본문에 `source=geeknews`, `tool=report`, tracked URL 포함 확인
+- GitHub Pages 배포 성공
+- 공개 Playwright: mailto 본문에 `source=geeknews`, `tool=report`, tracked URL 포함 확인
+- IndexNow 제출: URL 10개, HTTP 200
+- GitHub Release `v0.1.7`: latest 확인
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+판단:
+
+- 게시 후 실제 문의가 들어오면 채널과 관심 도구를 더 정확히 분류할 수 있게 됐다.
+- 외부 게시 원고는 현재 공개 기능과 일치한다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
+2. 게시 URL을 기록한다.
+3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.
