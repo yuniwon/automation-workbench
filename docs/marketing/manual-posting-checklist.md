@@ -63,7 +63,7 @@ docs/marketing/posts/okky-feedback.md
 Gmail 검색:
 
 ```text
-in:anywhere newer_than:7d ("엑셀/CSV 자동화" OR "맞춤 제작 문의" OR "무료 엑셀" OR "CSV/XLSX" OR "샘플 파일" OR "반복 작업" OR "automation-workbench")
+in:anywhere newer_than:7d ("엑셀/CSV 자동화" OR "맞춤 제작 문의" OR "무료 엑셀" OR "CSV/XLSX" OR "샘플 파일" OR "반복 작업" OR "automation-workbench" OR "견적서" OR "정산서")
 ```
 
 기록:
@@ -78,4 +78,3 @@ Gmail 후보:
 실제 문의:
 다음 액션:
 ```
-
