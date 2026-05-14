@@ -676,3 +676,55 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.11
 1. 외부 게시 실행이 가능하면 GeekNews 또는 OKKY에 게시한다.
 2. 코드 쪽 다음 개선은 `/workflows/` 허브에서 개별 workflow CTA 클릭 추적을 더 세분화하는 것이다.
 3. 게시 또는 색인 후 Gmail과 Google Sheets 리드 트래커를 다시 확인한다.
+
+## 2026-05-14 Workflow CTA Intent Tracking Added
+
+작업:
+
+- workflow 개별 페이지 CTA에 `workflow`와 `intent` 추적 파라미터 추가
+- `무료 도구 열기`, `제작 범위 보기`, `맞춤 제작 문의` CTA 의도 구분
+- workflow 직접 문의 메일 본문에 업무 예시 상세와 CTA 상세 추가
+- 제작 문의 페이지가 URL 파라미터를 읽어 문의 메일 본문에 유입 경로 상세를 추가
+- GitHub Release `v0.1.12` 공개
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/workflows/shopping-mall-order-cleanup.html
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=workflow-shopping-mall-order-cleanup&tool=cleanup&workflow=shopping-mall-order-cleanup&intent=scope
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.12
+```
+
+검증:
+
+- TDD RED: workflow/service 페이지 추적 문자열이 없어 테스트 실패 확인
+- `pnpm generate:use-cases`: 성공
+- `pnpm test tests/core/servicePages.test.ts tests/core/workflowPages.test.ts tests/core/useCasePageGenerator.test.ts`: 3 files, 10 tests passed
+- `pnpm test`: 21 files, 50 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+- GitHub Pages 배포 성공: run `25840968915`
+- 공개 workflow 페이지에서 `workflow=shopping-mall-order-cleanup`, `intent=try-tool`, `intent=scope`, `intent=direct-inquiry` 확인
+- 공개 서비스 페이지에서 `data-service-inquiry="true"`, `유입 경로 상세`, `업무 예시 상세`, `CTA 상세` 확인
+- GitHub Release `v0.1.12`: latest 확인
+- IndexNow 제출: URL 15개, HTTP 200
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+Google Sheets:
+
+- 읽기 확인: `Automation Workbench Lead Tracker`, `시트1`, `sheetId=0`
+- 쓰기 시도: `appendCells`로 4행 추가 시도
+- 결과: `FORBIDDEN`
+- 해석: 현재 Google Drive 커넥터는 읽기 권한은 있으나 Sheets `batchUpdate` 쓰기 권한이 막혀 있다. 재인증 후 `conversion_tracking`, `indexnow_submission`, `github_release`, `gmail_scan` 4행을 추가해야 한다.
+
+판단:
+
+- Gmail 문의가 들어왔을 때 어떤 업무 예시와 CTA 의도에서 전환됐는지 추적할 준비가 됐다.
+- 실제 Gmail 문의는 아직 0건이다.
+- 원격 Google Sheets 동기화는 쓰기 권한 재인증이 필요하다.
+
+다음 액션:
+
+1. Google Drive/Sheets 커넥터를 쓰기 권한으로 재인증한다.
+2. 리드 트래커에 `v0.1.12` 관련 4행을 추가한다.
+3. 외부 무료 채널 게시 후 Gmail 검색을 반복한다.

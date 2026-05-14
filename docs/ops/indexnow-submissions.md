@@ -316,3 +316,28 @@ pnpm submit:indexnow
 
 - URL 15개 제출이 성공했다.
 - 서비스 페이지와 workflow 개별 페이지의 FAQPage 구조화 데이터, 문의 전 체크리스트, 가격 기준 변경을 검색엔진에 다시 알렸다.
+
+### 2026-05-14 Workflow CTA 추적 갱신 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 15,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 15개 제출이 성공했다.
+- workflow CTA의 `workflow`와 `intent` 추적 파라미터 변경을 검색엔진에 다시 알렸다.

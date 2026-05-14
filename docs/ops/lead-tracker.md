@@ -54,3 +54,9 @@ https://docs.google.com/spreadsheets/d/1E6vhznY3NRIhTnOX9as7Q2XRJoENRJcFIVtkCxdv
 - 실제 문의가 들어오면 `docs/ops/gmail-intake-playbook.md` 기준으로 상태를 바꾼다.
 - 금액 판단은 `docs/ops/pricing-guide.md`를 따른다.
 - 답장 원문은 `docs/ops/gmail-reply-templates.md`를 사용한다.
+
+## 2026-05-14 권한 메모
+
+- Google Sheets 읽기: 가능
+- Google Sheets 쓰기: `batchUpdate` 실행 시 `FORBIDDEN`
+- 필요한 조치: Google Drive/Sheets 커넥터를 쓰기 권한으로 재인증한 뒤 `docs/ops/lead-log.md`의 최신 미반영 기록을 시트에 추가한다.
