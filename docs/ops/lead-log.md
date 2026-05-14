@@ -1199,3 +1199,32 @@ Gmail 검색:
 1. GeekNews 로그인 가능 시 `docs/marketing/posts/geeknews-show-gn.md`를 실제 게시한다.
 2. 로그인 없는 채널이 확인되면 같은 공유 링크 기준으로 게시한다.
 3. 게시 후 Gmail 검색을 `pnpm monitor:gmail:query` 기준으로 반복한다.
+
+## 2026-05-14 Posting Packet CLI Added
+
+작업:
+
+- `pnpm marketing:post --channel <channel>` 명령 추가
+- 지원 채널: GeekNews, OKKY, Hacker News, Product Hunt
+- 게시 원고의 제목, 본문, 첫 댓글, Product Hunt 필드, 게시 후 기록 템플릿을 복사용으로 출력
+- `docs/marketing/posts/README.md`에 사용법 추가
+- GitHub Release `v0.1.21` 노트 작성
+
+검증:
+
+- TDD RED: `tests/core/postingPacketScript.test.ts`에서 `scripts/posting-packet.mjs`와 `marketing:post` 스크립트 누락 확인
+- TDD GREEN: `tests/core/postingPacketScript.test.ts`: 3 tests passed
+- `pnpm marketing:post --channel geeknews`: 복사용 GeekNews 패킷 출력 확인
+- `pnpm marketing:post --list`: 4개 채널 목록 출력 확인
+
+판단:
+
+- Chrome 자동화 도구가 현재 노출되지 않아 로그인 세션 게시를 직접 실행하지 못했다.
+- 대신 사용자가 로그인한 브라우저에서 바로 붙여넣을 수 있는 복사용 패킷 출력 경로를 만들었다.
+- 실제 게시와 Gmail 문의는 아직 발생하지 않았다.
+
+다음 액션:
+
+1. 사용자가 GeekNews에 로그인한 상태에서 `pnpm marketing:post --channel geeknews` 출력 내용을 게시한다.
+2. 게시 URL을 이 로그의 Exposure 형식으로 기록한다.
+3. 게시 후 Gmail 검색을 `pnpm monitor:gmail:query` 기준으로 반복한다.
