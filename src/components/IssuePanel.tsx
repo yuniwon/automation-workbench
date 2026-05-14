@@ -6,7 +6,6 @@ interface IssuePanelProps {
 }
 
 export function IssuePanel({ issues, diagnostics }: IssuePanelProps) {
-  const visibleIssues = issues.slice(0, 16);
   const issueGroups = countByType(issues);
 
   return (
@@ -31,20 +30,20 @@ export function IssuePanel({ issues, diagnostics }: IssuePanelProps) {
           ))}
         </div>
       )}
-      <div className="issue-list">
-        {visibleIssues.length === 0 ? (
-          <p className="empty-state">감지된 문제가 없습니다.</p>
-        ) : (
-          visibleIssues.map((issue) => (
+      {issues.length === 0 ? (
+        <p className="empty-state">감지된 문제가 없습니다.</p>
+      ) : (
+        <details className="issue-details" open={issues.length <= 16}>
+          <summary>상세 이슈 {issues.length}건 보기</summary>
+          <div className="issue-list">
+            {issues.map((issue) => (
             <article className={`issue-item ${issue.severity}`} key={issue.id}>
               <span>{issue.severity}</span>
               <p>{issue.message}</p>
             </article>
-          ))
-        )}
-      </div>
-      {issues.length > visibleIssues.length && (
-        <p className="issue-limit">상세 이슈 {visibleIssues.length}건만 먼저 표시합니다.</p>
+            ))}
+          </div>
+        </details>
       )}
     </section>
   );

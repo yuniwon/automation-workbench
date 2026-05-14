@@ -5,6 +5,7 @@ import { parseCsv } from "../core/input/csvInputAdapter";
 import { tableToCsv } from "../core/output/csvOutputAdapter";
 import { sampleOrdersComparisonCsv, sampleOrdersCsv } from "../core/samples/sampleOrders";
 import type { DataTable, TableParseResult } from "../core/table/types";
+import { downloadBlob } from "../utils/downloadBlob";
 import { DataPreview } from "./DataPreview";
 
 interface FileComparisonPanelProps {
@@ -82,18 +83,11 @@ export function FileComparisonPanel({
   }
 
   function downloadComparisonCsv() {
-    const csv = tableToCsv(resultTable);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "comparison-result.csv";
-    link.click();
-    URL.revokeObjectURL(url);
+    downloadBlob(tableToCsv(resultTable), "comparison-result.csv", "text/csv;charset=utf-8");
   }
 
   return (
-    <section className="comparison-grid">
+    <section className="panel-grid">
       <aside className="panel controls-panel">
         <div className="panel-heading">
           <span>Compare</span>

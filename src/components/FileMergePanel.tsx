@@ -5,6 +5,7 @@ import { mergeTables, type MergeSource } from "../core/merge/mergeTables";
 import { tableToCsv } from "../core/output/csvOutputAdapter";
 import { sampleOrdersComparisonCsv, sampleOrdersCsv } from "../core/samples/sampleOrders";
 import type { TableParseResult } from "../core/table/types";
+import { downloadBlob } from "../utils/downloadBlob";
 import { DataPreview } from "./DataPreview";
 
 interface FileMergePanelProps {
@@ -45,18 +46,11 @@ export function FileMergePanel({ parseFile }: FileMergePanelProps) {
   }
 
   function downloadMergedCsv() {
-    const csv = tableToCsv(mergeResult.table);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "merged-data.csv";
-    link.click();
-    URL.revokeObjectURL(url);
+    downloadBlob(tableToCsv(mergeResult.table), "merged-data.csv", "text/csv;charset=utf-8");
   }
 
   return (
-    <section className="comparison-grid">
+    <section className="panel-grid">
       <aside className="panel controls-panel">
         <div className="panel-heading">
           <span>Merge</span>

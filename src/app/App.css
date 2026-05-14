@@ -187,7 +187,7 @@ h1 {
   gap: 12px;
 }
 
-.comparison-grid {
+.panel-grid {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
   gap: 12px;
@@ -203,7 +203,7 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.comparison-grid .data-panel {
+.panel-grid .data-panel {
   grid-column: 2;
 }
 
@@ -497,6 +497,21 @@ td {
   gap: 8px;
 }
 
+.issue-details {
+  display: grid;
+  gap: 10px;
+}
+
+.issue-details summary {
+  cursor: pointer;
+  color: #8a8f98;
+  font-size: 13px;
+}
+
+.issue-details[open] summary {
+  margin-bottom: 10px;
+}
+
 .issue-item,
 .summary-row {
   display: flex;
@@ -539,12 +554,6 @@ td {
 .empty-state {
   color: #8a8f98;
   font-size: 14px;
-}
-
-.issue-limit {
-  margin: 10px 0 0;
-  color: #62666d;
-  font-size: 12px;
 }
 
 .summary-row div {
@@ -725,7 +734,7 @@ td {
   .metrics-grid,
   .result-summary,
   .workspace-grid,
-  .comparison-grid,
+  .panel-grid,
   .comparison-summary {
     grid-template-columns: 1fr;
   }
@@ -733,7 +742,7 @@ td {
   .controls-panel,
   .issue-panel,
   .summary-panel,
-  .comparison-grid .data-panel {
+  .panel-grid .data-panel {
     grid-column: auto;
     grid-row: auto;
   }

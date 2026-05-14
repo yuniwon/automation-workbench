@@ -1228,3 +1228,39 @@ Gmail 검색:
 1. 사용자가 GeekNews에 로그인한 상태에서 `pnpm marketing:post --channel geeknews` 출력 내용을 게시한다.
 2. 게시 URL을 이 로그의 Exposure 형식으로 기록한다.
 3. 게시 후 Gmail 검색을 `pnpm monitor:gmail:query` 기준으로 반복한다.
+
+## 2026-05-14 Review Maintainability Pass
+
+작업:
+
+- `downloadBlob` 유틸리티 분리
+- 주문 양식 매핑 타겟을 `orderMappingTargets.ts`로 분리
+- `ColumnMapperPanel`에 `targetFields`, `outputFilename` props 추가
+- `App.tsx`의 양식 변환 상태 숫자를 `defaultOrderMappingTargets.length`에서 파생
+- `comparison-grid` 레이아웃 클래스명을 `panel-grid`로 변경
+- `IssuePanel`의 16개 상세 제한 제거, 접을 수 있는 전체 상세 목록으로 변경
+- `rowSignature` 충돌 회귀 테스트 추가
+- 앱/코어 테스트와 배포 산출물 테스트를 `pnpm test`, `pnpm test:artifacts`로 분리
+- GitHub Pages workflow에서 두 테스트 그룹을 모두 실행하도록 변경
+- GitHub Release `v0.1.22` 노트 작성
+
+검증:
+
+- TDD RED: `downloadBlobUsage.test.ts`에서 공유 유틸 누락 확인
+- TDD GREEN: `downloadBlobUsage.test.ts`, `transforms.test.ts`, `columnMapping.test.ts`, `appToolMode.test.ts` 통과
+- `pnpm test`: 19 files, 43 tests passed
+- `pnpm test:artifacts`: 11 files, 31 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+
+판단:
+
+- 리뷰에서 지적된 유지보수성 문제 중 실제로 남아 있던 항목을 정리했다.
+- `rowSignature`와 `IssuePanel`은 이미 일부 반영되어 있었지만, 이번 작업으로 회귀 테스트와 UI 제한 제거까지 완료했다.
+- 실제 Gmail 문의는 아직 발생하지 않았다.
+
+다음 액션:
+
+1. 커밋 후 GitHub Pages 배포와 `v0.1.22` 릴리스를 확인한다.
+2. GeekNews 로그인 세션에서 게시 원고를 실제 게시한다.
+3. 게시 후 Gmail 검색을 `pnpm monitor:gmail:query` 기준으로 반복한다.

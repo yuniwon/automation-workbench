@@ -4,6 +4,7 @@ import { tableToCsv } from "../core/output/csvOutputAdapter";
 import { createSettlementReport, settlementReportToHtml } from "../core/report/settlementReport";
 import { sampleOrdersCsv } from "../core/samples/sampleOrders";
 import type { DataTable, TableParseResult } from "../core/table/types";
+import { downloadBlob } from "../utils/downloadBlob";
 import { DataPreview } from "./DataPreview";
 
 interface ReportGeneratorPanelProps {
@@ -70,7 +71,7 @@ export function ReportGeneratorPanel({ parseFile }: ReportGeneratorPanelProps) {
   }
 
   return (
-    <section className="comparison-grid">
+    <section className="panel-grid">
       <aside className="panel controls-panel">
         <div className="panel-heading">
           <span>Report</span>
@@ -162,16 +163,6 @@ function selectColumn(table: DataTable, preferredKeys: string[]): string {
     table.columns[0]?.key ??
     ""
   );
-}
-
-function downloadBlob(content: string, filename: string, type: string) {
-  const blob = new Blob([content], { type });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  link.click();
-  URL.revokeObjectURL(url);
 }
 
 function formatCurrency(value: number): string {

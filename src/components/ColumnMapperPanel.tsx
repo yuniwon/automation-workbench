@@ -1,25 +1,24 @@
 import { useMemo, useState, type ChangeEvent } from "react";
 import { mapTableColumns, suggestColumnMappings, type ColumnMappingTarget } from "../core/map/mapTableColumns";
+import { defaultOrderMappingTargets } from "../core/map/orderMappingTargets";
 import { parseCsv } from "../core/input/csvInputAdapter";
 import { tableToCsv } from "../core/output/csvOutputAdapter";
 import { sampleOrdersCsv } from "../core/samples/sampleOrders";
 import type { DataTable, TableParseResult } from "../core/table/types";
+import { downloadBlob } from "../utils/downloadBlob";
 import { DataPreview } from "./DataPreview";
 
 interface ColumnMapperPanelProps {
   parseFile: (file: File) => Promise<TableParseResult>;
+  targetFields?: ColumnMappingTarget[];
+  outputFilename?: string;
 }
 
-const targetFields: ColumnMappingTarget[] = [
-  { key: "order_id", label: "주문번호", aliases: ["order id", "order_id", "주문 번호"], required: true },
-  { key: "customer_name", label: "고객명", aliases: ["customer", "buyer", "name", "고객"], required: true },
-  { key: "product_name", label: "상품명", aliases: ["product", "item", "상품", "품목"], required: true },
-  { key: "amount", label: "금액", aliases: ["amount", "price", "total", "total price", "합계"], required: true },
-  { key: "status", label: "주문상태", aliases: ["status", "state", "상태"] },
-  { key: "channel", label: "판매채널", aliases: ["channel", "store", "platform", "채널"], defaultValue: "온라인" },
-];
-
-export function ColumnMapperPanel({ parseFile }: ColumnMapperPanelProps) {
+export function ColumnMapperPanel({
+  outputFilename = "mapped-order-template.csv",
+  parseFile,
+  targetFields = defaultOrderMappingTargets,
+}: ColumnMapperPanelProps) {
   const initialTable = useMemo(() => parseCsv(sampleOrdersCsv).table, []);
   const [sourceName, setSourceName] = useState("샘플 주문 데이터");
   const [table, setTable] = useState(initialTable);
@@ -72,18 +71,11 @@ export function ColumnMapperPanel({ parseFile }: ColumnMapperPanelProps) {
   }
 
   function downloadMappedCsv() {
-    const csv = tableToCsv(result.table);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "mapped-order-template.csv";
-    link.click();
-    URL.revokeObjectURL(url);
+    downloadBlob(tableToCsv(result.table), outputFilename, "text/csv;charset=utf-8");
   }
 
   return (
-    <section className="comparison-grid">
+    <section className="panel-grid">
       <aside className="panel controls-panel">
         <div className="panel-heading">
           <span>Mapping</span>

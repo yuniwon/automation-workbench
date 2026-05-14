@@ -27,6 +27,13 @@ describe("transforms", () => {
     expect(deduped.rows).toHaveLength(1);
   });
 
+  it("does not treat unit-separator collisions as duplicate rows", () => {
+    const { table } = parseCsv("left,right\n\"A\",\"B\u001fC\"\n\"A\u001fB\",\"C\"");
+    const deduped = removeDuplicateRows(table).table;
+
+    expect(deduped.rows).toHaveLength(2);
+  });
+
   it("creates grouped summaries", () => {
     const { table } = parseCsv("status,phone\npaid,1\npaid,\npending,2");
     const groups = createGroupedSummary(table, "status");

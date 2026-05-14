@@ -12,6 +12,7 @@
     "build": "tsc -b && vite build",
     "submit:indexnow": "node scripts/submit-indexnow.mjs",
     "test": "vitest run",
+    "test:artifacts": "vitest run --config vitest.artifacts.config.ts",
     "test:watch": "vitest"
   },
   "dependencies": {

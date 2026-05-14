@@ -11,6 +11,7 @@ import { SummaryPanel } from "../components/SummaryPanel";
 import { WorkflowControls } from "../components/WorkflowControls";
 import { parseCsv } from "../core/input/csvInputAdapter";
 import { parseXlsxFile } from "../core/input/excelInputAdapter";
+import { defaultOrderMappingTargets } from "../core/map/orderMappingTargets";
 import { tableToCsv } from "../core/output/csvOutputAdapter";
 import {
   cleanupOptionsToSteps,
@@ -22,34 +23,40 @@ import { sampleOrdersCsv } from "../core/samples/sampleOrders";
 import type { AutomationRecipe, DataIssue, DataTable, RunMetrics } from "../core/table/types";
 import { defaultRecipeEngine } from "../core/transform/stepRegistry";
 import { createGroupedSummary } from "../core/transform/transforms";
+import { downloadBlob } from "../utils/downloadBlob";
 
 export type ToolMode = "cleanup" | "compare" | "merge" | "report" | "map";
 
-const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: string }> = {
+const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: string; defaultStatusValue: number }> = {
   cleanup: {
     title: "엑셀/CSV 자동 정리",
     lede: "주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤 바로 CSV로 내려받을 수 있습니다.",
     statusLabel: "rows",
+    defaultStatusValue: 0,
   },
   compare: {
     title: "엑셀/CSV 파일 비교",
     lede: "두 파일을 같은 키 기준으로 비교해서 추가, 삭제, 변경된 행을 확인하고 결과 CSV로 내려받을 수 있습니다.",
     statusLabel: "files",
+    defaultStatusValue: 2,
   },
   merge: {
     title: "엑셀/CSV 파일 병합",
     lede: "여러 CSV/XLSX 파일을 같은 열 구조로 맞춰 세로로 합치고 원본 파일명을 포함한 결과 CSV로 내려받을 수 있습니다.",
     statusLabel: "files",
+    defaultStatusValue: 2,
   },
   report: {
     title: "견적서/정산서 자동 생성",
     lede: "주문 파일에서 고객, 품목, 금액 열을 골라 그룹별 정산서를 만들고 CSV 또는 HTML로 내려받을 수 있습니다.",
     statusLabel: "report",
+    defaultStatusValue: 1,
   },
   map: {
     title: "엑셀 열 매핑 양식 변환",
     lede: "제각각인 주문 파일 열을 표준 주문 양식으로 맞추고 결과 CSV를 내려받을 수 있습니다.",
     statusLabel: "columns",
+    defaultStatusValue: defaultOrderMappingTargets.length,
   },
 };
 
@@ -80,7 +87,7 @@ export function App() {
     () => (groupColumnKey ? createGroupedSummary(currentTable, groupColumnKey) : []),
     [currentTable, groupColumnKey],
   );
-  const statusValue = toolMode === "cleanup" ? currentTable.rows.length : toolMode === "map" ? 6 : 2;
+  const statusValue = toolMode === "cleanup" ? currentTable.rows.length : currentToolCopy.defaultStatusValue;
 
   const issueCounts = useMemo(() => {
     return issues.reduce(
@@ -151,14 +158,7 @@ export function App() {
   }
 
   function downloadCsv() {
-    const csv = tableToCsv(currentTable);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "cleaned-data.csv";
-    link.click();
-    URL.revokeObjectURL(url);
+    downloadBlob(tableToCsv(currentTable), "cleaned-data.csv", "text/csv;charset=utf-8");
   }
 
   return (
