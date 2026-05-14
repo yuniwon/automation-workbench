@@ -1264,3 +1264,24 @@ Gmail 검색:
 1. 커밋 후 GitHub Pages 배포와 `v0.1.22` 릴리스를 확인한다.
 2. GeekNews 로그인 세션에서 게시 원고를 실제 게시한다.
 3. 게시 후 Gmail 검색을 `pnpm monitor:gmail:query` 기준으로 반복한다.
+
+## 2026-05-14 GeekNews Account Age Gate
+
+상황:
+
+- GeekNews 계정 생성 완료
+- 글 작성은 가입 후 1주일이 지나야 가능하다는 제한 확인
+- 실제 GeekNews 게시 0건
+- Gmail 실제 문의 0건
+
+판단:
+
+- 이 제한은 우회하지 않는다.
+- GeekNews는 대기 채널로 두고, 같은 원고를 보존한다.
+- 대기 기간 동안 무료 노출은 OKKY, GitHub, 검색 유입 페이지, Hacker News 등 다른 비용 없는 경로로 이어간다.
+
+다음 액션:
+
+1. GeekNews 가입 1주일 경과 후 `pnpm marketing:post --channel geeknews` 원고로 다시 게시를 시도한다.
+2. 그 전에는 OKKY 또는 다른 무료 채널에 피드백 요청 글을 먼저 게시한다.
+3. 게시 URL이 생기면 이 로그의 Exposure 형식으로 기록한다.
