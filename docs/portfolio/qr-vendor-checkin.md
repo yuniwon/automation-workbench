@@ -16,6 +16,50 @@ Use this URL after deployment:
 https://yuniwon.github.io/automation-workbench/?lang=en&tool=checkin&source=upwork-portfolio
 ```
 
+## Source Job Pattern
+
+This sample was created from an Upwork-style request:
+
+```text
+Create Simple QR Code Vendor Check-In System for 4 Properties Using Google Sheets + Apps Script
+```
+
+The buyer wanted a no-login vendor check-in workflow for four properties, where
+each property has its own QR code, vendors submit service/company/notes from a
+mobile page, entries are stored in Google Sheets, and an email notification is
+sent on every submission.
+
+## Coverage Against The Job Post
+
+Implemented as a portfolio demo:
+
+- English demo page for Upwork proposals
+- Four property-specific QR link cards
+- Property auto-selection simulation
+- Mobile vendor check-in form preview
+- Service type, company, and notes fields
+- Google Sheet-style check-in log preview
+- Email notification preview
+- Downloadable Apps Script sample
+- Production build plan and delivery notes
+
+Still required for a real client delivery:
+
+- Create the actual Google Sheet in the client's Google account
+- Paste and configure the Apps Script project
+- Deploy the Apps Script Web App and confirm permissions
+- Generate real QR code images from the deployed Web App URLs
+- Create printable QR signs for each property
+- Send a real test submission and confirm the email notification arrives
+- Test the flow on a real mobile device
+- Provide final handoff screenshots or a short setup guide
+
+Positioning:
+
+- This is not yet a fully deployed client system.
+- It is a credible working sample showing the exact architecture and user flow.
+- A production version should be quoted as a short fixed-price Apps Script job.
+
 ## Production Build Plan
 
 1. Create one Google Sheet with three tabs:
