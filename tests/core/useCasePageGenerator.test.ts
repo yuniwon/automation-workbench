@@ -84,4 +84,11 @@ describe("use case page generator", () => {
     const checkedInIndex = readFileSync(join(root, "public", "workflows", "index.html"), "utf8");
     expect(generator.renderWorkflowIndex()).toBe(checkedInIndex);
   });
+
+  it("keeps the share page in sync with generated HTML", async () => {
+    const generator = await import(pathToFileURL(join(root, "scripts/use-case-pages.mjs")).href);
+    const checkedInHtml = readFileSync(join(root, "public", "share", "free-excel-automation.html"), "utf8");
+
+    expect(generator.renderSharePage()).toBe(checkedInHtml);
+  });
 });

@@ -168,6 +168,14 @@ h1 {
   line-height: 1.65;
 }
 
+.card .share-copy {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #d0d6e0;
+}
+
 .card ul {
   display: grid;
   gap: 8px;

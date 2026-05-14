@@ -36,6 +36,12 @@ https://yuniwon.github.io/automation-workbench/services/excel-automation-cost.ht
 https://yuniwon.github.io/automation-workbench/workflows/
 ```
 
+공유용 소개 페이지:
+
+```text
+https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html
+```
+
 채널별 추적 링크:
 
 ```text
@@ -73,6 +79,7 @@ Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample
 검색용 랜딩 페이지:
 
 ```text
+공유용 소개 페이지: https://yuniwon.github.io/automation-workbench/share/free-excel-automation.html
 도구 모음: https://yuniwon.github.io/automation-workbench/use-cases/
 엑셀 자동화 제작 서비스: https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html
 엑셀 자동화 견적과 비용 기준: https://yuniwon.github.io/automation-workbench/services/excel-automation-cost.html

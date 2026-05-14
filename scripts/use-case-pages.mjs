@@ -617,8 +617,17 @@ export const workflowPages = [
   },
 ];
 
+export const sharePage = {
+  slug: "free-excel-automation",
+  title: "무료 엑셀/CSV 자동화 도구 공유용 소개 | Automation Workbench",
+  description:
+    "무료 엑셀/CSV 정리, 비교, 병합, 정산서 생성, 양식 변환 도구를 커뮤니티나 지인에게 바로 공유할 수 있는 소개 페이지입니다.",
+  source: "share-free-excel-automation",
+};
+
 export const publicUrls = [
   `${baseUrl}/`,
+  `${baseUrl}/share/${sharePage.slug}.html`,
   `${baseUrl}/use-cases/`,
   ...useCases.map((useCase) => `${baseUrl}/use-cases/${useCase.slug}.html`),
   ...servicePages.map((page) => `${baseUrl}/services/${page.slug}.html`),
@@ -752,6 +761,58 @@ CTA 상세:
 
 function workflowMailtoHref(page) {
   return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(workflowInquiryBody(page))}`;
+}
+
+function sharePageUrl() {
+  return `${baseUrl}/share/${sharePage.slug}.html`;
+}
+
+function shareTrackingQuery(intent) {
+  const params = new URLSearchParams();
+  params.set("source", sharePage.source);
+  if (intent) {
+    params.set("intent", intent);
+  }
+  return params.toString();
+}
+
+function shareInquiryBody() {
+  return `안녕하세요.
+무료 엑셀/CSV 자동화 도구를 보고 문의드립니다.
+유입 경로:
+- ${sharePage.source}
+공유용 소개 페이지:
+- ${sharePageUrl()}
+도구 링크:
+- ${baseUrl}/?source=${sharePage.source}
+제작 범위 안내:
+- ${baseUrl}/services/excel-automation-inquiry.html?${shareTrackingQuery("scope")}
+
+현재 파일 형식:
+- CSV / XLSX / 구글시트 / 기타:
+
+입력 파일 개수:
+-
+
+반복해서 하는 작업:
+-
+
+현재 수작업 소요시간:
+-
+
+필요한 결과물:
+-
+
+샘플 파일 공유 가능 여부:
+- 가능 / 일부 값 가림 가능 / 어려움
+
+희망 마감일:
+-
+`;
+}
+
+function shareMailtoHref() {
+  return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(shareInquiryBody())}`;
 }
 
 function htmlAttribute(value) {
@@ -934,6 +995,33 @@ function renderWorkflowIndexJsonLd() {
         url: workflowPageUrl(page),
         description: page.description,
       })),
+    },
+    null,
+    2,
+  )
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+}
+
+function renderShareJsonLd() {
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          name: sharePage.title.replace(" | Automation Workbench", ""),
+          url: sharePageUrl(),
+          description: sharePage.description,
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Automation Workbench",
+            url: baseUrl,
+          },
+        },
+        renderFaqJsonLdNode(),
+      ],
     },
     null,
     2,
@@ -1395,6 +1483,134 @@ ${cards}
 `;
 }
 
+export function renderSharePage() {
+  const title = sharePage.title;
+  const description = sharePage.description;
+  const canonicalUrl = sharePageUrl();
+  const escapedTitle = htmlAttribute(title);
+  const escapedDescription = htmlAttribute(description);
+  const toolQuery = shareTrackingQuery("try-tool");
+  const scopeQuery = shareTrackingQuery("scope");
+  const workflowQuery = shareTrackingQuery("workflow-index");
+  const useCaseQuery = shareTrackingQuery("use-case-index");
+
+  return `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="${escapedDescription}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${escapedTitle}" />
+    <meta property="og:description" content="${escapedDescription}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="${ogImageUrl}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapedTitle}" />
+    <meta name="twitter:description" content="${escapedDescription}" />
+    <meta name="twitter:image" content="${ogImageUrl}" />
+    <script type="application/ld+json">
+${renderShareJsonLd()}
+    </script>
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
+    <title>${title}</title>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav">
+        <a href="${appPath}">Automation Workbench</a>
+        <a href="${appPath}use-cases/">무료 도구 모음</a>
+        <a href="${appPath}services/excel-automation-inquiry.html?${scopeQuery}">제작 문의</a>
+        <a href="https://github.com/yuniwon/automation-workbench">GitHub</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">공유용 소개 페이지</p>
+          <h1>무료 엑셀/CSV 자동화 도구 공유용 소개</h1>
+          <p class="lede">
+            커뮤니티, 블로그, 지인에게 보낼 때 이 한 페이지로 무료 도구와 맞춤 제작 문의 흐름을 설명할 수 있습니다.
+            정리·비교·병합·정산서 생성·양식 변환을 계정 없이 먼저 실행해볼 수 있습니다.
+          </p>
+        </div>
+        <aside class="panel cta-panel">
+          <strong>바로 공유할 링크</strong>
+          <p>무료 도구를 먼저 써보고, 실제 파일 양식에 맞춘 자동화가 필요하면 제작 범위를 확인할 수 있습니다.</p>
+          <a class="button" href="${appPath}?${toolQuery}">무료 도구 열기</a>
+          <a class="button ghost" href="${appPath}services/excel-automation-inquiry.html?${scopeQuery}">제작 범위 보기</a>
+          <a class="button ghost" href="${shareMailtoHref()}">맞춤 제작 문의</a>
+          <p class="trust">
+            파일은 브라우저 안에서 처리됩니다.
+            <a href="https://github.com/yuniwon/automation-workbench/blob/main/PRIVACY.md">개인정보 안내</a>
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+        <article class="panel card">
+          <h2>커뮤니티 공유용 요약</h2>
+          <p>
+            게시글에 바로 붙일 수 있는 짧은 소개입니다. 무료 사용과 맞춤 제작 문의가 한 번에 보이도록 정리했습니다.
+          </p>
+          <p class="share-copy">
+            무료 엑셀/CSV 자동화 도구를 만들었습니다. CSV/XLSX 파일을 브라우저에서 정리·비교·병합하고,
+            고객별 정산서 생성과 고객사 양식 변환까지 테스트할 수 있습니다.
+          </p>
+        </article>
+        <article class="panel card">
+          <h2>무료로 확인할 수 있는 작업</h2>
+          <ul>
+            <li>중복 행, 빈 값, 숫자 형식 정리</li>
+            <li>두 파일의 추가, 삭제, 변경 행 비교</li>
+            <li>여러 CSV/XLSX 파일 병합</li>
+            <li>고객별 정산서 요약 생성</li>
+            <li>엑셀 열 매핑과 표준 양식 변환</li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <h2>맞춤 제작으로 이어지는 경우</h2>
+          <ul>
+            <li>고객사마다 열 이름이 다른 파일을 표준 양식으로 바꾸는 경우</li>
+            <li>정산 파일과 주문 파일을 매주 같은 기준으로 대조하는 경우</li>
+            <li>여러 매장 파일을 병합하고 월간 리포트를 만드는 경우</li>
+            <li>구글시트, Gmail, Notion까지 이어지는 반복 작업이 있는 경우</li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <h2>공유 링크</h2>
+          <ul>
+            <li><a href="${appPath}?${toolQuery}">무료 도구 열기</a></li>
+            <li><a href="${appPath}use-cases/?${useCaseQuery}">도구 모음 보기</a></li>
+            <li><a href="${appPath}workflows/?${workflowQuery}">업무별 자동화 예시 보기</a></li>
+            <li><a href="${appPath}services/excel-automation-inquiry.html?${scopeQuery}">제작 범위 확인</a></li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <h2>문의 전에 있으면 좋은 정보</h2>
+          <ul>
+            <li>현재 파일 형식과 입력 파일 개수</li>
+            <li>반복해서 하는 작업과 예외 규칙</li>
+            <li>원하는 결과 파일 또는 화면 예시</li>
+            <li>현재 수작업 소요시간과 희망 마감일</li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <h2>문의</h2>
+          <p>
+            내 파일 구조에 맞춘 자동화가 필요하면 샘플 파일의 민감정보를 가린 뒤 문의할 수 있습니다.
+          </p>
+          <a class="text-link" href="${shareMailtoHref()}">dnjsdndus@gmail.com으로 문의</a>
+        </article>
+      </section>
+
+      <p class="footer">문의: ${email}</p>
+    </main>
+  </body>
+</html>
+`;
+}
+
 export function renderSitemap() {
   const entries = publicUrls
     .map((url, index) => {
@@ -1417,6 +1633,7 @@ ${entries}
 }
 
 export async function generateUseCasePages() {
+  await mkdir(join(root, "public", "share"), { recursive: true });
   await mkdir(join(root, "public", "services"), { recursive: true });
   await mkdir(join(root, "public", "workflows"), { recursive: true });
   await Promise.all(
@@ -1430,6 +1647,7 @@ export async function generateUseCasePages() {
       ...workflowPages.map((page) =>
         writeFile(join(root, "public", "workflows", `${page.slug}.html`), renderWorkflowPage(page)),
       ),
+      writeFile(join(root, "public", "share", `${sharePage.slug}.html`), renderSharePage()),
       writeFile(join(root, "public", "workflows", "index.html"), renderWorkflowIndex()),
       writeFile(join(root, "public", "use-cases", "index.html"), renderUseCaseIndex()),
       writeFile(join(root, "public", "sitemap.xml"), renderSitemap()),
