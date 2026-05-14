@@ -59,4 +59,5 @@ https://docs.google.com/spreadsheets/d/1E6vhznY3NRIhTnOX9as7Q2XRJoENRJcFIVtkCxdv
 
 - Google Sheets 읽기: 가능
 - Google Sheets 쓰기: `batchUpdate` 실행 시 `FORBIDDEN`
-- 필요한 조치: Google Drive/Sheets 커넥터를 쓰기 권한으로 재인증한 뒤 `docs/ops/lead-log.md`의 최신 미반영 기록을 시트에 추가한다.
+- Google Sheets 전용 `googlesheets` 연결: 활성 상태
+- 필요한 조치: 중복 행 추가를 피하기 위해 사용자 확인 후 `docs/ops/lead-log.md`의 최신 미반영 기록을 시트에 추가한다.

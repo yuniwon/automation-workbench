@@ -758,3 +758,54 @@ Google Sheets:
 1. 사용자가 GeekNews 로그인을 완료하면 `docs/marketing/posts/geeknews-show-gn.md` 원고를 붙여넣는다.
 2. 게시 전 제목, 본문 링크, 첫 댓글을 최종 확인한다.
 3. 게시 URL을 기록하고 Gmail 검색을 반복한다.
+
+## 2026-05-14 Excel Automation Service Page Added
+
+작업:
+
+- 검색 방문자용 `엑셀 자동화 제작 서비스` 페이지 추가
+- `엑셀 자동화 외주`, `무료 진단`, `견적 기준` 문구를 서비스 페이지에 반영
+- 새 페이지를 sitemap과 IndexNow 제출 대상에 포함
+- README, share-kit, revenue-process에 서비스 진입점 추가
+- GitHub Release `v0.1.13` 공개
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.13
+```
+
+검증:
+
+- TDD RED: `public/services/excel-automation-service.html`과 sitemap 항목이 없어 테스트 실패 확인
+- `pnpm generate:use-cases`: 성공
+- `pnpm test tests/core/servicePages.test.ts`: 1 file, 3 tests passed
+- `pnpm test tests/core/servicePages.test.ts tests/core/useCasePageGenerator.test.ts tests/core/indexNow.test.ts`: 3 files, 10 tests passed
+- `pnpm test`: 22 files, 52 tests passed
+- `pnpm build`: 성공
+- `git diff --check`: trailing whitespace 오류 없음
+- GitHub Pages 배포 성공: run `25841425842`
+- 공개 페이지에서 `엑셀 자동화 제작 서비스`, `엑셀 자동화 외주`, `무료 진단`, `견적 기준`, `source=service-excel-automation-service`, `data-service-inquiry="true"` 확인
+- 공개 sitemap에서 `/automation-workbench/services/excel-automation-service.html` 확인
+- GitHub Release `v0.1.13`: 생성 완료
+- IndexNow 제출: URL 16개, HTTP 200
+- Gmail 검색: 후보 0건, 실제 문의 0건
+
+Google Sheets:
+
+- `googlesheets` 연결은 활성 상태로 확인됨
+- append 도구는 중복 위험 때문에 명시 확인 후 쓰기 권장
+- 이번 릴리스 행은 아직 원격 시트에 추가하지 않음
+
+판단:
+
+- 검색 유입용 제작 서비스 진입점이 하나 늘었다.
+- 실제 Gmail 문의는 아직 0건이다.
+- 다음 원격 시트 기록은 사용자 확인 후 `GOOGLESHEETS_SPREADSHEETS_VALUES_APPEND`로 처리한다.
+
+다음 액션:
+
+1. Google Sheets에 `v0.1.13` 관련 release/indexnow/gmail_scan 행을 추가할지 확인한다.
+2. GeekNews 로그인 후 게시 원고를 실제 게시한다.
+3. 게시 후 Gmail 검색을 반복한다.
