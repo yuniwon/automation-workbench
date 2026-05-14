@@ -22,10 +22,10 @@ I built a small browser-based tool for cleaning, comparing, merging, and generat
 https://yuniwon.github.io/automation-workbench/?source=hacker-news
 
 Custom automation inquiry page:
-https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=hacker-news&intent=scope
 
 Workflow examples:
-https://yuniwon.github.io/automation-workbench/workflows/
+https://yuniwon.github.io/automation-workbench/workflows/?source=hacker-news&intent=workflow-index
 
 Sample files:
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv

@@ -33,6 +33,24 @@ Hacker News: https://yuniwon.github.io/automation-workbench/?source=hacker-news
 Product Hunt: https://yuniwon.github.io/automation-workbench/?source=product-hunt
 ```
 
+채널별 제작 문의 링크:
+
+```text
+GeekNews: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=geeknews&intent=scope
+OKKY: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=okky&intent=scope
+Hacker News: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=hacker-news&intent=scope
+Product Hunt: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=product-hunt&intent=scope
+```
+
+채널별 업무 예시 링크:
+
+```text
+GeekNews: https://yuniwon.github.io/automation-workbench/workflows/?source=geeknews&intent=workflow-index
+OKKY: https://yuniwon.github.io/automation-workbench/workflows/?source=okky&intent=workflow-index
+Hacker News: https://yuniwon.github.io/automation-workbench/workflows/?source=hacker-news&intent=workflow-index
+Product Hunt: https://yuniwon.github.io/automation-workbench/workflows/?source=product-hunt&intent=workflow-index
+```
+
 샘플 파일:
 
 ```text

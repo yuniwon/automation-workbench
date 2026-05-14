@@ -40,10 +40,10 @@ Tool index:
 https://yuniwon.github.io/automation-workbench/use-cases/
 
 Custom automation inquiry:
-https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=geeknews&intent=scope
 
 Workflow examples:
-https://yuniwon.github.io/automation-workbench/workflows/
+https://yuniwon.github.io/automation-workbench/workflows/?source=geeknews&intent=workflow-index
 
 Sample files:
 https://yuniwon.github.io/automation-workbench/samples/sample-orders-dirty.csv

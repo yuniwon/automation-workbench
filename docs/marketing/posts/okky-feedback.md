@@ -52,10 +52,10 @@ https://github.com/yuniwon/automation-workbench
 https://yuniwon.github.io/automation-workbench/use-cases/
 
 맞춤 제작 범위와 문의 전 준비:
-https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html?source=okky&intent=scope
 
 업무별 자동화 예시:
-https://yuniwon.github.io/automation-workbench/workflows/
+https://yuniwon.github.io/automation-workbench/workflows/?source=okky&intent=workflow-index
 
 감사합니다.
 ```

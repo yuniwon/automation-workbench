@@ -31,6 +31,8 @@ docs/marketing/posts/geeknews-show-gn.md
 
 - 타입이 Show인지 확인
 - 링크가 `?source=geeknews`인지 확인
+- 제작 문의 링크가 `source=geeknews&intent=scope`인지 확인
+- 업무 예시 링크가 `source=geeknews&intent=workflow-index`인지 확인
 - 게시 후 URL을 `docs/ops/lead-log.md`에 기록
 
 ## 2순위: OKKY 피드백
@@ -56,6 +58,8 @@ docs/marketing/posts/okky-feedback.md
 
 - 제목이 과장 광고처럼 보이지 않는지 확인
 - 링크가 `?source=okky`인지 확인
+- 제작 문의 링크가 `source=okky&intent=scope`인지 확인
+- 업무 예시 링크가 `source=okky&intent=workflow-index`인지 확인
 - 게시 후 URL을 `docs/ops/lead-log.md`에 기록
 
 ## 게시 후 24시간 체크
