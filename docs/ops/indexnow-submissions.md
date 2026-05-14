@@ -27,7 +27,10 @@ pnpm submit:indexnow
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-column-mapping-template.html`
 - `https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html`
+- `https://yuniwon.github.io/automation-workbench/services/excel-automation-service.html`
+- `https://yuniwon.github.io/automation-workbench/services/excel-automation-cost.html`
 - `https://yuniwon.github.io/automation-workbench/workflows/`
 - `https://yuniwon.github.io/automation-workbench/workflows/shopping-mall-order-cleanup.html`
 - `https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html`
@@ -391,3 +394,28 @@ pnpm submit:indexnow
 
 - URL 17개 제출이 성공했다.
 - 새 견적 페이지 `services/excel-automation-cost.html`이 sitemap과 IndexNow 제출 대상에 포함됐다.
+
+### 2026-05-14 엑셀 열 매핑 양식 변환 페이지 제출
+
+명령:
+
+```powershell
+pnpm submit:indexnow
+```
+
+결과:
+
+```json
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "status": 200,
+  "submittedUrls": 18,
+  "keyLocation": "https://yuniwon.github.io/automation-workbench/9827b85325f552230a4c601daebc79ba.txt",
+  "response": ""
+}
+```
+
+해석:
+
+- URL 18개 제출이 성공했다.
+- 새 양식 변환 페이지 `use-cases/excel-column-mapping-template.html`이 sitemap과 IndexNow 제출 대상에 포함됐다.
