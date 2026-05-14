@@ -6,6 +6,7 @@
 
 - 공개 도구: https://yuniwon.github.io/automation-workbench/
 - 맞춤 제작 문의 페이지: https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
+- 업무별 자동화 예시: https://yuniwon.github.io/automation-workbench/workflows/
 - GitHub repo: https://github.com/yuniwon/automation-workbench
 - 문의 메일: `dnjsdndus@gmail.com`
 - 무료 도구 1: 엑셀/CSV 자동 정리 도구
@@ -24,6 +25,7 @@
 - 검색엔진 URL 제출: `docs/ops/indexnow-submissions.md`
 - 검색용 랜딩 페이지: `public/use-cases/*.html` (`pnpm generate:use-cases`로 갱신)
 - 제작 문의 랜딩 페이지: `public/services/excel-automation-inquiry.html` (`pnpm generate:use-cases`로 갱신)
+- 업무별 자동화 예시 페이지: `public/workflows/*.html` (`pnpm generate:use-cases`로 갱신)
 - GitHub 방문자용 진입점: `README.md`의 "바로 써보기" 링크 표
 
 ## 퍼널

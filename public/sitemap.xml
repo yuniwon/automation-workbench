@@ -66,4 +66,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://yuniwon.github.io/automation-workbench/workflows/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yuniwon.github.io/automation-workbench/workflows/shopping-mall-order-cleanup.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yuniwon.github.io/automation-workbench/workflows/monthly-report-file-merge.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

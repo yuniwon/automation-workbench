@@ -341,11 +341,127 @@ export const servicePages = [
   },
 ];
 
+export const workflowPages = [
+  {
+    slug: "shopping-mall-order-cleanup",
+    title: "쇼핑몰 주문 엑셀 정리 자동화 | Automation Workbench",
+    description:
+      "쇼핑몰 주문 엑셀 파일을 발송, 정산, 고객 응대용으로 반복 정리하는 업무를 무료 도구로 먼저 확인하고 맞춤 자동화 범위를 검토할 수 있습니다.",
+    eyebrow: "업무별 자동화 예시",
+    heading: "쇼핑몰 주문 엑셀 정리 자동화를 먼저 검토하세요",
+    lede: [
+      "스마트스토어, 쿠팡, 자사몰 주문 파일을 매번 같은 방식으로 정리하고 있다면",
+      "무료 정리·병합 도구로 흐름을 확인한 뒤 실제 주문 양식에 맞춘 자동화를 만들 수 있습니다.",
+    ],
+    source: "workflow-shopping-mall-order-cleanup",
+    tool: "cleanup",
+    mailTask: "쇼핑몰 주문 엑셀 정리 자동화",
+    primaryUseCaseSlug: "excel-duplicate-cleanup",
+    cards: [
+      {
+        title: "반복되는 수작업",
+        items: ["주문번호 중복 제거", "수령인/주소/옵션 누락 확인", "금액·수량 형식 정리", "택배 업로드 양식으로 열 순서 변경"],
+      },
+      {
+        title: "자동화 결과물",
+        items: ["발송용 CSV", "누락 확인 리포트", "정산용 요약표", "문제 행만 모은 검수 파일"],
+      },
+      {
+        title: "문의할 때 준비할 것",
+        items: ["현재 주문 파일 예시", "최종 업로드 양식 예시", "반복 예외 규칙", "하루 또는 주간 처리 건수"],
+      },
+      {
+        title: "제작 방향",
+        body: [
+          "공통 정리 기능은 재사용하고 쇼핑몰별 열 이름, 옵션 파싱, 결과 양식만",
+          "레시피로 분리해 유지보수 가능한 주문 정리 도구로 만듭니다.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "settlement-file-reconciliation",
+    title: "정산 파일 대조 자동화 | Automation Workbench",
+    description:
+      "주문 파일과 정산 파일을 주문번호, 상품코드, 금액 기준으로 대조해 누락, 차액, 변경 내역을 찾는 자동화 제작 범위를 확인할 수 있습니다.",
+    eyebrow: "업무별 자동화 예시",
+    heading: "정산 파일 대조 자동화로 누락과 차액을 줄이세요",
+    lede: [
+      "주문 파일과 정산 파일을 눈으로 비교하면서 빠진 주문이나 금액 차이를 찾고 있다면",
+      "무료 파일 비교 도구로 먼저 패턴을 확인하고 실제 정산 규칙을 자동화할 수 있습니다.",
+    ],
+    source: "workflow-settlement-file-reconciliation",
+    tool: "compare",
+    mailTask: "정산 파일 대조 자동화",
+    primaryUseCaseSlug: "csv-xlsx-file-compare",
+    cards: [
+      {
+        title: "비교 기준",
+        items: ["주문번호 또는 거래번호", "상품코드와 옵션", "결제 금액과 수수료", "정산 상태와 지급일"],
+      },
+      {
+        title: "자동화 결과물",
+        items: ["주문 파일에만 있는 행", "정산 파일에만 있는 행", "금액 차이 목록", "차액 합계와 검수 리포트"],
+      },
+      {
+        title: "문의할 때 준비할 것",
+        items: ["주문 파일 샘플", "정산 파일 샘플", "비교 기준 열", "차액 허용 규칙"],
+      },
+      {
+        title: "제작 방향",
+        body: [
+          "비교 엔진은 재사용하고 고객별 키 선택, 금액 계산식, 무시할 컬럼,",
+          "결과 리포트 양식만 설정으로 분리합니다.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "monthly-report-file-merge",
+    title: "월간 매출 파일 병합 리포트 자동화 | Automation Workbench",
+    description:
+      "매장별, 월별, 거래처별 엑셀/CSV 파일을 병합하고 월간 매출 리포트나 정산 요약으로 만드는 자동화 범위를 확인할 수 있습니다.",
+    eyebrow: "업무별 자동화 예시",
+    heading: "월간 매출 파일 병합과 리포트를 한 흐름으로 묶으세요",
+    lede: [
+      "여러 매장이나 거래처에서 받은 파일을 하나로 합치고 월간 요약표를 만들고 있다면",
+      "무료 병합·정산서 도구로 먼저 흐름을 확인한 뒤 반복 리포트 자동화로 확장할 수 있습니다.",
+    ],
+    source: "workflow-monthly-report-file-merge",
+    tool: "merge",
+    mailTask: "월간 매출 파일 병합 리포트 자동화",
+    primaryUseCaseSlug: "excel-csv-file-merge",
+    cards: [
+      {
+        title: "반복되는 수작업",
+        items: ["파일 여러 개 열기", "열 이름 맞추기", "원본 매장명 표시", "월간 합계와 거래처별 요약 만들기"],
+      },
+      {
+        title: "자동화 결과물",
+        items: ["병합 CSV", "매장별 매출 요약", "거래처별 정산 요약", "HTML 리포트 또는 공유용 표"],
+      },
+      {
+        title: "문의할 때 준비할 것",
+        items: ["파일명 규칙", "입력 파일 개수", "그룹 기준 열", "월간 리포트 예시"],
+      },
+      {
+        title: "제작 방향",
+        body: [
+          "병합, 정리, 집계, 리포트 생성을 각각 모듈로 두고 파일명 파싱과",
+          "고객별 요약 규칙만 별도 설정으로 관리합니다.",
+        ],
+      },
+    ],
+  },
+];
+
 export const publicUrls = [
   `${baseUrl}/`,
   `${baseUrl}/use-cases/`,
   ...useCases.map((useCase) => `${baseUrl}/use-cases/${useCase.slug}.html`),
   ...servicePages.map((page) => `${baseUrl}/services/${page.slug}.html`),
+  `${baseUrl}/workflows/`,
+  ...workflowPages.map((page) => `${baseUrl}/workflows/${page.slug}.html`),
 ];
 
 function inquiryBody(useCase) {
@@ -378,6 +494,10 @@ function pageUrl(useCase) {
 
 function servicePageUrl(page) {
   return `${baseUrl}/services/${page.slug}.html`;
+}
+
+function workflowPageUrl(page) {
+  return `${baseUrl}/workflows/${page.slug}.html`;
 }
 
 function serviceInquiryBody(page) {
@@ -418,6 +538,45 @@ function serviceInquiryBody(page) {
 
 function serviceMailtoHref(page) {
   return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(serviceInquiryBody(page))}`;
+}
+
+function workflowInquiryBody(page) {
+  return `안녕하세요.
+${page.mailTask} 문의드립니다.
+유입 경로:
+- ${page.source}
+업무 예시 페이지:
+- ${workflowPageUrl(page)}
+제작 범위 안내:
+- ${baseUrl}/services/excel-automation-inquiry.html
+도구 링크:
+- ${baseUrl}/?source=${page.source}&tool=${page.tool}
+
+현재 파일 형식:
+- CSV / XLSX / 구글시트 / 기타:
+
+입력 파일 개수:
+-
+
+반복해서 하는 작업:
+-
+
+현재 수작업 소요시간:
+-
+
+필요한 결과물:
+-
+
+샘플 파일 공유 가능 여부:
+- 가능 / 일부 값 가림 가능 / 어려움
+
+희망 마감일:
+-
+`;
+}
+
+function workflowMailtoHref(page) {
+  return `mailto:${email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(workflowInquiryBody(page))}`;
 }
 
 function htmlAttribute(value) {
@@ -531,6 +690,78 @@ function renderServiceJsonLd(page) {
     .join("\n");
 }
 
+function renderWorkflowJsonLd(page) {
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          name: page.title.replace(" | Automation Workbench", ""),
+          url: workflowPageUrl(page),
+          description: page.description,
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Automation Workbench",
+            url: baseUrl,
+          },
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Automation Workbench",
+              item: baseUrl,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "업무별 자동화 예시",
+              item: `${baseUrl}/workflows/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: page.title.replace(" | Automation Workbench", ""),
+              item: workflowPageUrl(page),
+            },
+          ],
+        },
+      ],
+    },
+    null,
+    2,
+  )
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+}
+
+function renderWorkflowIndexJsonLd() {
+  return JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "업무별 엑셀/CSV 자동화 예시",
+      url: `${baseUrl}/workflows/`,
+      description: "쇼핑몰 주문 정리, 정산 파일 대조, 월간 매출 파일 병합처럼 실제 업무 상황별 자동화 범위를 확인할 수 있습니다.",
+      hasPart: workflowPages.map((page) => ({
+        "@type": "WebPage",
+        name: page.title.replace(" | Automation Workbench", ""),
+        url: workflowPageUrl(page),
+        description: page.description,
+      })),
+    },
+    null,
+    2,
+  )
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+}
+
 function renderCard(card) {
   if (card.items) {
     const items = card.items.map((item) => `            <li>${item}</li>`).join("\n");
@@ -617,6 +848,74 @@ ${page.cards.map(renderCard).join("\n")}
 `;
 }
 
+export function renderWorkflowPage(page) {
+  const canonicalUrl = workflowPageUrl(page);
+  const escapedTitle = htmlAttribute(page.title);
+  const escapedDescription = htmlAttribute(page.description);
+
+  return `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="${escapedDescription}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${escapedTitle}" />
+    <meta property="og:description" content="${escapedDescription}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="${ogImageUrl}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapedTitle}" />
+    <meta name="twitter:description" content="${escapedDescription}" />
+    <meta name="twitter:image" content="${ogImageUrl}" />
+    <script type="application/ld+json">
+${renderWorkflowJsonLd(page)}
+    </script>
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
+    <title>${page.title}</title>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav">
+        <a href="${appPath}">Automation Workbench</a>
+        <a href="${appPath}use-cases/">무료 도구 모음</a>
+        <a href="${appPath}services/excel-automation-inquiry.html">제작 문의</a>
+        <a href="https://github.com/yuniwon/automation-workbench">GitHub</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">${page.eyebrow}</p>
+          <h1>${page.heading}</h1>
+          <p class="lede">
+            ${page.lede[0]}
+            ${page.lede[1]}
+          </p>
+        </div>
+        <aside class="panel cta-panel">
+          <strong>업무 흐름 확인</strong>
+          <p>무료 도구로 먼저 확인하고, 실제 파일 양식에 맞춘 제작 범위는 별도 페이지에서 확인할 수 있습니다.</p>
+          <a class="button" href="${appPath}?source=${page.source}&tool=${page.tool}">무료 도구 열기</a>
+          <a class="button ghost" href="${appPath}services/excel-automation-inquiry.html?source=${page.source}">제작 범위 보기</a>
+          <a class="button ghost" href="${workflowMailtoHref(page)}">맞춤 제작 문의</a>
+          <p class="trust">
+            샘플 파일을 보낼 때는 이름, 전화번호, 주소, 계좌번호 같은 민감정보를 먼저 가려주세요.
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+${page.cards.map(renderCard).join("\n")}
+      </section>
+
+      <p class="footer">문의: ${email}</p>
+    </main>
+  </body>
+</html>
+`;
+}
+
 export function renderUseCasePage(useCase) {
   const canonicalUrl = pageUrl(useCase);
   const escapedTitle = htmlAttribute(useCase.title);
@@ -677,6 +976,81 @@ ${renderJsonLd(useCase)}
 
       <section class="grid">
 ${useCase.cards.map(renderCard).join("\n")}
+      </section>
+
+      <p class="footer">문의: ${email}</p>
+    </main>
+  </body>
+</html>
+`;
+}
+
+export function renderWorkflowIndex() {
+  const title = "업무별 엑셀/CSV 자동화 예시 | Automation Workbench";
+  const description = "쇼핑몰 주문 정리, 정산 파일 대조, 월간 매출 파일 병합처럼 실제 업무 상황별 자동화 범위를 확인할 수 있습니다.";
+  const canonicalUrl = `${baseUrl}/workflows/`;
+  const escapedTitle = htmlAttribute(title);
+  const escapedDescription = htmlAttribute(description);
+  const cards = workflowPages
+    .map(
+      (page) => `        <article class="panel card">
+          <h2>${page.title.replace(" | Automation Workbench", "")}</h2>
+          <p>${page.description}</p>
+          <a class="text-link" href="${appPath}workflows/${page.slug}.html">${page.mailTask} 보기</a>
+        </article>`,
+    )
+    .join("\n");
+
+  return `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="${escapedDescription}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${escapedTitle}" />
+    <meta property="og:description" content="${escapedDescription}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="${ogImageUrl}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapedTitle}" />
+    <meta name="twitter:description" content="${escapedDescription}" />
+    <meta name="twitter:image" content="${ogImageUrl}" />
+    <script type="application/ld+json">
+${renderWorkflowIndexJsonLd()}
+    </script>
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="stylesheet" href="${appPath}use-cases/use-case.css" />
+    <title>${title}</title>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav">
+        <a href="${appPath}">Automation Workbench</a>
+        <a href="${appPath}use-cases/">무료 도구 모음</a>
+        <a href="${appPath}services/excel-automation-inquiry.html">제작 문의</a>
+        <a href="https://github.com/yuniwon/automation-workbench">GitHub</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">업무별 자동화 예시</p>
+          <h1>업무별 엑셀/CSV 자동화 예시</h1>
+          <p class="lede">
+            무료 도구가 어떤 실제 업무로 확장될 수 있는지 확인하고,
+            현재 파일 양식에 맞춘 자동화 제작 범위를 판단할 수 있습니다.
+          </p>
+        </div>
+        <aside class="panel cta-panel">
+          <strong>맞춤 제작 범위</strong>
+          <p>반복 업무, 파일 형식, 결과물 예시를 준비하면 제작 범위와 견적을 더 빠르게 확인할 수 있습니다.</p>
+          <a class="button" href="${appPath}services/excel-automation-inquiry.html?source=workflow-index">제작 범위 보기</a>
+          <a class="button ghost" href="${appPath}use-cases/?source=workflow-index">무료 도구 먼저 보기</a>
+        </aside>
+      </section>
+
+      <section class="grid">
+${cards}
       </section>
 
       <p class="footer">문의: ${email}</p>
@@ -786,6 +1160,7 @@ ${entries}
 
 export async function generateUseCasePages() {
   await mkdir(join(root, "public", "services"), { recursive: true });
+  await mkdir(join(root, "public", "workflows"), { recursive: true });
   await Promise.all(
     [
       ...useCases.map((useCase) =>
@@ -794,6 +1169,10 @@ export async function generateUseCasePages() {
       ...servicePages.map((page) =>
         writeFile(join(root, "public", "services", `${page.slug}.html`), renderServicePage(page)),
       ),
+      ...workflowPages.map((page) =>
+        writeFile(join(root, "public", "workflows", `${page.slug}.html`), renderWorkflowPage(page)),
+      ),
+      writeFile(join(root, "public", "workflows", "index.html"), renderWorkflowIndex()),
       writeFile(join(root, "public", "use-cases", "index.html"), renderUseCaseIndex()),
       writeFile(join(root, "public", "sitemap.xml"), renderSitemap()),
     ],

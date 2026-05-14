@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="주문 파일과 정산 파일을 주문번호, 상품코드, 금액 기준으로 대조해 누락, 차액, 변경 내역을 찾는 자동화 제작 범위를 확인할 수 있습니다." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="정산 파일 대조 자동화 | Automation Workbench" />
+    <meta property="og:description" content="주문 파일과 정산 파일을 주문번호, 상품코드, 금액 기준으로 대조해 누락, 차액, 변경 내역을 찾는 자동화 제작 범위를 확인할 수 있습니다." />
+    <meta property="og:url" content="https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html" />
+    <meta property="og:image" content="https://yuniwon.github.io/automation-workbench/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="정산 파일 대조 자동화 | Automation Workbench" />
+    <meta name="twitter:description" content="주문 파일과 정산 파일을 주문번호, 상품코드, 금액 기준으로 대조해 누락, 차액, 변경 내역을 찾는 자동화 제작 범위를 확인할 수 있습니다." />
+    <meta name="twitter:image" content="https://yuniwon.github.io/automation-workbench/og-image.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "name": "정산 파일 대조 자동화",
+            "url": "https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html",
+            "description": "주문 파일과 정산 파일을 주문번호, 상품코드, 금액 기준으로 대조해 누락, 차액, 변경 내역을 찾는 자동화 제작 범위를 확인할 수 있습니다.",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Automation Workbench",
+              "url": "https://yuniwon.github.io/automation-workbench"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Automation Workbench",
+                "item": "https://yuniwon.github.io/automation-workbench"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "업무별 자동화 예시",
+                "item": "https://yuniwon.github.io/automation-workbench/workflows/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "정산 파일 대조 자동화",
+                "item": "https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <link rel="canonical" href="https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html" />
+    <link rel="stylesheet" href="/automation-workbench/use-cases/use-case.css" />
+    <title>정산 파일 대조 자동화 | Automation Workbench</title>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="nav">
+        <a href="/automation-workbench/">Automation Workbench</a>
+        <a href="/automation-workbench/use-cases/">무료 도구 모음</a>
+        <a href="/automation-workbench/services/excel-automation-inquiry.html">제작 문의</a>
+        <a href="https://github.com/yuniwon/automation-workbench">GitHub</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">업무별 자동화 예시</p>
+          <h1>정산 파일 대조 자동화로 누락과 차액을 줄이세요</h1>
+          <p class="lede">
+            주문 파일과 정산 파일을 눈으로 비교하면서 빠진 주문이나 금액 차이를 찾고 있다면
+            무료 파일 비교 도구로 먼저 패턴을 확인하고 실제 정산 규칙을 자동화할 수 있습니다.
+          </p>
+        </div>
+        <aside class="panel cta-panel">
+          <strong>업무 흐름 확인</strong>
+          <p>무료 도구로 먼저 확인하고, 실제 파일 양식에 맞춘 제작 범위는 별도 페이지에서 확인할 수 있습니다.</p>
+          <a class="button" href="/automation-workbench/?source=workflow-settlement-file-reconciliation&tool=compare">무료 도구 열기</a>
+          <a class="button ghost" href="/automation-workbench/services/excel-automation-inquiry.html?source=workflow-settlement-file-reconciliation">제작 범위 보기</a>
+          <a class="button ghost" href="mailto:dnjsdndus@gmail.com?subject=%EC%97%91%EC%85%80%2FCSV%20%EC%9E%90%EB%8F%99%ED%99%94%20%EB%A7%9E%EC%B6%A4%20%EC%A0%9C%EC%9E%91%20%EB%AC%B8%EC%9D%98&body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94.%0A%EC%A0%95%EC%82%B0%20%ED%8C%8C%EC%9D%BC%20%EB%8C%80%EC%A1%B0%20%EC%9E%90%EB%8F%99%ED%99%94%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%EC%9C%A0%EC%9E%85%20%EA%B2%BD%EB%A1%9C%3A%0A-%20workflow-settlement-file-reconciliation%0A%EC%97%85%EB%AC%B4%20%EC%98%88%EC%8B%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80%3A%0A-%20https%3A%2F%2Fyuniwon.github.io%2Fautomation-workbench%2Fworkflows%2Fsettlement-file-reconciliation.html%0A%EC%A0%9C%EC%9E%91%20%EB%B2%94%EC%9C%84%20%EC%95%88%EB%82%B4%3A%0A-%20https%3A%2F%2Fyuniwon.github.io%2Fautomation-workbench%2Fservices%2Fexcel-automation-inquiry.html%0A%EB%8F%84%EA%B5%AC%20%EB%A7%81%ED%81%AC%3A%0A-%20https%3A%2F%2Fyuniwon.github.io%2Fautomation-workbench%2F%3Fsource%3Dworkflow-settlement-file-reconciliation%26tool%3Dcompare%0A%0A%ED%98%84%EC%9E%AC%20%ED%8C%8C%EC%9D%BC%20%ED%98%95%EC%8B%9D%3A%0A-%20CSV%20%2F%20XLSX%20%2F%20%EA%B5%AC%EA%B8%80%EC%8B%9C%ED%8A%B8%20%2F%20%EA%B8%B0%ED%83%80%3A%0A%0A%EC%9E%85%EB%A0%A5%20%ED%8C%8C%EC%9D%BC%20%EA%B0%9C%EC%88%98%3A%0A-%0A%0A%EB%B0%98%EB%B3%B5%ED%95%B4%EC%84%9C%20%ED%95%98%EB%8A%94%20%EC%9E%91%EC%97%85%3A%0A-%0A%0A%ED%98%84%EC%9E%AC%20%EC%88%98%EC%9E%91%EC%97%85%20%EC%86%8C%EC%9A%94%EC%8B%9C%EA%B0%84%3A%0A-%0A%0A%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B2%B0%EA%B3%BC%EB%AC%BC%3A%0A-%0A%0A%EC%83%98%ED%94%8C%20%ED%8C%8C%EC%9D%BC%20%EA%B3%B5%EC%9C%A0%20%EA%B0%80%EB%8A%A5%20%EC%97%AC%EB%B6%80%3A%0A-%20%EA%B0%80%EB%8A%A5%20%2F%20%EC%9D%BC%EB%B6%80%20%EA%B0%92%20%EA%B0%80%EB%A6%BC%20%EA%B0%80%EB%8A%A5%20%2F%20%EC%96%B4%EB%A0%A4%EC%9B%80%0A%0A%ED%9D%AC%EB%A7%9D%20%EB%A7%88%EA%B0%90%EC%9D%BC%3A%0A-%0A">맞춤 제작 문의</a>
+          <p class="trust">
+            샘플 파일을 보낼 때는 이름, 전화번호, 주소, 계좌번호 같은 민감정보를 먼저 가려주세요.
+          </p>
+        </aside>
+      </section>
+
+      <section class="grid">
+        <article class="panel card">
+          <h2>비교 기준</h2>
+          <ul>
+            <li>주문번호 또는 거래번호</li>
+            <li>상품코드와 옵션</li>
+            <li>결제 금액과 수수료</li>
+            <li>정산 상태와 지급일</li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <h2>자동화 결과물</h2>
+          <ul>
+            <li>주문 파일에만 있는 행</li>
+            <li>정산 파일에만 있는 행</li>
+            <li>금액 차이 목록</li>
+            <li>차액 합계와 검수 리포트</li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <h2>문의할 때 준비할 것</h2>
+          <ul>
+            <li>주문 파일 샘플</li>
+            <li>정산 파일 샘플</li>
+            <li>비교 기준 열</li>
+            <li>차액 허용 규칙</li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <h2>제작 방향</h2>
+          <p>
+            비교 엔진은 재사용하고 고객별 키 선택, 금액 계산식, 무시할 컬럼,
+            결과 리포트 양식만 설정으로 분리합니다.
+          </p>
+        </article>
+      </section>
+
+      <p class="footer">문의: dnjsdndus@gmail.com</p>
+    </main>
+  </body>
+</html>

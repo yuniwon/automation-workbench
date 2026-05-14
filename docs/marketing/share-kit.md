@@ -18,6 +18,12 @@ https://yuniwon.github.io/automation-workbench/use-cases/
 https://yuniwon.github.io/automation-workbench/services/excel-automation-inquiry.html
 ```
 
+업무별 자동화 예시:
+
+```text
+https://yuniwon.github.io/automation-workbench/workflows/
+```
+
 채널별 추적 링크:
 
 ```text
@@ -46,6 +52,15 @@ CSV/XLSX 파일 비교: https://yuniwon.github.io/automation-workbench/use-cases
 엑셀/CSV 파일 병합: https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html
 견적서/정산서 자동 생성: https://yuniwon.github.io/automation-workbench/use-cases/estimate-settlement-generator.html
 주문·정산 자동화 검토: https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html
+```
+
+업무별 랜딩 페이지:
+
+```text
+업무별 자동화 예시: https://yuniwon.github.io/automation-workbench/workflows/
+쇼핑몰 주문 엑셀 정리 자동화: https://yuniwon.github.io/automation-workbench/workflows/shopping-mall-order-cleanup.html
+정산 파일 대조 자동화: https://yuniwon.github.io/automation-workbench/workflows/settlement-file-reconciliation.html
+월간 매출 파일 병합 리포트 자동화: https://yuniwon.github.io/automation-workbench/workflows/monthly-report-file-merge.html
 ```
 
 GitHub:

@@ -61,4 +61,24 @@ describe("use case page generator", () => {
       expect(generator.renderServicePage(page)).toBe(checkedInHtml);
     }
   });
+
+  it("keeps workflow pages in sync with generated HTML", async () => {
+    const generator = await import(pathToFileURL(join(root, "scripts/use-case-pages.mjs")).href);
+
+    expect(generator.workflowPages.map((page: { slug: string }) => page.slug)).toEqual([
+      "shopping-mall-order-cleanup",
+      "settlement-file-reconciliation",
+      "monthly-report-file-merge",
+    ]);
+
+    for (const page of generator.workflowPages) {
+      const htmlPath = join(root, "public", "workflows", `${page.slug}.html`);
+      const checkedInHtml = readFileSync(htmlPath, "utf8");
+
+      expect(generator.renderWorkflowPage(page)).toBe(checkedInHtml);
+    }
+
+    const checkedInIndex = readFileSync(join(root, "public", "workflows", "index.html"), "utf8");
+    expect(generator.renderWorkflowIndex()).toBe(checkedInIndex);
+  });
 });
