@@ -363,3 +363,44 @@ https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.4
 1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
 2. 게시 URL을 기록한다.
 3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.
+
+## 2026-05-14 Use Case Hub Released
+
+작업:
+
+- 무료 엑셀/CSV 도구 전체를 모아 보여주는 use case 허브 페이지 추가
+- 허브 페이지에 전체 공개 도구 7개 링크 연결
+- 허브 페이지에 OpenGraph, Twitter Card, `CollectionPage` JSON-LD 추가
+- sitemap에 `https://yuniwon.github.io/automation-workbench/use-cases/` 등록
+- GitHub Release `v0.1.5` 공개
+- Google Sheets 리드 트래커 `시트1!A20:L21`에 기록 추가
+
+공개 URL:
+
+```text
+https://yuniwon.github.io/automation-workbench/use-cases/
+https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.5
+```
+
+검증:
+
+- `pnpm test`: 16 files, 37 tests passed
+- `pnpm build`: 성공
+- GitHub Pages 배포 성공
+- 공개 use case 허브 페이지 HTTP 200 확인
+- 허브 페이지의 OG/Twitter/JSON-LD, 개별 도구 링크, `mailto:` CTA 확인
+- sitemap에 `/use-cases/` 포함 확인
+- IndexNow 제출: URL 9개, HTTP 200
+- GitHub Release `v0.1.5`: latest 확인
+
+판단:
+
+- 외부 게시글에서 개별 도구 링크 대신 대표 도구 모음 링크 하나를 사용할 수 있게 됐다.
+- 검색 유입용 페이지 구조는 root, hub, 개별 use case 페이지로 정리됐다.
+- 실제 Gmail 문의는 아직 0건이다.
+
+다음 액션:
+
+1. GeekNews 또는 OKKY에 준비된 원고를 게시한다.
+2. 게시 URL을 기록한다.
+3. 게시 후 24시간 뒤 Gmail 검색을 반복한다.
