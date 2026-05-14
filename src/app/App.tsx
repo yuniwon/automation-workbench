@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { DataPreview } from "../components/DataPreview";
 import { FileComparisonPanel } from "../components/FileComparisonPanel";
+import { FileMergePanel } from "../components/FileMergePanel";
 import { InquiryPanel } from "../components/InquiryPanel";
 import { IssuePanel } from "../components/IssuePanel";
 import { ResultSummary } from "../components/ResultSummary";
@@ -20,7 +21,25 @@ import type { AutomationRecipe, DataIssue, DataTable, RunMetrics } from "../core
 import { defaultRecipeEngine } from "../core/transform/stepRegistry";
 import { createGroupedSummary } from "../core/transform/transforms";
 
-type ToolMode = "cleanup" | "compare";
+type ToolMode = "cleanup" | "compare" | "merge";
+
+const toolCopy: Record<ToolMode, { title: string; lede: string; statusLabel: string }> = {
+  cleanup: {
+    title: "엑셀/CSV 자동 정리",
+    lede: "주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤 바로 CSV로 내려받을 수 있습니다.",
+    statusLabel: "rows",
+  },
+  compare: {
+    title: "엑셀/CSV 파일 비교",
+    lede: "두 파일을 같은 키 기준으로 비교해서 추가, 삭제, 변경된 행을 확인하고 결과 CSV로 내려받을 수 있습니다.",
+    statusLabel: "files",
+  },
+  merge: {
+    title: "엑셀/CSV 파일 병합",
+    lede: "여러 CSV/XLSX 파일을 같은 열 구조로 맞춰 세로로 합치고 원본 파일명을 포함한 결과 CSV로 내려받을 수 있습니다.",
+    statusLabel: "files",
+  },
+};
 
 function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
   const parsed = parseCsv(sampleOrdersCsv);
@@ -33,6 +52,7 @@ function loadInitialTable(): { table: DataTable; issues: DataIssue[] } {
 export function App() {
   const initial = useMemo(loadInitialTable, []);
   const [toolMode, setToolMode] = useState<ToolMode>("cleanup");
+  const currentToolCopy = toolCopy[toolMode];
   const [sourceName, setSourceName] = useState("샘플 주문 데이터");
   const [originalTable, setOriginalTable] = useState(initial.table);
   const [currentTable, setCurrentTable] = useState(initial.table);
@@ -132,19 +152,15 @@ export function App() {
         <div>
           <p className="eyebrow">무료 엑셀/CSV 도구</p>
           <h1>
-            {toolMode === "cleanup" ? "엑셀/CSV 자동 정리" : "엑셀/CSV 파일 비교"}{" "}
+            {currentToolCopy.title}{" "}
             <span className="title-keep">도구</span>
           </h1>
-          <p className="lede">
-            {toolMode === "cleanup"
-              ? "주문, 정산, 재고처럼 반복해서 손보던 표 데이터를 검사하고 정리한 뒤 바로 CSV로 내려받을 수 있습니다."
-              : "두 파일을 같은 키 기준으로 비교해서 추가, 삭제, 변경된 행을 확인하고 결과 CSV로 내려받을 수 있습니다."}
-          </p>
+          <p className="lede">{currentToolCopy.lede}</p>
         </div>
         <div className="status-strip" aria-label="Current data status">
-          <span>{toolMode === "cleanup" ? sourceName : "파일 비교 모드"}</span>
+          <span>{toolMode === "cleanup" ? sourceName : `${currentToolCopy.title} 모드`}</span>
           <strong>{toolMode === "cleanup" ? currentTable.rows.length : 2}</strong>
-          <span>{toolMode === "cleanup" ? "rows" : "files"}</span>
+          <span>{currentToolCopy.statusLabel}</span>
         </div>
       </section>
 
@@ -162,6 +178,13 @@ export function App() {
           onClick={() => setToolMode("compare")}
         >
           비교 도구
+        </button>
+        <button
+          className={toolMode === "merge" ? "active" : ""}
+          type="button"
+          onClick={() => setToolMode("merge")}
+        >
+          병합 도구
         </button>
       </section>
 
@@ -205,8 +228,10 @@ export function App() {
             <SummaryPanel groups={summaryGroups} />
           </section>
         </>
-      ) : (
+      ) : toolMode === "compare" ? (
         <FileComparisonPanel parseFile={parseUploadedFile} />
+      ) : (
+        <FileMergePanel parseFile={parseUploadedFile} />
       )}
 
       <InquiryPanel />

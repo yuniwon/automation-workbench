@@ -11,6 +11,7 @@ const expectedUseCaseSlugs = [
   "excel-blank-cell-checker",
   "excel-number-format-cleanup",
   "excel-file-compare",
+  "excel-csv-file-merge",
 ];
 
 describe("use case page generator", () => {

@@ -208,6 +208,39 @@ export const useCases = [
       },
     ],
   },
+  {
+    slug: "excel-csv-file-merge",
+    title: "엑셀/CSV 파일 병합 무료 도구 | Automation Workbench",
+    description: "여러 엑셀/CSV 파일을 브라우저에서 세로로 병합하고 원본 파일명이 포함된 결과 CSV를 내려받을 수 있습니다.",
+    eyebrow: "무료 파일 병합",
+    heading: "여러 엑셀/CSV 파일을 한 번에 병합하세요",
+    lede: [
+      "매장별, 월별, 거래처별로 나뉜 파일을 하나로 합칠 때 열 구조가 조금씩 달라도",
+      "브라우저에서 파일을 올려 원본 파일명과 함께 병합 결과를 확인할 수 있습니다.",
+    ],
+    ctaTitle: "병합 도구 실행",
+    ctaBody: "샘플 파일 두 개로 병합 결과를 확인한 뒤 실제 CSV/XLSX 파일 여러 개를 선택할 수 있습니다.",
+    source: "seo-excel-csv-file-merge",
+    mailLabel: "파일 병합 자동화 문의",
+    mailTask: "엑셀/CSV 파일 병합",
+    cards: [
+      {
+        title: "병합 방식",
+        items: ["여러 파일 세로 병합", "원본 파일명 열 추가", "파일별 다른 열은 빈 값으로 맞춤", "결과 CSV 다운로드"],
+      },
+      {
+        title: "업무 사용처",
+        items: ["매장별 매출 파일 합치기", "월별 주문 파일 합치기", "거래처별 정산 파일 합치기", "여러 재고 파일 통합"],
+      },
+      {
+        title: "맞춤 자동화 예시",
+        body: [
+          "파일명에서 날짜나 매장명을 추출하고, 병합 후 정리·비교·요약까지 이어지는",
+          "반복 업무용 자동화 도구로 확장할 수 있습니다.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const publicUrls = [

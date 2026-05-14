@@ -1,8 +1,8 @@
 # Automation Workbench
 
-무료 엑셀/CSV 정리·비교 도구입니다. CSV 또는 XLSX 파일을 브라우저에서 열어
+무료 엑셀/CSV 정리·비교·병합 도구입니다. CSV 또는 XLSX 파일을 브라우저에서 열어
 중복, 빈 값, 숫자 형식 문제를 정리하거나 두 파일의 추가, 삭제, 변경 행을
-비교한 뒤 결과 CSV로 내려받을 수 있습니다.
+비교하고 여러 파일을 병합한 뒤 결과 CSV로 내려받을 수 있습니다.
 
 Live demo: https://yuniwon.github.io/automation-workbench/
 
@@ -24,6 +24,7 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 | 엑셀 숫자 형식 정리 | https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html |
 | CSV/XLSX 파일 비교 | https://yuniwon.github.io/automation-workbench/use-cases/csv-xlsx-file-compare.html |
 | 엑셀 파일 비교 | https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html |
+| 엑셀/CSV 파일 병합 | https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html |
 | 주문·정산 파일 자동화 검토 | https://yuniwon.github.io/automation-workbench/use-cases/order-settlement-automation.html |
 
 ## 이런 분에게 맞습니다
@@ -31,6 +32,7 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 - 주문, 정산, 재고 파일을 매번 수작업으로 정리하거나 비교하는 분
 - 중복 행, 빈 값, 숫자 형식 오류를 빠르게 확인하고 싶은 분
 - 주문 파일과 정산 파일의 누락, 추가, 변경 내역을 확인하고 싶은 분
+- 매장별, 월별, 거래처별 파일을 하나로 합치고 싶은 분
 - 내 업무 파일에 맞춘 자동화 제작이 가능한지 먼저 보고 싶은 분
 
 ## 기능
@@ -41,6 +43,7 @@ Privacy notes: [PRIVACY.md](PRIVACY.md)
 - 선택한 열 기준 요약표 생성
 - 두 파일을 같은 키 기준으로 비교
 - A에만 있는 행, B에만 있는 행, 변경된 행, 동일한 행 요약
+- 여러 CSV/XLSX 파일을 원본 파일명과 함께 병합
 - 정리된 결과 CSV 다운로드
 
 ## 맞춤 제작 문의

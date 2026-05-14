@@ -34,6 +34,11 @@ const pages = [
     title: "엑셀 파일 비교",
     source: "seo-excel-file-compare",
   },
+  {
+    path: "public/use-cases/excel-csv-file-merge.html",
+    title: "엑셀/CSV 파일 병합",
+    source: "seo-excel-csv-file-merge",
+  },
 ];
 
 function readProjectFile(relativePath: string) {

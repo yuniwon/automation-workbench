@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { FileComparisonPanel } from "../../src/components/FileComparisonPanel";
+import { FileMergePanel } from "../../src/components/FileMergePanel";
 import { WorkflowControls } from "../../src/components/WorkflowControls";
 import { defaultCleanupOptions } from "../../src/core/recipes/cleanupOptions";
 import type { TableParseResult } from "../../src/core/table/types";
@@ -35,6 +36,20 @@ describe("sample download links", () => {
 
     expect(html).toContain("파일 A 샘플");
     expect(html).toContain("파일 B 샘플");
+    expect(html).toContain("samples/sample-orders-dirty.csv");
+    expect(html).toContain("samples/sample-orders-compare.csv");
+  });
+
+  it("shows both merge sample CSV links in merge controls", () => {
+    const parseFile = async (): Promise<TableParseResult> => ({
+      table: { columns: [], rows: [] },
+      issues: [],
+    });
+
+    const html = renderToStaticMarkup(<FileMergePanel parseFile={parseFile} />);
+
+    expect(html).toContain("병합 샘플 A");
+    expect(html).toContain("병합 샘플 B");
     expect(html).toContain("samples/sample-orders-dirty.csv");
     expect(html).toContain("samples/sample-orders-compare.csv");
   });

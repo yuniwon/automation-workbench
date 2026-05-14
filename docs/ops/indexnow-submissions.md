@@ -24,6 +24,7 @@ pnpm submit:indexnow
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-blank-cell-checker.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-number-format-cleanup.html`
 - `https://yuniwon.github.io/automation-workbench/use-cases/excel-file-compare.html`
+- `https://yuniwon.github.io/automation-workbench/use-cases/excel-csv-file-merge.html`
 
 ## 주의
 

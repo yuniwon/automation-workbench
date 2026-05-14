@@ -23,19 +23,19 @@ https://yuniwon.github.io/automation-workbench/?source=product-hunt
 ## Tagline
 
 ```text
-Clean and compare CSV/XLSX files in your browser
+Clean, compare, and merge CSV/XLSX files in your browser
 ```
 
 ## Description
 
 ```text
-Automation Workbench is a free browser-based tool for cleaning and comparing CSV/XLSX files. Upload a spreadsheet, scan common data quality issues, remove duplicates, compare two files by key, and export the result as CSV.
+Automation Workbench is a free browser-based tool for cleaning, comparing, and merging CSV/XLSX files. Upload a spreadsheet, scan common data quality issues, remove duplicates, compare two files by key, merge multiple files, and export the result as CSV.
 ```
 
 ## Maker Comment
 
 ```text
-I built Automation Workbench as a free browser-based demo for spreadsheet cleanup and file comparison workflows.
+I built Automation Workbench as a free browser-based demo for spreadsheet cleanup, file comparison, and file merge workflows.
 
 It is meant for people who repeatedly clean order, inventory, settlement, or reporting files and want to see whether their workflow can be automated before commissioning a custom tool.
 
@@ -44,6 +44,7 @@ Current features:
 - data quality scanning
 - duplicate removal and number normalization
 - two-file comparison by key
+- multi-file merge with a source file column
 - CSV export
 
 The project is open on GitHub and hosted on GitHub Pages.
@@ -56,7 +57,7 @@ The project is open on GitHub and hosted on GitHub Pages.
 - Comparison sample: https://yuniwon.github.io/automation-workbench/samples/sample-orders-compare.csv
 - GitHub URL: https://github.com/yuniwon/automation-workbench
 - Social preview image: `public/og-image.png`
-- Release: https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.0
+- Release: https://github.com/yuniwon/automation-workbench/releases/tag/v0.1.3
 
 ## After Posting Log
 

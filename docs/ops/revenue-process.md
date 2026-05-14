@@ -9,6 +9,7 @@
 - 문의 메일: `dnjsdndus@gmail.com`
 - 무료 도구 1: 엑셀/CSV 자동 정리 도구
 - 무료 도구 2: 엑셀/CSV 파일 비교 도구
+- 무료 도구 3: 엑셀/CSV 파일 병합 도구
 - 소개글: `docs/marketing/free-excel-csv-cleanup-tool-post.md`
 - 무료 노출 계획: `docs/marketing/free-distribution-plan.md`
 - 수동 게시 체크리스트: `docs/marketing/manual-posting-checklist.md`

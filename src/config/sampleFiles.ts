@@ -17,4 +17,12 @@ export const sampleFiles = {
     href: publicPath("samples/sample-orders-compare.csv"),
     label: "파일 B 샘플",
   },
+  mergeBase: {
+    href: publicPath("samples/sample-orders-dirty.csv"),
+    label: "병합 샘플 A",
+  },
+  mergeExtra: {
+    href: publicPath("samples/sample-orders-compare.csv"),
+    label: "병합 샘플 B",
+  },
 };

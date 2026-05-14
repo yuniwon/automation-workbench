@@ -37,7 +37,7 @@ https://yuniwon.github.io/automation-workbench/?source=geeknews
 게시 제목:
 
 ```text
-Show GN: 브라우저에서 CSV/XLSX 파일을 정리하고 비교하는 무료 도구를 만들었습니다
+Show GN: 브라우저에서 CSV/XLSX 파일을 정리·비교·병합하는 무료 도구를 만들었습니다
 ```
 
 복사용 원고:
@@ -49,7 +49,7 @@ docs/marketing/posts/geeknews-show-gn.md
 게시 본문:
 
 ```text
-반복해서 만지는 주문, 정산, 재고 파일을 브라우저에서 바로 정리하고 비교할 수 있는 작은 도구를 만들었습니다.
+반복해서 만지는 주문, 정산, 재고 파일을 브라우저에서 바로 정리, 비교, 병합할 수 있는 작은 도구를 만들었습니다.
 
 할 수 있는 일:
 - CSV/XLSX 업로드
@@ -57,6 +57,7 @@ docs/marketing/posts/geeknews-show-gn.md
 - 공백 정리, 헤더 표준화, 중복 제거
 - 두 파일을 같은 키 기준으로 비교
 - 추가, 삭제, 변경, 동일 행 요약
+- 여러 파일을 원본 파일명과 함께 병합
 - 결과 CSV 다운로드
 
 계정이나 이메일 입력 없이 바로 써볼 수 있고, 업로드한 파일은 브라우저 안에서 처리하는 구조를 우선했습니다.
@@ -75,7 +76,7 @@ https://github.com/yuniwon/automation-workbench
 ```text
 만든 이유는 단순합니다. 작은 사업장이나 개인 업무에서는 매주 같은 엑셀 정리를 반복하는 경우가 많고, 외주 플랫폼에서 의뢰하기 전에는 "이런 것도 자동화가 되나?"를 직접 확인하기 어렵습니다.
 
-그래서 먼저 무료로 써볼 수 있는 공통 정리/비교 도구를 만들고, 실제 업무 양식별 자동화는 문의를 받아 확장하는 구조로 테스트하고 있습니다.
+그래서 먼저 무료로 써볼 수 있는 공통 정리/비교/병합 도구를 만들고, 실제 업무 양식별 자동화는 문의를 받아 확장하는 구조로 테스트하고 있습니다.
 
 기술적으로는 scanner, transform, recipe, adapter를 분리해서 고객별 규칙을 하드코딩하지 않는 방향으로 가고 있습니다.
 ```
@@ -107,7 +108,7 @@ https://yuniwon.github.io/automation-workbench/?source=okky
 게시 제목:
 
 ```text
-CSV/XLSX 정리·비교 무료 도구를 만들었는데 피드백 부탁드립니다
+CSV/XLSX 정리·비교·병합 무료 도구를 만들었는데 피드백 부탁드립니다
 ```
 
 복사용 원고:
@@ -121,7 +122,7 @@ docs/marketing/posts/okky-feedback.md
 ```text
 안녕하세요.
 
-주문, 정산, 재고 파일처럼 반복해서 손보는 CSV/XLSX 파일을 브라우저에서 정리하고 비교하는 무료 도구를 만들었습니다.
+주문, 정산, 재고 파일처럼 반복해서 손보는 CSV/XLSX 파일을 브라우저에서 정리, 비교, 병합하는 무료 도구를 만들었습니다.
 
 링크:
 https://yuniwon.github.io/automation-workbench/?source=okky
@@ -132,6 +133,7 @@ https://yuniwon.github.io/automation-workbench/?source=okky
 - 공백 정리, 헤더 표준화, 중복 제거
 - 두 파일을 같은 키 기준으로 비교
 - 추가, 삭제, 변경, 동일 행 확인
+- 여러 파일을 원본 파일명과 함께 병합
 - 결과 CSV 다운로드
 
 의도는 "엑셀 자동화가 필요한지 먼저 확인해보는 무료 샘플 도구"입니다.
@@ -188,7 +190,7 @@ docs/marketing/posts/hacker-news-show-hn.md
 게시 본문 또는 첫 댓글:
 
 ```text
-I built a small browser-based tool for cleaning and comparing CSV/XLSX files:
+I built a small browser-based tool for cleaning, comparing, and merging CSV/XLSX files:
 
 https://yuniwon.github.io/automation-workbench/?source=hacker-news
 
@@ -197,6 +199,7 @@ It can:
 - scan blank cells, duplicate rows, number-like values, and header issues
 - trim text, normalize headers, normalize numbers, and remove duplicates
 - compare two files by a shared key
+- merge multiple files with a source file column
 - export the result as CSV
 
 The motivation is practical: many small business workflows still involve manually cleaning order, inventory, and settlement spreadsheets every week. I wanted a free, no-login demo that shows what can be automated before building custom workflows for a specific file format.
